@@ -1,3 +1,7 @@
+/**
+ * @jest-environment jsdom-latest
+ */
+
 import fs from "fs";
 import path from "path";
 

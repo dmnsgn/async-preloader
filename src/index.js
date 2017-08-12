@@ -132,7 +132,7 @@ class AsyncPreloader {
 
   // Utils
   static getFileExtension(path) {
-    return path.split(".").pop();
+    return (path.match(/[^\\\/]\.([^.\\\/]+)$/) || [null]).pop();
   }
 
   static getFileName(path) {

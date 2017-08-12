@@ -21,10 +21,12 @@
     "ES2017"
   ],
   "scripts": {
-    "dev": "rollup -c -w -m inline | jest test/ --config test/config.json --watch",
+    "dev": "rollup -c -w -m inline",
+    "jest": "jest test/ --config test/config.json --watch",
     "clean": "rm -rf lib",
     "build": "rollup -c",
     "test": "jest test/ --config test/config.json",
+    "jest-coverage": "jest test/ --config test/config.json --coverage",
     "prepublishOnly": "npm run build"
   },
   "devDependencies": {

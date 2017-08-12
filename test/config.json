@@ -1,3 +1,4 @@
 {
-	"setupFiles": ["<rootDir>/setupFile.js"]
+  "setupFiles": ["<rootDir>/setupFile.js"],
+  "collectCoverageFrom": ["**/src/**/*.js"]
 }

@@ -9,5 +9,15 @@
   "plugins": [
     "transform-class-properties",
     "external-helpers"
-  ]
+  ],
+  "env": {
+    "test": {
+      "presets": ["latest"],
+      "plugins": [
+        "transform-runtime",
+        "transform-class-properties",
+        "external-helpers"
+      ]
+    }
+  }
 }

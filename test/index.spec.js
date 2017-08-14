@@ -9,14 +9,12 @@ import fetchMock from "fetch-mock";
 
 import AsyncPreloader from "../src";
 
-import { toArrayBuffer } from "./utils";
-
 // Mock
-const mockFetch = jest.fn((filePath, type) => {
+const mockFetch = jest.fn((filePath, buffer) => {
   const file = path.resolve("test", filePath);
   let response;
 
-  if (type) {
+  if (buffer) {
     response = fs.readFileSync(file);
   } else {
     response = fs.readFileSync(file, { encoding: "utf-8" });
@@ -63,8 +61,8 @@ describe("AsyncPreloader", () => {
 
       // TEMP: fix blob tests
       const excludes = ["jpg", "mp4", "mp3"];
-      itemsToLoad = itemsToLoad.filter(item =>
-        !excludes.includes(AsyncPreloader.getFileExtension(item.src))
+      itemsToLoad = itemsToLoad.filter(
+        item => !excludes.includes(AsyncPreloader.getFileExtension(item.src))
       );
 
       const data = await AsyncPreloader.loadItems(itemsToLoad);
@@ -148,7 +146,6 @@ describe("AsyncPreloader", () => {
       const data = await AsyncPreloader.loadItem(item);
       expect(data).toBe("Open Sans Regular");
     });
-
 
     it("should load default without id and return text", async () => {
       expect.assertions(1);

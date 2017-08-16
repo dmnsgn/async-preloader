@@ -52,6 +52,13 @@ class AsyncPreloader {
     return loadedItem;
   }
 
+  static async loadManifest(src) {
+    const loadedManifest = await AsyncPreloader.loadJson({ src });
+    const loadedItems = await AsyncPreloader.loadItems(loadedManifest.items);
+
+    return loadedItems;
+  }
+
   // Loaders
   static async loadDefault(item) {
     const response = await fetch(item.src, item.options || {});

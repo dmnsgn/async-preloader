@@ -1,42 +1,9 @@
 /**
  * @jest-environment jsdom-latest
  */
-
-import fs from "fs";
-import path from "path";
-
-import fetchMock from "fetch-mock";
-
 import AsyncPreloader from "../src";
-
-// Mock
-const mockFetch = jest.fn((filePath, buffer) => {
-  const file = path.resolve("test", filePath);
-  let response;
-
-  if (buffer) {
-    response = fs.readFileSync(file);
-  } else {
-    response = fs.readFileSync(file, { encoding: "utf-8" });
-  }
-
-  fetchMock.get(filePath, response);
-});
-
-const unMockFetch = jest.fn(fetchMock.restore);
-
-// Data
-const items = new Map()
-  .set("default", { id: "myDefaultFile", src: "assets/default" })
-  .set("txt", { id: "myTextFile", src: "assets/text.txt" })
-  .set("json", { id: "myJsonFile", src: "assets/json.json" })
-  .set("jpg", { id: "myImageFile", src: "assets/image.jpg" })
-  .set("mp4", { id: "myVideoFile", src: "assets/video.mp4" })
-  .set("mp3", { id: "myAudioFile", src: "assets/audio.mp3" })
-  .set("xml", { id: "myXmlFile", src: "assets/xml.xml" })
-  .set("svg", { id: "mySvgFile", src: "assets/xml.svg" })
-  .set("html", { id: "myHtmlFile", src: "assets/xml.html" })
-  .set("font", { id: "myFont", src: "Open Sans Regular", loader: "Font" });
+import { items, expected, manifestSrc } from "./data";
+import { mockFetch, unmockFetch } from "./mock";
 
 // Suite
 describe("AsyncPreloader", () => {
@@ -48,11 +15,11 @@ describe("AsyncPreloader", () => {
     });
 
     afterEach(() => {
-      unMockFetch();
+      unmockFetch();
     });
 
     it("should load array of items", async () => {
-      expect.assertions(1);
+      expect.assertions(3);
 
       let itemsToLoad = Array.from(items.values());
       itemsToLoad.forEach(item => {
@@ -67,6 +34,8 @@ describe("AsyncPreloader", () => {
 
       const data = await AsyncPreloader.loadItems(itemsToLoad);
       expect(data).toBeInstanceOf(Array);
+      expect(data).toHaveLength(items.size - 3); // TEMP: fix blob tests
+      expect(data).toEqual(expect.arrayContaining(Array.from(expected.values())));
     });
 
     it("should load default and return text", async () => {
@@ -76,7 +45,7 @@ describe("AsyncPreloader", () => {
       mockFetch(item.src);
 
       const data = await AsyncPreloader.loadItem(item);
-      expect(data).toBe(`Default test\n`);
+      expect(data).toBe(expected.get("string"));
     });
 
     it("should load json and return Object", async () => {
@@ -86,14 +55,14 @@ describe("AsyncPreloader", () => {
       mockFetch(item.src);
 
       const data = await AsyncPreloader.loadItem(item);
-      expect(data).toBeInstanceOf(Object);
+      expect(data).toEqual(expected.get("json"));
     });
 
     // it("should load image and return HTMLMediaElement", async () => {
     //   expect.assertions(1);
 
-    //   const item = items.get("png");
-    //   mockFetch(src, "image/item.src);
+    //   const item = items.get("jpg");
+    //   mockFetch(item.src);
 
     //   const data = await AsyncPreloader.loadItem(item);
     //   expect(data).toBeInstanceOf(HTMLMediaElement);
@@ -103,7 +72,7 @@ describe("AsyncPreloader", () => {
     //   expect.assertions(1);
 
     //   const item = items.get("mp4");
-    //   mockFetch(src, "video/item.src");
+    //   mockFetch(item.src);
 
     //   const data = await AsyncPreloader.loadItem(item);
     //   expect(data).toBeInstanceOf(HTMLMediaElement);
@@ -113,7 +82,7 @@ describe("AsyncPreloader", () => {
     //   expect.assertions(1);
 
     //   const item = items.get("mp3");
-    //   mockFetch(src, "audio/item.src");
+    //   mockFetch(item.src);
 
     //   const data = await AsyncPreloader.loadItem(item);
     //   expect(data).toBeInstanceOf(HTMLMediaElement);
@@ -136,7 +105,7 @@ describe("AsyncPreloader", () => {
       mockFetch(item.src);
 
       const data = await AsyncPreloader.loadItem(item);
-      expect(data).toBe(`Test\n`);
+      expect(data).toBe(expected.get("string"));
     });
 
     it("should check font is loaded with FontFaceObserver", async () => {
@@ -144,7 +113,7 @@ describe("AsyncPreloader", () => {
 
       const item = items.get("font");
       const data = await AsyncPreloader.loadItem(item);
-      expect(data).toBe("Open Sans Regular");
+      expect(data).toBe(expected.get("font"));
     });
 
     it("should load default without id and return text", async () => {
@@ -154,7 +123,18 @@ describe("AsyncPreloader", () => {
       mockFetch(item.src);
 
       const data = await AsyncPreloader.loadItem({ src: item.src });
-      expect(data).toBe(`Default test\n`);
+      expect(data).toBe(expected.get("string"));
+    });
+
+    it("should load manifest, load its items and return the items", async () => {
+      expect.assertions(3);
+
+      mockFetch(manifestSrc);
+
+      const data = await AsyncPreloader.loadManifest(manifestSrc);
+      expect(data).toBeInstanceOf(Array);
+      expect(data).toHaveLength(items.size - 3); // TEMP: fix blob tests
+      expect(data).toEqual(expect.arrayContaining(Array.from(expected.values())));
     });
   });
 

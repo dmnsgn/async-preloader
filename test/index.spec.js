@@ -15,6 +15,7 @@ describe("AsyncPreloader", () => {
     });
 
     afterEach(() => {
+      AsyncPreloader.items.clear();
       unmockFetch();
     });
 
@@ -35,7 +36,9 @@ describe("AsyncPreloader", () => {
       const data = await AsyncPreloader.loadItems(itemsToLoad);
       expect(data).toBeInstanceOf(Array);
       expect(data).toHaveLength(items.size - 3); // TEMP: fix blob tests
-      expect(data).toEqual(expect.arrayContaining(Array.from(expected.values())));
+      expect(data).toEqual(
+        expect.arrayContaining(Array.from(expected.values()))
+      );
     });
 
     it("should load default and return text", async () => {
@@ -134,7 +137,38 @@ describe("AsyncPreloader", () => {
       const data = await AsyncPreloader.loadManifest(manifestSrc);
       expect(data).toBeInstanceOf(Array);
       expect(data).toHaveLength(items.size - 3); // TEMP: fix blob tests
-      expect(data).toEqual(expect.arrayContaining(Array.from(expected.values())));
+      expect(data).toEqual(
+        expect.arrayContaining(Array.from(expected.values()))
+      );
+    });
+
+    it("should load items and update a loadedCount variable", async () => {
+      expect.assertions(1);
+
+      let itemsToLoad = Array.from(items.values());
+      itemsToLoad.forEach(item => {
+        if (item.loader !== "Font") mockFetch(item.src);
+      });
+
+      // TEMP: fix blob tests
+      const excludes = ["jpg", "mp4", "mp3"];
+      itemsToLoad = itemsToLoad.filter(
+        item => !excludes.includes(AsyncPreloader.getFileExtension(item.src))
+      );
+
+      let loadedCount = 0;
+      async function preload() {
+        await Promise.all(
+          itemsToLoad.map(async item => {
+            const data = await AsyncPreloader.loadItem(item);
+            loadedCount++;
+            console.log(loadedCount / itemsToLoad.length, data);
+          })
+        );
+      }
+      await preload();
+
+      expect(loadedCount).toEqual(items.size - 3);
     });
   });
 

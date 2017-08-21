@@ -32,6 +32,10 @@ interface LoadItem {
 |**src**|Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)|
 |**loader**|Optional string from one of the [LOADERS Map](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20). It needs to be specified for Font and Audio (webm|off). Otherwise the loader is inferred from the file extension or default to `Response.text()` if there is no extension.|
 
+### AsyncPreloader.items
+
+A [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) object containing the loaded items (keys being `LoadItem.id` if specified or `LoadItem.src`).
+
 
 ### AsyncPreloader.loadItems(items: LoadItem[])
 
@@ -90,7 +94,7 @@ You can also load a manifest file. It works in a similar fashion as createjs's [
 ```js
 import AsyncPreloader from "async-preloader";
 
-const pItems = AsyncPreloader.loadItems('assets/manifest.json');
+const pItems = AsyncPreloader.loadItems("assets/manifest.json");
 
 pItems
   .then(items => useLoadedItemsFromManifest(items)) // or AsyncPreloader.items.get(pathOrId)
@@ -115,11 +119,34 @@ It is also possible to use the [LOADERS](https://github.com/dmnsgn/async-preload
 ```js
 import AsyncPreloader from "async-preloader";
 
-const pItem = AsyncPreloader.loadJson('assets/json.json');
+const pItem = AsyncPreloader.loadJson("assets/json.json");
 
 pItem
   .then(item => useLoadedItemFromManifest(item))
   .catch(error => console.error("Error loading item", error));
+```
+
+
+## Usage
+
+### Getting the progress
+
+Since `fetch` doesn't support `Progress events` yet, you might want to get a per file progress:
+
+```js
+import AsyncPreloader from "async-preloader";
+
+let loadedCount = 0;
+async function preload() {
+  await Promise.all(
+    itemsToLoad.map(async item => {
+      const data = await AsyncPreloader.loadItem(item);
+      loadedCount++;
+      console.log(loadedCount / itemsToLoad.length);
+    })
+  );
+}
+await preload();
 ```
 
 

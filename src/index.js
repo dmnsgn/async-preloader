@@ -76,7 +76,11 @@ class AsyncPreloader {
 
   static async loadImage(item) {
     const response = await fetch(item.src, item.options || {});
-    const data = await response.blob();
+    const data = await response[item.body || "blob"]();
+
+    if (item.body === "arrayBuffer") {
+      return data;
+    }
 
     const image = new Image();
     image.src = URL.createObjectURL(data);
@@ -89,7 +93,11 @@ class AsyncPreloader {
 
   static async loadVideo(item) {
     const response = await fetch(item.src, item.options || {});
-    const data = await response.blob();
+    const data = await response[item.body || "blob"]();
+
+    if (item.body === "arrayBuffer") {
+      return data;
+    }
 
     const video = document.createElement("video");
     video.src = URL.createObjectURL(data);
@@ -102,7 +110,11 @@ class AsyncPreloader {
 
   static async loadAudio(item) {
     const response = await fetch(item.src, item.options || {});
-    const data = await response.blob();
+    const data = await response[item.body || "blob"]();
+
+    if (item.body === "arrayBuffer") {
+      return data;
+    }
 
     const audio = document.createElement("audio");
     audio.autoplay = false;

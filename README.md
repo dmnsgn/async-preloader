@@ -23,6 +23,8 @@ interface LoadItem {
   id?: string;
   src: string;
   loader?: string;
+  options?: object;
+  body?: "arrayBuffer" | "blob" | "formData" | "json" | "text"
 }
 ```
 
@@ -30,7 +32,9 @@ interface LoadItem {
 |:---------|:---------|
 |**id**|Optional id to retrieve the file using `AsyncPreloader.items.get(id)`|
 |**src**|Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)|
-|**loader**|Optional string from one of the [LOADERS Map](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20). It needs to be specified for Font and Audio (webm|off). Otherwise the loader is inferred from the file extension or default to `Response.text()` if there is no extension.|
+|**loader**|Optional _string_ from one of the [LOADERS Map](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20). It needs to be specified for Font and Audio (webm|off). Otherwise the loader is inferred from the file extension or default to `Response.text()` if there is no extension.|
+|**options**|Optional _object_ to pass to the [fetch method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).|
+|**body**|Optional _string_ to define the [Body method](https://developer.mozilla.org/en-US/docs/Web/API/Body) to handle the Response. Default to `blob()` for Image, Video and Audio.|
 
 ### AsyncPreloader.items
 
@@ -119,10 +123,10 @@ It is also possible to use the [LOADERS](https://github.com/dmnsgn/async-preload
 ```js
 import AsyncPreloader from "async-preloader";
 
-const pItem = AsyncPreloader.loadJson("assets/json.json");
+const pItem = AsyncPreloader.loadJson({ "src": "assets/json.json" });
 
 pItem
-  .then(item => useLoadedItemFromManifest(item))
+  .then(item => useLoadedItem(item))
   .catch(error => console.error("Error loading item", error));
 ```
 
@@ -147,6 +151,22 @@ async function preload() {
   );
 }
 await preload();
+```
+
+### Get an `ArrayBuffer` instead of a blob
+
+You can specify how the response is handle by using the `body` key in a `LoadItem`.
+
+Typical use case: use with the WebAudio API to decode the data with `baseAudioContext.decodeAudioData()`:
+
+```js
+import AsyncPreloader from "async-preloader";
+
+const pItem = AsyncPreloader.loadAudio({ src: "assets/audio.mp3", body: "arrayBuffer" });
+
+pItem
+  .then(item => audioContext.decodeAudioData(item))
+  .catch(error => console.error("Error decoding audio", error));
 ```
 
 

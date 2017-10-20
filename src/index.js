@@ -22,7 +22,7 @@ class AsyncPreloader {
     .set("Json",    { extensions: ["json"]  })
     .set("Image",   { extensions: ["jpeg",  "jpg",  "gif",  "png", "webp"] })
     .set("Video",   { extensions: ["webm",  "ogg",  "mp4"]  })
-    .set("Audio",   { extensions: ["webm",  "ogg",  "mp3"]  })
+    .set("Audio",   { extensions: ["webm",  "ogg",  "mp3",  "wav", "flac"] })
     .set("Xml",     { extensions: ["xml",   "svg",  "html"] })
     .set("Font",    { extensions: ["woff2", "woff", "ttf",  "otf", "eot"]  });
 

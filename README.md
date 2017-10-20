@@ -32,7 +32,7 @@ interface LoadItem {
 |:---------|:---------|
 |**id**|Optional id to retrieve the file using `AsyncPreloader.items.get(id)`|
 |**src**|Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)|
-|**loader**|Optional _string_ from one of the [LOADERS Map](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20). It needs to be specified for Font and Audio (webm|off). Otherwise the loader is inferred from the file extension or default to `Response.text()` if there is no extension.|
+|**loader**|Optional _string_ from one of the [LOADERS Map](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20). It needs to be specified for Font and Audio (webm,ogg). Otherwise the loader is inferred from the file extension or default to `Response.text()` if there is no extension.|
 |**options**|Optional _object_ to pass to the [fetch method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).|
 |**body**|Optional _string_ to define the [Body method](https://developer.mozilla.org/en-US/docs/Web/API/Body) to handle the Response. Default to `blob()` for Image, Video and Audio.|
 

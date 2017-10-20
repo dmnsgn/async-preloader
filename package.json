@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "2.0.0",
+  "version": "2.1.0",
   "description": "Assets preloader using ES2017 async/await and fetch.",
   "main": "lib/async-preloader.js",
   "jsnext:main": "lib/async-preloader.module.js",

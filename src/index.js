@@ -118,7 +118,7 @@ class AsyncPreloader {
 
     const audio = document.createElement("audio");
     audio.autoplay = false;
-    audio.preload = "none";
+    audio.preload = "auto";
     audio.src = URL.createObjectURL(data);
 
     return await new Promise((resolve, reject) => {

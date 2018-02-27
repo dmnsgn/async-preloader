@@ -98,7 +98,7 @@ You can also load a manifest file. It works in a similar fashion as createjs's [
 ```js
 import AsyncPreloader from "async-preloader";
 
-const pItems = AsyncPreloader.loadItems("assets/manifest.json");
+const pItems = AsyncPreloader.loadManifest("assets/manifest.json");
 
 pItems
   .then(items => useLoadedItemsFromManifest(items)) // or AsyncPreloader.items.get(pathOrId)

@@ -1,14 +1,3 @@
-export const toArrayBuffer = buffer => {
-  let ab = new ArrayBuffer(buffer.length);
-  let view = new Uint8Array(ab);
-
-  for (let i = 0; i < buffer.length; ++i) {
-    view[i] = buffer[i];
-  }
-
-  return ab;
-};
-
 // https://github.com/vicetjs/array-buffer-to-data
 export class ArrayBufferToData {
   static toBase64(arrayBuffer) {

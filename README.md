@@ -1,62 +1,33 @@
 # async-preloader
 
 [![Build Status](https://travis-ci.org/dmnsgn/async-preloader.svg?branch=master)](https://travis-ci.org/dmnsgn/async-preloader)
+[![npm version](https://badge.fury.io/js/async-preloader.svg)](https://www.npmjs.com/package/async-preloader)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
-
 
 > Assets preloader using ES2017 async/await and fetch.
 
 ## Install
 
-```
-$ npm install --save async-preloader
-```
-
-
-## API
-
-### LoadItem
-
-```js
-interface LoadItem {
-  id?: string;
-  src: string;
-  loader?: string;
-  options?: object;
-  body?: "arrayBuffer" | "blob" | "formData" | "json" | "text"
-}
+```bash
+npm install --save async-preloader
 ```
 
-|Key|Description
-|:---------|:---------|
-|**id**|Optional id to retrieve the file using `AsyncPreloader.items.get(id)`|
-|**src**|Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)|
-|**loader**|Optional _string_ from one of the [LOADERS Map](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20). It needs to be specified for Font and Audio (webm,ogg). Otherwise the loader is inferred from the file extension or default to `Response.text()` if there is no extension.|
-|**options**|Optional _object_ to pass to the [fetch method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).|
-|**body**|Optional _string_ to define the [Body method](https://developer.mozilla.org/en-US/docs/Web/API/Body) to handle the Response. Default to `blob()` for Image, Video and Audio.|
+## Documentation
 
-### AsyncPreloader.items
+* [AsyncPreloader class](https://dmnsgn.github.io/async-preloader/classes/_index_.asyncpreloader.html)
+* [AsyncPreloader types](https://dmnsgn.github.io/async-preloader/modules/_types_.html)
 
-A [Map](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map) object containing the loaded items (keys being `LoadItem.id` if specified or `LoadItem.src`).
+## Quick start
 
+This section covers the basic usage of `AsyncPreloader`.
 
-### AsyncPreloader.loadItems(items: LoadItem[])
+### Preload items and retrieve them
 
-#### Arguments
-
-`items` (*Array*): Array of `LoadItem`s
-
-#### Returns
-
-(*Promise*): A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves with the loaded items.
-
-#### Example
-
-```js
+```javascript
 import AsyncPreloader from "async-preloader";
 
-const pItems = AsyncPreloader.loadItems([
+const items = [
   { "id": "myDefaultFile", "src": "assets/default"   },
   { "id": "myTextFile",    "src": "assets/text.txt"  },
   { "id": "myJsonFile",    "src": "assets/json.json" },
@@ -66,8 +37,14 @@ const pItems = AsyncPreloader.loadItems([
   { "id": "myXmlFile",     "src": "assets/xml.xml"   },
   { "id": "mySvgFile",     "src": "assets/xml.svg"   },
   { "id": "myHtmlFile",    "src": "assets/xml.html"  },
-  { "id": "myFont",        "src": "Open Sans Regular", "loader": "Font" }
-]);
+  { "id": "myFont",        "src": "Open Sans Regular", "loader": "Font" },
+  { "src": "assets/fileWithoutId" } // Can be retrieved with the src property eg. AsyncPreloader.items.get("assets/fileWithoutId")
+];
+
+// Pass an array of LoadItem
+//
+// Returns a Promise with an array of LoadedValue
+const pItems = AsyncPreloader.loadItems(items);
 
 pItems
   .then(items => {
@@ -80,49 +57,38 @@ pItems
 ---
 Note: Font loader is using [FontFaceObserver](https://github.com/bramstein/fontfaceobserver)
 
+### Load items from a manifest file
 
-### AsyncPreloader.loadManifest(src: string)
+It works in a similar fashion as createjs's [PreloadJS](http://www.createjs.com/docs/preloadjs/classes/LoadQueue.html).
 
-You can also load a manifest file. It works in a similar fashion as createjs's [PreloadJS](http://www.createjs.com/docs/preloadjs/classes/LoadQueue.html).
-
-#### Arguments
-
-`src` (*String*): Input for the Fetch API. It will load the file using the `JsonLoader` and look for an `"items"` key containing an array of `LoadItem`s.
-
-#### Returns
-
-(*Promise*): A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves with the loaded items.
-
-#### Example
-
-```js
+```javascript
 import AsyncPreloader from "async-preloader";
 
-const pItems = AsyncPreloader.loadItems("assets/manifest.json");
+// Pass the file url and an optional path of the property to get in the JSON file.
+// It will load the file using the Json loader and look for the path key expecting an array of `LoadItem`s.
+// Default path is "items" eg the default manifest would look like this:
+// `{ "items": [ { "src": "assets/file1" }, { "src": "assets/file2" }] }`
+//
+// Returns a Promise with an array of LoadedValue
+const pItems = AsyncPreloader.loadManifest("assets/manifest.json", "data.preloader.items");
 
 pItems
-  .then(items => useLoadedItemsFromManifest(items)) // or AsyncPreloader.items.get(pathOrId)
+  .then(items => useLoadedItemsFromManifest(items)) // or AsyncPreloader.items.get("src or id")
   .catch(error => console.error("Error loading items", error));
 ```
 
+## Advanced usage
 
-### AsyncPreloader.loadJson(item: LoadItem)
+This section takes a closer look at the options of `AsyncPreloader`.
 
-It is also possible to use the [LOADERS](https://github.com/dmnsgn/async-preloader/blob/master/src/index.js#L20) individually.
+### Load a single item by using the [loaders](https://github.com/dmnsgn/async-preloader/blob/master/src/index.ts#L40) directly
 
-#### Arguments
-
-`item` (*LoadItem*): a `LoadItem`.
-
-#### Returns
-
-(*Promise*): A [Promise](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise) that resolves with the loaded item.
-
-#### Example
-
-```js
+```javascript
 import AsyncPreloader from "async-preloader";
 
+// Pass a LoadItem
+//
+// Returns a Promise with the LoadedValue
 const pItem = AsyncPreloader.loadJson({ "src": "assets/json.json" });
 
 pItem
@@ -130,45 +96,52 @@ pItem
   .catch(error => console.error("Error loading item", error));
 ```
 
+---
+Note: Using the loaders directly won't add the item to the `items` Map.
+Alternatively you could use `AsyncPreloader.loadItem` and rely on the file extension or add `{ loader: "Json"}` to the item.
 
-## Usage
+### Get an `ArrayBuffer` instead of the default `Blob`
+
+You can specify how the response is handle by using the `body` key in a `LoadItem`.
+
+Typical use case: get an ArrayBuffer for the WebAudio API to decode the data with `baseAudioContext.decodeAudioData()`.
+
+```javascript
+import AsyncPreloader from "async-preloader";
+
+const audioContext = new AudioContext();
+const pItem = AsyncPreloader.loadAudio({ src: "assets/audio.mp3", body: "arrayBuffer" });
+
+pItem
+  .then(item => audioContext.decodeAudioData(item))
+  .then(decodedData => useDecodedData(decodedData))
+  .catch(error => console.error("Error decoding audio", error));
+```
 
 ### Getting the progress
 
-Since `fetch` doesn't support `Progress events` yet, you might want to get a per file progress:
+Since `fetch` doesn't support `Progress events` yet, you might want to get a per file progress.
 
-```js
+```javascript
 import AsyncPreloader from "async-preloader";
 
+const items = [
+  { "id": "myDefaultFile", "src": "assets/default" } // ...
+];
+
+async () => {
 let loadedCount = 0;
 async function preload() {
   await Promise.all(
-    itemsToLoad.map(async item => {
-      const data = await AsyncPreloader.loadItem(item);
+    items.map(async item => {
+      const data = await Preloader.loadItem(item);
       loadedCount++;
-      console.log(loadedCount / itemsToLoad.length);
+      console.log(`Progress: ${100 * loadedCount / items.length}%`);
     })
   );
 }
 await preload();
 ```
-
-### Get an `ArrayBuffer` instead of a blob
-
-You can specify how the response is handle by using the `body` key in a `LoadItem`.
-
-Typical use case: use with the WebAudio API to decode the data with `baseAudioContext.decodeAudioData()`:
-
-```js
-import AsyncPreloader from "async-preloader";
-
-const pItem = AsyncPreloader.loadAudio({ src: "assets/audio.mp3", body: "arrayBuffer" });
-
-pItem
-  .then(item => audioContext.decodeAudioData(item))
-  .catch(error => console.error("Error decoding audio", error));
-```
-
 
 ## License
 

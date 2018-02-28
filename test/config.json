@@ -1,4 +1,9 @@
 {
   "setupFiles": ["<rootDir>/setupFile.js"],
-  "collectCoverageFrom": ["**/src/**/*.js"]
+  "collectCoverageFrom": ["src/**/*.ts"],
+  "transform": {
+    "^.+\\.(t|j)s$": "ts-jest"
+  },
+  "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(js|ts)$",
+  "moduleFileExtensions": ["ts", "js"]
 }

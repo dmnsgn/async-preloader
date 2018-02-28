@@ -1,26 +1,30 @@
 import resolve from "rollup-plugin-node-resolve";
-import babel from "rollup-plugin-babel";
+import typescript from "rollup-plugin-typescript2";
 
 export default {
-  entry: "src/index.js",
+  input: "src/index.ts",
   plugins: [
     resolve(),
-    babel({
-      exclude: "node_modules/**"
+    typescript({
+      typescript: require("typescript")
     })
   ],
-  moduleName: "AsyncPreloader",
-  targets: [
+  output: [
     {
       format: "umd",
-      dest: "lib/async-preloader.js"
+      file: "lib/async-preloader.js",
+      name: "AsyncPreloader",
+      exports: "named",
+      globals: {
+        tslib: "tslib",
+        lodash: "lodash",
+        fontfaceobserver: "FontFaceObserver"
+      }
     },
     {
       format: "es",
-      dest: "lib/async-preloader.module.js"
+      file: "lib/async-preloader.module.js"
     }
   ],
-  external: [
-    'fontfaceobserver'
-  ]
+  external: ["tslib", "lodash", "fontfaceobserver"]
 };

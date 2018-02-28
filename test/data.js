@@ -12,7 +12,7 @@ export const items = new Map()
 
 export const expected = new Map()
   .set("string", `test string\n`)
-  .set("font", "Open Sans Regular")
+  .set("font", "myFont")
   .set("json", { test: "json" });
 
 export const manifestSrc = "assets/manifest.json";

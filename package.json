@@ -27,7 +27,7 @@
     "jest": "jest test/ --watch --coverage --no-cache",
     "clean": "rm -rf lib && rm -rf docs",
     "build": "rollup -c",
-    "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src",
+    "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src && echo '' > docs/.nojekyll",
     "test": "jest test/",
     "prepublishOnly": "npm run build && npm run docs"
   },

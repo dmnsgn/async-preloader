@@ -1,5 +1,7 @@
 # async-preloader
 
+[![Greenkeeper badge](https://badges.greenkeeper.io/dmnsgn/async-preloader.svg)](https://greenkeeper.io/)
+
 [![Build Status](https://travis-ci.org/dmnsgn/async-preloader.svg?branch=master)](https://travis-ci.org/dmnsgn/async-preloader)
 [![npm version](https://badge.fury.io/js/async-preloader.svg)](https://www.npmjs.com/package/async-preloader)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)

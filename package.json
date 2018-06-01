@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "3.1.0",
+  "version": "3.1.1",
   "description": "Assets preloader using ES2017 async/await and fetch.",
   "main": "lib/async-preloader.js",
   "jsnext:main": "lib/async-preloader.module.js",
@@ -42,6 +42,9 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(lodash-es)/)"
+    ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)x?$",
     "moduleFileExtensions": [
       "ts",

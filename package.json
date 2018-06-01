@@ -2,9 +2,10 @@
   "name": "async-preloader",
   "version": "3.2.0",
   "description": "Assets preloader using ES2017 async/await and fetch.",
-  "main": "lib/async-preloader.js",
-  "jsnext:main": "lib/async-preloader.module.js",
-  "module": "lib/async-preloader.module.js",
+  "main": "lib/async-preloader.cjs.js",
+  "browser": "lib/async-preloader.umd.js",
+  "module": "lib/async-preloader.esm.js",
+  "jsnext:main": "lib/async-preloader.esm.js",
   "types": "lib/index.d.ts",
   "license": "MIT",
   "repository": "https://github.com/dmnsgn/async-preloader",
@@ -23,13 +24,15 @@
     "ES2017"
   ],
   "scripts": {
-    "dev": "rollup -c -w -m inline",
+    "dev": "rollup -c -w -m inline --environment NODE_ENV:development",
     "jest": "jest test/ --watch --coverage --no-cache",
     "clean": "rm -rf lib && rm -rf docs",
-    "build": "rollup -c",
+    "build": "rollup -c --environment NODE_ENV:production",
     "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src",
     "test": "jest test/",
-    "prepublishOnly": "npm run build && npm run docs"
+    "preversion": "npm run clean && npm run test",
+    "version": "npm run build && npm run docs && git add -A",
+    "postversion": "git push && git push --tags && npm publish"
   },
   "jest": {
     "setupFiles": [
@@ -64,8 +67,10 @@
     "node-fetch": "^2.0.0",
     "prettier": "^1.10.2",
     "rollup": "^0.56.3",
+    "rollup-plugin-commonjs": "^9.1.3",
     "rollup-plugin-node-resolve": "^3.0.3",
     "rollup-plugin-typescript2": "^0.11.1",
+    "rollup-plugin-uglify": "^4.0.0",
     "rollup-watch": "^4.3.1",
     "ts-jest": "^22.4.0",
     "tslint": "^5.9.1",
@@ -73,7 +78,7 @@
     "typescript": "^2.7.2"
   },
   "dependencies": {
-    "fontfaceobserver": "^2.0.13",
+    "fontfaceobserver-es": "^3.2.0",
     "lodash-es": "^4.17.10",
     "tslib": "^1.9.0"
   }

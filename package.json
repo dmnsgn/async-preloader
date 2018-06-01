@@ -42,6 +42,9 @@
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
+    "transformIgnorePatterns": [
+      "node_modules/(?!(lodash-es)/)"
+    ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)x?$",
     "moduleFileExtensions": [
       "ts",

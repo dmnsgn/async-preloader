@@ -1,5 +1,5 @@
 import FontFaceObserver from "fontfaceobserver";
-import get from "lodash/get.js";
+import get from "lodash-es/get.js";
 
 import {
 	BodyMethod,

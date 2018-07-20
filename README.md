@@ -129,18 +129,19 @@ const items = [
   { "id": "myDefaultFile", "src": "assets/default" } // ...
 ];
 
-async () => {
 let loadedCount = 0;
+
 async function preload() {
   await Promise.all(
     items.map(async item => {
-      const data = await Preloader.loadItem(item);
+      const data = await AsyncPreloader.loadItem(item);
       loadedCount++;
       console.log(`Progress: ${100 * loadedCount / items.length}%`);
     })
   );
 }
-await preload();
+
+preload();
 ```
 
 ## License

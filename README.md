@@ -135,7 +135,7 @@ const items = [
   async function preload() {
     await Promise.all(
       items.map(async item => {
-        const data = await Preloader.loadItem(item);
+        const data = await AsyncPreloader.loadItem(item);
         loadedCount++;
         console.log(`Progress: ${100 * loadedCount / items.length}%`);
       })

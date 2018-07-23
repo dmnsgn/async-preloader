@@ -20,7 +20,7 @@ npm install --save async-preloader
 
 ## Quick start
 
-This section covers the basic usage of `AsyncPreloader`.
+This section covers the basic usage of `AsyncPreloader`. For more informations about async/await, see [Async functions - making promises friendly](https://developers.google.com/web/fundamentals/primers/async-functions).
 
 ### Preload items and retrieve them
 
@@ -129,19 +129,25 @@ const items = [
   { "id": "myDefaultFile", "src": "assets/default" } // ...
 ];
 
-async () => {
-let loadedCount = 0;
-async function preload() {
-  await Promise.all(
-    items.map(async item => {
-      const data = await Preloader.loadItem(item);
-      loadedCount++;
-      console.log(`Progress: ${100 * loadedCount / items.length}%`);
-    })
-  );
-}
-await preload();
+(async () => {
+  let loadedCount = 0;
+
+  async function preload() {
+    await Promise.all(
+      items.map(async item => {
+        const data = await Preloader.loadItem(item);
+        loadedCount++;
+        console.log(`Progress: ${100 * loadedCount / items.length}%`);
+      })
+    );
+  }
+
+  await preload();
+})()
 ```
+
+---
+Note: the example above uses the async functions (which is the core of this module). You'll need to transpile it if you are targetting older browsers (namely IE11). See support [here](https://caniuse.com/#feat=async-functions).
 
 ## License
 

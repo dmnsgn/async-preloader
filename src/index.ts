@@ -209,11 +209,11 @@ class AsyncPreloader {
 		}
 
 		const image = new Image();
-		image.src = URL.createObjectURL(data);
 
 		return await new Promise<HTMLImageElement>((resolve, reject) => {
 			image.addEventListener("load", () => resolve(image), false);
 			image.addEventListener("error", reject, false);
+			image.src = URL.createObjectURL(data);
 		});
 	};
 
@@ -237,11 +237,11 @@ class AsyncPreloader {
 		}
 
 		const video = document.createElement("video");
-		video.src = URL.createObjectURL(data);
 
 		return await new Promise<HTMLVideoElement>((resolve, reject) => {
 			video.addEventListener("canplaythrough", () => resolve(video), false);
 			video.addEventListener("error", reject, false);
+			video.src = URL.createObjectURL(data);
 		});
 	};
 

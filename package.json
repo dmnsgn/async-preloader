@@ -28,7 +28,7 @@
     "jest": "jest test/ --watch --coverage --no-cache",
     "clean": "rm -rf lib && rm -rf docs",
     "build": "rollup -c --environment NODE_ENV:production",
-    "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src",
+    "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src && touch docs/.nojekyll",
     "test": "jest test/",
     "preversion": "npm run clean && npm run test",
     "version": "npm run build && npm run docs && git add -A",

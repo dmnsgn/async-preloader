@@ -32,7 +32,7 @@
     "test": "jest test/",
     "preversion": "npm run clean && npm run test",
     "version": "npm run build && npm run docs && git add -A",
-    "postversion": "git push && git push --tags && npm publish"
+    "postversion": "git push origin master && git push --tags && npm publish"
   },
   "jest": {
     "setupFiles": [

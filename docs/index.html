@@ -79,7 +79,7 @@
 					<li><a href="https://dmnsgn.github.io/async-preloader/modules/_types_.html">AsyncPreloader types</a></li>
 				</ul>
 				<h2 id="quick-start">Quick start</h2>
-				<p>This section covers the basic usage of <code>AsyncPreloader</code>.</p>
+				<p>This section covers the basic usage of <code>AsyncPreloader</code>. For more informations about async/await, see <a href="https://developers.google.com/web/fundamentals/primers/async-functions">Async functions - making promises friendly</a>.</p>
 				<h3 id="preload-items-and-retrieve-them">Preload items and retrieve them</h3>
 				<pre><code class="lang-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
 
@@ -165,19 +165,24 @@ const items = [
   { "id": "myDefaultFile", "src": "assets/default" } // ...
 ];
 
-async () =&gt; {
-let loadedCount = 0;
-async function preload() {
-  await Promise.all(
-    items.map(async item =&gt; {
-      const data = await Preloader.loadItem(item);
-      loadedCount++;
-      console.log(`Progress: ${100 * loadedCount / items.length}%`);
-    })
-  );
-}
-await preload();
+(async () =&gt; {
+  let loadedCount = 0;
+
+  async function preload() {
+    await Promise.all(
+      items.map(async item =&gt; {
+        const data = await AsyncPreloader.loadItem(item);
+        loadedCount++;
+        console.log(`Progress: ${100 * loadedCount / items.length}%`);
+      })
+    );
+  }
+
+  await preload();
+})()
 </code></pre>
+				<hr>
+				<p>Note: the example above uses the async functions (which is the core of this module). You&#39;ll need to transpile it if you are targetting older browsers (namely IE11). See support <a href="https://caniuse.com/#feat=async-functions">here</a>.</p>
 				<h2 id="license">License</h2>
 				<p>MIT © <a href="https://github.com/dmnsgn">Damien Seguin</a></p>
 			</div>

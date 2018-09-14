@@ -1,4 +1,4 @@
-import FontFaceObserver from "fontfaceobserver-es";
+import * as FontFaceObserver from "fontfaceobserver-es";
 import get from "lodash-es/get";
 
 import {
@@ -65,7 +65,8 @@ class AsyncPreloader {
 				xml: "application/xml",
 				svg: "image/svg+xml",
 				html: "text/html"
-			}
+			},
+			defaultMimeType: "xml"
 		})
 		.set(LoaderKey.Font, {
 			extensions: ["woff2", "woff", "ttf", "otf", "eot"]
@@ -97,13 +98,6 @@ class AsyncPreloader {
 		const extension: string = AsyncPreloader.getFileExtension(item.src);
 		const loaderKey: LoaderKey =
 			item.loader || AsyncPreloader.getLoaderKey(extension);
-
-		if (loaderKey === "Xml" && !item.mimeType) {
-			const mimeType =
-				AsyncPreloader.loaders.get(LoaderKey.Xml).mimeType[extension] ||
-				AsyncPreloader.loaders.get(LoaderKey.Xml).mimeType["svg"];
-			item = { ...item, mimeType };
-		}
 
 		const loadedItem: LoadedValue = await this[`load` + loaderKey](item);
 
@@ -285,14 +279,28 @@ class AsyncPreloader {
 	 * @returns {Promise<LoadedXMLValue>} Result of Response parsed as a document.
 	 */
 	public loadXml = async (item: LoadItem): Promise<LoadedXMLValue> => {
+		if (!item.mimeType) {
+			const extension: string = AsyncPreloader.getFileExtension(item.src);
+			item = {
+				...item,
+				mimeType: AsyncPreloader.getMimeType(LoaderKey.Xml, extension)
+			};
+		}
+
 		const response: Response = await AsyncPreloader.fetchItem(item);
 		const data: LoadedValue = await response.text();
 
 		return AsyncPreloader.domParser.parseFromString(data, item.mimeType);
 	};
 
+	/**
+	 * Load a font via a FontFaceObserver instance
+	 *
+	 * @param {LoadItem} item Item to load (id correspond to the fontName).
+	 * @returns {Promise<string>} Fulfilled value with fontName initial id.
+	 */
 	public loadFont = async (item: LoadItem): Promise<string> => {
-		const fontName = item.id || AsyncPreloader.getFileName(item.src);
+		const fontName = item.id;
 		const font = new FontFaceObserver(fontName, item.options || {});
 		await font.load();
 
@@ -344,6 +352,18 @@ class AsyncPreloader {
 			loader[1].extensions.includes(extension)
 		);
 		return loader ? loader[0] : LoaderKey.Text;
+	}
+
+	/**
+	 * Retrieve mime type from extension
+	 *
+	 * @param {LoaderKey} loaderKey
+	 * @param {string} extension
+	 * @returns {string}
+	 */
+	private static getMimeType(loaderKey: LoaderKey, extension: string): string {
+		const loader: LoaderValue = AsyncPreloader.loaders.get(loaderKey);
+		return loader.mimeType[extension] || loader.defaultMimeType;
 	}
 }
 

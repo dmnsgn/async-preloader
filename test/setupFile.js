@@ -1,6 +1,10 @@
-import "isomorphic-fetch";
+import fetch from "node-fetch";
+import { DOMParser } from "xmldom";
 
 import { ArrayBufferToData } from "./utils";
+
+global.DOMParser = DOMParser;
+global.fetch = fetch
 
 URL.createObjectURL = blob => {
   let string;

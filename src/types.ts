@@ -95,4 +95,10 @@ export interface LoaderValue {
 	 * Note: Only used to parse the document in the Xml Loader.
 	*/
 	mimeType?: { [key: string]: string };
+	/**
+	 * Optional defaultMimeType used to handle the Response.
+	 *
+	 * Note: Only used to parse the document in the Xml Loader.
+	*/
+	defaultMimeType?: string;
 };

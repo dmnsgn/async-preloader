@@ -23,6 +23,11 @@
     {
       "id": "myHtmlFile",
       "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.html"
+    },
+    {
+      "id": "myXmlDefaulFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml",
+      "loader": "Xml"
     }
   ],
   "custom": {
@@ -50,6 +55,11 @@
       {
         "id": "myHtmlFile",
         "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.html"
+      },
+      {
+        "id": "myXmlDefaulFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml",
+        "loader": "Xml"
       }
     ]
   }

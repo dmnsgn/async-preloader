@@ -1,22 +1,56 @@
 {
   "items": [
-    { "id": "myDefaultFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/default" },
-    { "id": "myTextFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/text.txt" },
-    { "id": "myJsonFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/json.json" },
-    { "id": "myXmlFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.xml" },
-    { "id": "mySvgFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.svg" },
-    { "id": "myHtmlFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.html" },
-    { "id": "myFont", "src": "Open Sans Regular", "loader": "Font" }
+    {
+      "id": "myDefaultFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/default"
+    },
+    {
+      "id": "myTextFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/text.txt"
+    },
+    {
+      "id": "myJsonFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/json.json"
+    },
+    {
+      "id": "myXmlFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.xml"
+    },
+    {
+      "id": "mySvgFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.svg"
+    },
+    {
+      "id": "myHtmlFile",
+      "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.html"
+    }
   ],
   "custom": {
     "path": [
-      { "id": "myDefaultFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/default" },
-      { "id": "myTextFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/text.txt" },
-      { "id": "myJsonFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/json.json" },
-      { "id": "myXmlFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.xml" },
-      { "id": "mySvgFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.svg" },
-      { "id": "myHtmlFile", "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.html" },
-      { "id": "myFont", "src": "Open Sans Regular", "loader": "Font" }
+      {
+        "id": "myDefaultFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/default"
+      },
+      {
+        "id": "myTextFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/text.txt"
+      },
+      {
+        "id": "myJsonFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/json.json"
+      },
+      {
+        "id": "myXmlFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.xml"
+      },
+      {
+        "id": "mySvgFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.svg"
+      },
+      {
+        "id": "myHtmlFile",
+        "src": "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/xml.html"
+      }
     ]
   }
 }

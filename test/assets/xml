@@ -1,0 +1,28 @@
+<?xml version="1.0"?>
+<planet>
+	<ocean>
+		<name>Arctic</name>
+		<area>13,000</area>
+		<depth>1,200</depth>
+	</ocean>
+	<ocean>
+		<name>Atlantic</name>
+		<area>87,000</area>
+		<depth>3,900</depth>
+	</ocean>
+	<ocean>
+		<name>Pacific</name>
+		<area>180,000</area>
+		<depth>4,000</depth>
+	</ocean>
+	<ocean>
+		<name>Indian</name>
+		<area>75,000</area>
+		<depth>3,900</depth>
+	</ocean>
+	<ocean>
+		<name>Southern</name>
+		<area>20,000</area>
+		<depth>4,500</depth>
+	</ocean>
+</planet>

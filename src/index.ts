@@ -178,7 +178,6 @@ class AsyncPreloader {
 	 */
 	public loadFormData = async (item: LoadItem): Promise<LoadedValue> => {
 		const response: Response = await AsyncPreloader.fetchItem(item);
-		console.log(response)
 		return await response.formData();
 	};
 

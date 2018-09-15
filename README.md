@@ -20,7 +20,7 @@ npm install --save async-preloader
 
 ## Quick start
 
-This section covers the basic usage of `AsyncPreloader`. For more informations about async/await, see [Async functions - making promises friendly](https://developers.google.com/web/fundamentals/primers/async-functions).
+This section covers the basic usage of `AsyncPreloader`. For more informations about async/await, see [Async functions - making promises friendly](https://developers.google.com/web/fundamentals/primers/async-functions). Usage in Node.js environment is limited to its capacity to handle `fetch` requests. Polyfills like [`node-fetch`](https://www.npmjs.com/package/node-fetch) and [`xmldom`](https://www.npmjs.com/package/xmldom) might come handy.
 
 ### Preload items and retrieve them
 
@@ -28,16 +28,17 @@ This section covers the basic usage of `AsyncPreloader`. For more informations a
 import AsyncPreloader from "async-preloader";
 
 const items = [
-  { "id": "myDefaultFile", "src": "assets/default"   },
-  { "id": "myTextFile",    "src": "assets/text.txt"  },
-  { "id": "myJsonFile",    "src": "assets/json.json" },
-  { "id": "myImageFile",   "src": "assets/image.jpg" },
-  { "id": "myVideoFile",   "src": "assets/video.mp4" },
-  { "id": "myAudioFile",   "src": "assets/audio.mp3" },
-  { "id": "myXmlFile",     "src": "assets/xml.xml"   },
-  { "id": "mySvgFile",     "src": "assets/xml.svg"   },
-  { "id": "myHtmlFile",    "src": "assets/xml.html"  },
-  { "id": "myFont",        "src": "Open Sans Regular", "loader": "Font" },
+  { "id": "myDefaultFile",    "src": "assets/default"   },
+  { "id": "myTextFile",       "src": "assets/text.txt"  },
+  { "id": "myJsonFile",       "src": "assets/json.json" },
+  { "id": "myImageFile",      "src": "assets/image.jpg" },
+  { "id": "myVideoFile",      "src": "assets/video.mp4" },
+  { "id": "myAudioFile",      "src": "assets/audio.mp3" },
+  { "id": "myXmlFile",        "src": "assets/xml.xml"   },
+  { "id": "mySvgFile",        "src": "assets/xml.svg"   },
+  { "id": "myHtmlFile",       "src": "assets/xml.html"  },
+  { "id": "myDefaultXmlFile", "src": "assets/xml", "loader": "Xml"  },
+  { "id": "myFont",           "loader": "Font" },
   { "src": "assets/fileWithoutId" } // Can be retrieved with the src property eg. AsyncPreloader.items.get("assets/fileWithoutId")
 ];
 

@@ -1,5 +1,4 @@
 import * as FontFaceObserver from "fontfaceobserver-es";
-import get from "lodash-es/get";
 
 import {
 	BodyMethod,
@@ -111,7 +110,7 @@ class AsyncPreloader {
 	 * Load a manifest of items
 	 *
 	 * @param {string} src Manifest src url
-	 * @param {string} [key="items"] Manifest key in the JSON object containing the array of LoadItem. Used by [lodash.get](https://lodash.com/docs/4.17.5#get).
+	 * @param {string} [key="items"] Manifest key in the JSON object containing the array of LoadItem.
 	 * @returns {Promise<LoadedValue[]>}
 	 */
 	public loadManifest = async (
@@ -121,7 +120,7 @@ class AsyncPreloader {
 		const loadedManifest: LoadedValue = await this.loadJson({
 			src
 		});
-		const items: LoadItem[] = get(loadedManifest, key);
+		const items: LoadItem[] = AsyncPreloader.getProp(loadedManifest, key);
 
 		return await this.loadItems(items);
 	};
@@ -179,6 +178,7 @@ class AsyncPreloader {
 	 */
 	public loadFormData = async (item: LoadItem): Promise<LoadedValue> => {
 		const response: Response = await AsyncPreloader.fetchItem(item);
+		console.log(response)
 		return await response.formData();
 	};
 
@@ -319,6 +319,24 @@ class AsyncPreloader {
 	}
 
 	/**
+	 * Get an object property by its path in the form 'a[0].b.c' or ['a', '0', 'b', 'c'].
+	 * Similar to [lodash.get](https://lodash.com/docs/4.17.5#get).
+	 *
+	 * @param {any} object Object with nested properties
+	 * @param {(string | string[])} path Path to the desired property
+	 * @returns {any} The returned object property
+	 */
+	private static getProp(object: any, path: string | string[]) {
+		const p = Array.isArray(path)
+			? path
+			: path.split(".").filter(index => index.length);
+
+		if (!p.length) return object;
+
+		return AsyncPreloader.getProp(object[p.shift()], p);
+	}
+
+	/**
 	 * Get file extension from path
 	 *
 	 * @param {(RequestInfo | USVString)} path
@@ -326,19 +344,6 @@ class AsyncPreloader {
 	 */
 	private static getFileExtension(path: RequestInfo | USVString): string {
 		return ((path as string).match(/[^\\\/]\.([^.\\\/]+)$/) || [null]).pop();
-	}
-
-	/**
-	 * Get file name from path
-	 *
-	 * @param {any} path
-	 * @returns {string}
-	 */
-	private static getFileName(path): string {
-		return path
-			.replace(/^.*[\\\/]/, "")
-			.split(".")
-			.shift();
 	}
 
 	/**

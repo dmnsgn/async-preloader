@@ -99,6 +99,25 @@ describe("AsyncPreloader", () => {
         // node-fetch doesn't have a real Blob
         // expect(data).toBeInstanceOf(Blob);
       });
+
+      // it("should load a LoadItem with FormData loader and return instanceof FormData", async () => {
+      //   expect.assertions(1);
+
+      //   const formData = new FormData();
+      //   formData.append("a", "1");
+
+      //   const item = {
+      //     src: "https://httpbin.org/post",
+      //     options: {
+      //       method: "POST",
+      //       body: formData
+      //     }
+      //   };
+
+      //   const data = await Preloader.loadFormData(item);
+
+      //   expect(data.constructor.name).toEqual(FormData.name);
+      // });
     });
 
     describe("for a single item", () => {
@@ -263,11 +282,6 @@ describe("AsyncPreloader", () => {
       it("should return null from file path with no extension", () => {
         const data = AsyncPreloader.getFileExtension("assets/default");
         expect(data).toBe(null);
-      });
-
-      it("should return file name from path", () => {
-        const data = AsyncPreloader.getFileName("/rwrgw/Open Sans Regular");
-        expect(data).toBe("Open Sans Regular");
       });
     });
 

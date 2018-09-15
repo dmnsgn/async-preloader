@@ -18,7 +18,7 @@ export default [
       }),
       isDev ? 0 : uglify()
     ].filter(Boolean),
-    external: ["tslib", "lodash-es/get", "fontfaceobserver-es"],
+    external: ["tslib", "fontfaceobserver-es"],
     output: {
       name: "AsyncPreloader",
       format: "umd",
@@ -26,7 +26,6 @@ export default [
       exports: "named",
       globals: {
         tslib: "tslib",
-        "lodash-es/get": "_.get",
         "fontfaceobserver-es": "FontFaceObserver"
       }
     }
@@ -41,7 +40,7 @@ export default [
       }),
       isDev ? 0 : uglify()
     ].filter(Boolean),
-    external: ["tslib", "lodash-es/get", "fontfaceobserver-es"],
+    external: ["tslib", "fontfaceobserver-es"],
     output: {
       format: "cjs",
       file: pkg.main,
@@ -56,7 +55,7 @@ export default [
         typescript: require("typescript")
       })
     ],
-    external: ["tslib", "lodash-es/get", "fontfaceobserver-es"],
+    external: ["tslib", "fontfaceobserver-es"],
     output: {
       format: "es",
       file: pkg.module

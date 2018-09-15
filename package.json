@@ -14,22 +14,23 @@
     "url": "https://dmnsgn.me"
   },
   "engines": {
-    "node": ">=0.10.0"
+    "node": ">=8.0.0"
   },
   "keywords": [
     "preloader",
     "assets",
     "async",
+    "await",
     "typescript",
     "ES2017"
   ],
   "scripts": {
     "dev": "rollup -c -w -m inline --environment NODE_ENV:development",
-    "jest": "jest test/ --watch --coverage --no-cache",
-    "clean": "rm -rf lib && rm -rf docs",
     "build": "rollup -c --environment NODE_ENV:production",
-    "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src && touch docs/.nojekyll",
     "test": "jest test/",
+    "jest": "jest test/ --watch --coverage --no-cache",
+    "docs": "typedoc --out docs --mode modules --excludeExternals --includeDeclarations --module commonjs --theme default src && touch docs/.nojekyll",
+    "clean": "rm -rf lib && rm -rf docs",
     "preversion": "npm run clean && npm run test",
     "version": "npm run build && npm run docs && git add -A",
     "postversion": "git push origin master && git push --tags && npm publish"
@@ -49,7 +50,7 @@
       "^.+\\.(t|j)s$": "ts-jest"
     },
     "transformIgnorePatterns": [
-      "node_modules/(?!(lodash-es|fontfaceobserver-es)/)"
+      "node_modules/(?!(fontfaceobserver-es)/)"
     ],
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)x?$",
     "moduleFileExtensions": [
@@ -67,13 +68,11 @@
     "jsdom": "^12.0.0",
     "node-fetch": "^2.2.0",
     "prettier": "^1.14.2",
-    "rimraf": "^2.6.2",
     "rollup": "^0.65.2",
     "rollup-plugin-commonjs": "^9.1.6",
     "rollup-plugin-node-resolve": "^3.4.0",
     "rollup-plugin-typescript2": "^0.17.0",
     "rollup-plugin-uglify": "^5.0.2",
-    "rollup-watch": "^4.3.1",
     "ts-jest": "^23.1.4",
     "tslint": "^5.11.0",
     "typedoc": "^0.12.0",
@@ -82,7 +81,6 @@
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.2.0",
-    "lodash-es": "^4.17.11",
     "tslib": "^1.9.3"
   }
 }

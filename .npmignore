@@ -3,3 +3,8 @@ coverage
 docs
 .rpt2_cache
 tsconfig.json
+test
+rollup.config.js
+.editorconfig
+.travis.yml
+.gitattributes

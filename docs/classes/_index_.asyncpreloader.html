@@ -73,16 +73,14 @@
 						<p>AsyncPreloader: assets preloader using ES2017 async/await and fetch.</p>
 					</div>
 					<p>It exports an instance of itself as default so you can:</p>
-					<pre><code class="lang-js"><span class="hljs-keyword">import</span> Preloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+					<pre><code class="language-js"><span class="hljs-keyword">import</span> Preloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
 
-<span class="hljs-keyword">await</span> Preloader.loadItems([]);
-</code></pre>
+<span class="hljs-keyword">await</span> Preloader.loadItems([]);</code></pre>
 					<p>to use directly as a singleton or</p>
-					<pre><code class="lang-js"><span class="hljs-keyword">import</span> { AsyncPreloader <span class="hljs-keyword">as</span> Preloader } <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+					<pre><code class="language-js"><span class="hljs-keyword">import</span> { AsyncPreloader <span class="hljs-keyword">as</span> Preloader } <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
 
 <span class="hljs-keyword">const</span> preloader = <span class="hljs-keyword">new</span> Preloader();
-<span class="hljs-keyword">await</span> preloader.loadItems([]);
-</code></pre>
+<span class="hljs-keyword">await</span> preloader.loadItems([]);</code></pre>
 					<p>if you need more than one instance.</p>
 				</div>
 			</section>
@@ -126,8 +124,9 @@
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-not-exported"><a href="_index_.asyncpreloader.html#loadxml" class="tsd-kind-icon">load<wbr>Xml</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported"><a href="_index_.asyncpreloader.html#fetchitem" class="tsd-kind-icon">fetch<wbr>Item</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported"><a href="_index_.asyncpreloader.html#getfileextension" class="tsd-kind-icon">get<wbr>File<wbr>Extension</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported"><a href="_index_.asyncpreloader.html#getfilename" class="tsd-kind-icon">get<wbr>File<wbr>Name</a></li>
 								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported"><a href="_index_.asyncpreloader.html#getloaderkey" class="tsd-kind-icon">get<wbr>Loader<wbr>Key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported"><a href="_index_.asyncpreloader.html#getmimetype" class="tsd-kind-icon">get<wbr>Mime<wbr>Type</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported"><a href="_index_.asyncpreloader.html#getprop" class="tsd-kind-icon">get<wbr>Prop</a></li>
 							</ul>
 						</section>
 					</div>
@@ -141,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Body<wbr>Method<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#bodymethod" class="tsd-signature-type">BodyMethod</a><span class="tsd-signature-symbol"> =&nbsp;&quot;blob&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L44">index.ts:44</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L43">index.ts:43</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -156,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Loader<span class="tsd-signature-symbol">:</span> <a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a><span class="tsd-signature-symbol"> =&nbsp;LoaderKey.Text</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L49">index.ts:49</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L48">index.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -171,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../modules/_types_.html#loadedvalue" class="tsd-signature-type">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L39">index.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L38">index.ts:38</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -186,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">dom<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DOMParser</span><span class="tsd-signature-symbol"> =&nbsp;new DOMParser()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L77">index.ts:77</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L77">index.ts:77</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -198,10 +197,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
 					<a name="loaders" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> loaders</h3>
-					<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_types_.loadervalue.html" class="tsd-signature-type">LoaderValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map().set(LoaderKey.Text, { extensions: [&quot;txt&quot;] }).set(LoaderKey.Json, { extensions: [&quot;json&quot;] }).set(LoaderKey.Image, { extensions: [&quot;jpeg&quot;, &quot;jpg&quot;, &quot;gif&quot;, &quot;png&quot;, &quot;webp&quot;] }).set(LoaderKey.Video, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp4&quot;] }).set(LoaderKey.Audio, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp3&quot;, &quot;wav&quot;, &quot;flac&quot;] }).set(LoaderKey.Xml, {extensions: [&quot;xml&quot;, &quot;svg&quot;, &quot;html&quot;],mimeType: {xml: &quot;application/xml&quot;,svg: &quot;image/svg+xml&quot;,html: &quot;text/html&quot;}}).set(LoaderKey.Font, {extensions: [&quot;woff2&quot;, &quot;woff&quot;, &quot;ttf&quot;, &quot;otf&quot;, &quot;eot&quot;]})</span></div>
+					<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_types_.loadervalue.html" class="tsd-signature-type">LoaderValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> =&nbsp;new Map().set(LoaderKey.Text, { extensions: [&quot;txt&quot;] }).set(LoaderKey.Json, { extensions: [&quot;json&quot;] }).set(LoaderKey.Image, { extensions: [&quot;jpeg&quot;, &quot;jpg&quot;, &quot;gif&quot;, &quot;png&quot;, &quot;webp&quot;] }).set(LoaderKey.Video, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp4&quot;] }).set(LoaderKey.Audio, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp3&quot;, &quot;wav&quot;, &quot;flac&quot;] }).set(LoaderKey.Xml, {extensions: [&quot;xml&quot;, &quot;svg&quot;, &quot;html&quot;],mimeType: {xml: &quot;application/xml&quot;,svg: &quot;image/svg+xml&quot;,html: &quot;text/html&quot;},defaultMimeType: &quot;xml&quot;}).set(LoaderKey.Font, {extensions: [&quot;woff2&quot;, &quot;woff&quot;, &quot;ttf&quot;, &quot;otf&quot;, &quot;eot&quot;]})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L56">index.ts:56</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L55">index.ts:55</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -224,7 +223,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L164">index.ts:164</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L157">index.ts:157</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -258,7 +257,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L257">index.ts:257</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L250">index.ts:250</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -297,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L175">index.ts:175</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L168">index.ts:168</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -331,16 +330,27 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L294">index.ts:294</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L301">index.ts:301</a></li>
 								</ul>
 							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Load a font via a FontFaceObserver instance</p>
+								</div>
+							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
 									<h5>item: <a href="../interfaces/_types_.loaditem.html" class="tsd-signature-type">LoadItem</a></h5>
+									<div class="tsd-comment tsd-typography">
+										<div class="lead">
+											<p>Item to load (id correspond to the fontName).</p>
+										</div>
+									</div>
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
+							<p>Fulfilled value with fontName initial id.</p>
 						</li>
 					</ul>
 				</section>
@@ -354,7 +364,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L186">index.ts:186</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L179">index.ts:179</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -388,7 +398,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L201">index.ts:201</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L194">index.ts:194</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -427,7 +437,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L96">index.ts:96</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L96">index.ts:96</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -461,7 +471,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L86">index.ts:86</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L86">index.ts:86</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -495,7 +505,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L153">index.ts:153</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L146">index.ts:146</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -529,7 +539,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L123">index.ts:123</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L116">index.ts:116</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -565,7 +575,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L142">index.ts:142</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L135">index.ts:135</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -599,7 +609,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L229">index.ts:229</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L222">index.ts:222</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -638,7 +648,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L287">index.ts:287</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L280">index.ts:280</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -677,7 +687,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L309">index.ts:309</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L316">index.ts:316</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -709,7 +719,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L319">index.ts:319</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L344">index.ts:344</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -728,34 +738,6 @@
 					</ul>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
-					<a name="getfilename" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>File<wbr>Name</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>File<wbr>Name<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L329">index.ts:329</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get file name from path</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>path: <span class="tsd-signature-type">any</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
 					<a name="getloaderkey" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Loader<wbr>Key</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
@@ -765,7 +747,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fdd414b/src/index.ts#L342">index.ts:342</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L354">index.ts:354</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -780,6 +762,76 @@
 								</li>
 							</ul>
 							<h4 class="tsd-returns-title">Returns <a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
+					<a name="getmimetype" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Mime<wbr>Type</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Mime<wbr>Type<span class="tsd-signature-symbol">(</span>loaderKey<span class="tsd-signature-symbol">: </span><a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a>, extension<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L368">index.ts:368</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Retrieve mime type from extension</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>loaderKey: <a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a></h5>
+								</li>
+								<li>
+									<h5>extension: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
+					<a name="getprop" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Prop</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Prop<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/ae64034/src/index.ts#L328">index.ts:328</a></li>
+								</ul>
+							</aside>
+							<div class="tsd-comment tsd-typography">
+								<div class="lead">
+									<p>Get an object property by its path in the form &#39;a[0].b.c&#39; or [&#39;a&#39;, &#39;0&#39;, &#39;b&#39;, &#39;c&#39;].
+									Similar to <a href="https://lodash.com/docs/4.17.5#get">lodash.get</a>.</p>
+								</div>
+							</div>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>object: <span class="tsd-signature-type">any</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Object with nested properties</p>
+									</div>
+								</li>
+								<li>
+									<h5>path: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
+									<div class="tsd-comment tsd-typography">
+										<p>Path to the desired property</p>
+									</div>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
+							<p>The returned object property</p>
 						</li>
 					</ul>
 				</section>
@@ -867,10 +919,13 @@
 								<a href="_index_.asyncpreloader.html#getfileextension" class="tsd-kind-icon">get<wbr>File<wbr>Extension</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
-								<a href="_index_.asyncpreloader.html#getfilename" class="tsd-kind-icon">get<wbr>File<wbr>Name</a>
+								<a href="_index_.asyncpreloader.html#getloaderkey" class="tsd-kind-icon">get<wbr>Loader<wbr>Key</a>
 							</li>
 							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
-								<a href="_index_.asyncpreloader.html#getloaderkey" class="tsd-kind-icon">get<wbr>Loader<wbr>Key</a>
+								<a href="_index_.asyncpreloader.html#getmimetype" class="tsd-kind-icon">get<wbr>Mime<wbr>Type</a>
+							</li>
+							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static tsd-is-not-exported">
+								<a href="_index_.asyncpreloader.html#getprop" class="tsd-kind-icon">get<wbr>Prop</a>
 							</li>
 						</ul>
 					</li>

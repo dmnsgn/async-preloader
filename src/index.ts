@@ -340,10 +340,10 @@ class AsyncPreloader {
 	/**
 	 * Get file extension from path
 	 *
-	 * @param {(RequestInfo | USVString)} path
+	 * @param {(RequestInfo | string)} path
 	 * @returns {string}
 	 */
-	private static getFileExtension(path: RequestInfo | USVString): string {
+	private static getFileExtension(path: RequestInfo | string): string {
 		return ((path as string).match(/[^\\\/]\.([^.\\\/]+)$/) || [null]).pop();
 	}
 
@@ -367,7 +367,7 @@ class AsyncPreloader {
 	 * @param {string} extension
 	 * @returns {string}
 	 */
-	private static getMimeType(loaderKey: LoaderKey, extension: string): string {
+	private static getMimeType(loaderKey: LoaderKey, extension: string): SupportedType {
 		const loader: LoaderValue = AsyncPreloader.loaders.get(loaderKey);
 		return loader.mimeType[extension] || loader.defaultMimeType;
 	}

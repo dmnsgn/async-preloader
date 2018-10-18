@@ -6,7 +6,7 @@ export type BodyMethod = "arrayBuffer" | "blob" | "formData" | "json" | "text";
 /**
  * Types that can be returned by all the [[BodyMethod]]
  */
-export type BodyResolveValue = ArrayBuffer | Blob | FormData | JSON | USVString;
+export type BodyResolveValue = ArrayBuffer | Blob | FormData | JSON | string;
 
 /**
  * Types that can be returned by the Xml loader. See the [[LoadItem.mimeType]].
@@ -30,7 +30,7 @@ export interface LoadItem {
 	/**
 	 * Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
 	 */
-	src: RequestInfo | USVString;
+	src: RequestInfo | string;
 	/**
 	 * Optional key.
 	 *
@@ -61,7 +61,7 @@ export interface LoadItem {
 	 *
 	 * Note: Only used to parse the document in the Xml Loader.
 	*/
-	mimeType?: string;
+	mimeType?: SupportedType;
 }
 
 /**
@@ -94,11 +94,11 @@ export interface LoaderValue {
 	 *
 	 * Note: Only used to parse the document in the Xml Loader.
 	*/
-	mimeType?: { [key: string]: string };
+	mimeType?: { [key: string]: SupportedType };
 	/**
 	 * Optional defaultMimeType used to handle the Response.
 	 *
 	 * Note: Only used to parse the document in the Xml Loader.
 	*/
-	defaultMimeType?: string;
+	defaultMimeType?: SupportedType;
 };

@@ -261,12 +261,12 @@ class AsyncPreloader {
 		const audio = document.createElement("audio");
 		audio.autoplay = false;
 		audio.preload = "auto";
-		audio.src = URL.createObjectURL(data);
-		audio.load();
 
 		return await new Promise<HTMLAudioElement>((resolve, reject) => {
 			audio.addEventListener("canplaythrough", () => resolve(audio), false);
 			audio.addEventListener("error", reject, false);
+			audio.src = URL.createObjectURL(data);
+			audio.load();
 		});
 	};
 

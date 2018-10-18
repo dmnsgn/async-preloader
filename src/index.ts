@@ -235,6 +235,7 @@ class AsyncPreloader {
 			video.addEventListener("canplaythrough", () => resolve(video), false);
 			video.addEventListener("error", reject, false);
 			video.src = URL.createObjectURL(data);
+			video.load();
 		});
 	};
 
@@ -261,6 +262,7 @@ class AsyncPreloader {
 		audio.autoplay = false;
 		audio.preload = "auto";
 		audio.src = URL.createObjectURL(data);
+		audio.load();
 
 		return await new Promise<HTMLAudioElement>((resolve, reject) => {
 			audio.addEventListener("canplaythrough", () => resolve(audio), false);

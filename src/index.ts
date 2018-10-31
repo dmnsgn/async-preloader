@@ -197,9 +197,7 @@ class AsyncPreloader {
 			item.body || this.defaultBodyMethod
 		]();
 
-		if (item.body && item.body !== this.defaultBodyMethod) {
-			return data;
-		}
+		if (item.body) return data;
 
 		const image = new Image();
 
@@ -225,9 +223,7 @@ class AsyncPreloader {
 			item.body || this.defaultBodyMethod
 		]();
 
-		if (item.body && item.body !== this.defaultBodyMethod) {
-			return data;
-		}
+		if (item.body) return data;
 
 		const video = document.createElement("video");
 
@@ -254,9 +250,7 @@ class AsyncPreloader {
 			item.body || this.defaultBodyMethod
 		]();
 
-		if (item.body && item.body !== this.defaultBodyMethod) {
-			return data;
-		}
+		if (item.body) return data;
 
 		const audio = document.createElement("audio");
 		audio.autoplay = false;
@@ -367,7 +361,10 @@ class AsyncPreloader {
 	 * @param {string} extension
 	 * @returns {string}
 	 */
-	private static getMimeType(loaderKey: LoaderKey, extension: string): SupportedType {
+	private static getMimeType(
+		loaderKey: LoaderKey,
+		extension: string
+	): SupportedType {
 		const loader: LoaderValue = AsyncPreloader.loaders.get(loaderKey);
 		return loader.mimeType[extension] || loader.defaultMimeType;
 	}

@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/dmnsgn/async-preloader.svg?branch=master)](https://travis-ci.org/dmnsgn/async-preloader)
 [![npm version](https://badge.fury.io/js/async-preloader.svg)](https://www.npmjs.com/package/async-preloader)
 [![styled with prettier](https://img.shields.io/badge/styled_with-prettier-ff69b4.svg)](https://github.com/prettier/prettier)
-[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
+[![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest) [![Greenkeeper badge](https://badges.greenkeeper.io/dmnsgn/async-preloader.svg)](https://greenkeeper.io/)
 
 > Assets preloader using ES2017 async/await and fetch.
 

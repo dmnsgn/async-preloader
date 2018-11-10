@@ -202,8 +202,14 @@ class AsyncPreloader {
 		const image = new Image();
 
 		return await new Promise<HTMLImageElement>((resolve, reject) => {
-			image.addEventListener("load", () => resolve(image), false);
-			image.addEventListener("error", reject, false);
+			image.addEventListener("load", function load() {
+				image.removeEventListener("load", load);
+				resolve(image);
+			});
+			image.addEventListener("error", function error() {
+				image.removeEventListener("error", error);
+				reject(image);
+			});
 			image.src = URL.createObjectURL(data);
 		});
 	};
@@ -228,8 +234,14 @@ class AsyncPreloader {
 		const video = document.createElement("video");
 
 		return await new Promise<HTMLVideoElement>((resolve, reject) => {
-			video.addEventListener("canplaythrough", () => resolve(video), false);
-			video.addEventListener("error", reject, false);
+			video.addEventListener("canplaythrough", function canplaythrough() {
+				video.removeEventListener("canplaythrough", canplaythrough);
+				resolve(video);
+			});
+			video.addEventListener("error", function error() {
+				video.removeEventListener("error", error);
+				reject(video);
+			});
 			video.src = URL.createObjectURL(data);
 			video.load();
 		});
@@ -257,8 +269,14 @@ class AsyncPreloader {
 		audio.preload = "auto";
 
 		return await new Promise<HTMLAudioElement>((resolve, reject) => {
-			audio.addEventListener("canplaythrough", () => resolve(audio), false);
-			audio.addEventListener("error", reject, false);
+			audio.addEventListener("canplaythrough", function canplaythrough() {
+				audio.removeEventListener("canplaythrough", canplaythrough);
+				resolve(audio);
+			});
+			audio.addEventListener("error", function error() {
+				audio.removeEventListener("error", error);
+				reject(audio);
+			});
 			audio.src = URL.createObjectURL(data);
 			audio.load();
 		});

@@ -189,7 +189,7 @@ class AsyncPreloader {
 	 * - direct call of the method
 	 *
 	 * @param {LoadItem} item Item to load
-	 * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLImageElement with a blob as src.
+	 * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLImageElement with a blob as srcObject or src.
 	 */
 	public loadImage = async (item: LoadItem): Promise<LoadedValue> => {
 		const response: Response = await AsyncPreloader.fetchItem(item);
@@ -242,7 +242,13 @@ class AsyncPreloader {
 				video.removeEventListener("error", error);
 				reject(video);
 			});
-			video.src = URL.createObjectURL(data);
+
+			try {
+				video.srcObject = data as Blob;
+			} catch (error) {
+				video.src = URL.createObjectURL(data);
+			}
+
 			video.load();
 		});
 	};
@@ -254,7 +260,7 @@ class AsyncPreloader {
 	 * - direct call of the method
 	 *
 	 * @param {LoadItem} item Item to load
-	 * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLAudioElement with a blob as src.
+	 * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLAudioElement with a blob as srcObject or src.
 	 */
 	public loadAudio = async (item: LoadItem): Promise<LoadedValue> => {
 		const response: Response = await AsyncPreloader.fetchItem(item);
@@ -277,7 +283,13 @@ class AsyncPreloader {
 				audio.removeEventListener("error", error);
 				reject(audio);
 			});
-			audio.src = URL.createObjectURL(data);
+
+			try {
+				audio.srcObject = data as Blob;
+			} catch (error) {
+				audio.src = URL.createObjectURL(data);
+			}
+
 			audio.load();
 		});
 	};

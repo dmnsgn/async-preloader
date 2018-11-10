@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "4.2.0",
+  "version": "4.3.0",
   "description": "Assets preloader using ES2017 async/await and fetch.",
   "main": "lib/async-preloader.cjs.js",
   "browser": "lib/async-preloader.umd.js",

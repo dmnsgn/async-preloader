@@ -63,7 +63,7 @@
   },
   "devDependencies": {
     "@types/jest": "^24.0.0",
-    "@types/node": "^10.12.18",
+    "@types/node": "^11.9.0",
     "jest": "^23.6.0",
     "jsdom": "^13.1.0",
     "node-fetch": "^2.3.0",

@@ -9,7 +9,7 @@ import {
 	LoaderValue
 } from "./types";
 
-const isSafari = navigator.userAgent.indexOf("Safari") > -1;
+const isSafari = navigator && navigator.userAgent.indexOf("Safari") > -1;
 
 /**
  * AsyncPreloader: assets preloader using ES2017 async/await and fetch.

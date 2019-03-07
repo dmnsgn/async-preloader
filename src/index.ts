@@ -9,6 +9,8 @@ import {
 	LoaderValue
 } from "./types";
 
+const isSafari = navigator.userAgent.indexOf("Safari") > -1;
+
 /**
  * AsyncPreloader: assets preloader using ES2017 async/await and fetch.
  *
@@ -244,6 +246,7 @@ class AsyncPreloader {
 			});
 
 			try {
+				if (isSafari) throw "";
 				video.srcObject = data as Blob;
 			} catch (error) {
 				video.src = URL.createObjectURL(data);
@@ -285,6 +288,7 @@ class AsyncPreloader {
 			});
 
 			try {
+				if (isSafari) throw "";
 				audio.srcObject = data as Blob;
 			} catch (error) {
 				audio.src = URL.createObjectURL(data);

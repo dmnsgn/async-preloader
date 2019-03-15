@@ -63,11 +63,11 @@ class AsyncPreloader {
 		.set(LoaderKey.Xml, {
 			extensions: ["xml", "svg", "html"],
 			mimeType: {
-				xml: "application/xml",
+				xml: "text/xml",
 				svg: "image/svg+xml",
 				html: "text/html"
 			},
-			defaultMimeType: "xml"
+			defaultMimeType: "text/xml"
 		})
 		.set(LoaderKey.Font, {
 			extensions: ["woff2", "woff", "ttf", "otf", "eot"]
@@ -331,7 +331,7 @@ class AsyncPreloader {
 	public loadFont = async (item: LoadItem): Promise<string> => {
 		const fontName = item.id;
 		const font = new FontFaceObserver(fontName, item.options || {});
-		await font.load();
+		await (font as any).load();
 
 		return fontName;
 	};

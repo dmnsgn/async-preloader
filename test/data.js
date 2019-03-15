@@ -22,12 +22,12 @@ export const expected = new Map()
   .set(
     "html",
     new DOMParser().parseFromString(
-      `<!DOCTYPE html>
+      /* html */ `<!DOCTYPE html>
 <html>
 <head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <title></title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<title></title>
 </head>
 <body>
 
@@ -40,7 +40,7 @@ export const expected = new Map()
   .set(
     "svg",
     new DOMParser().parseFromString(
-      `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 3 2">
+      /* html */ `<svg xmlns="http://www.w3.org/2000/svg" width="150" height="100" viewBox="0 0 3 2">
   <rect width="1" height="2" x="0" fill="#008d46" />
   <rect width="1" height="2" x="1" fill="#ffffff" />
   <rect width="1" height="2" x="2" fill="#d2232c" />
@@ -52,34 +52,35 @@ export const expected = new Map()
   .set(
     "xml",
     new DOMParser().parseFromString(
-      `<?xml version="1.0"?>
+      /* xml */ `<?xml version="1.0"?>
 <planet>
-  <ocean>
-    <name>Arctic</name>
-    <area>13,000</area>
-    <depth>1,200</depth>
-  </ocean>
-  <ocean>
-    <name>Atlantic</name>
-    <area>87,000</area>
-    <depth>3,900</depth>
-  </ocean>
-  <ocean>
-    <name>Pacific</name>
-    <area>180,000</area>
-    <depth>4,000</depth>
-  </ocean>
-  <ocean>
-    <name>Indian</name>
-    <area>75,000</area>
-    <depth>3,900</depth>
-  </ocean>
-  <ocean>
-    <name>Southern</name>
-    <area>20,000</area>
-    <depth>4,500</depth>
-  </ocean>
+	<ocean>
+		<name>Arctic</name>
+		<area>13,000</area>
+		<depth>1,200</depth>
+	</ocean>
+	<ocean>
+		<name>Atlantic</name>
+		<area>87,000</area>
+		<depth>3,900</depth>
+	</ocean>
+	<ocean>
+		<name>Pacific</name>
+		<area>180,000</area>
+		<depth>4,000</depth>
+	</ocean>
+	<ocean>
+		<name>Indian</name>
+		<area>75,000</area>
+		<depth>3,900</depth>
+	</ocean>
+	<ocean>
+		<name>Southern</name>
+		<area>20,000</area>
+		<depth>4,500</depth>
+	</ocean>
 </planet>
+
 \n`,
       "application/xml"
     )
@@ -87,34 +88,35 @@ export const expected = new Map()
   .set(
     "defaultXml",
     new DOMParser().parseFromString(
-      `<?xml version="1.0"?>
+      /* xml */ `<?xml version="1.0"?>
 <planet>
-  <ocean>
-    <name>Arctic</name>
-    <area>13,000</area>
-    <depth>1,200</depth>
-  </ocean>
-  <ocean>
-    <name>Atlantic</name>
-    <area>87,000</area>
-    <depth>3,900</depth>
-  </ocean>
-  <ocean>
-    <name>Pacific</name>
-    <area>180,000</area>
-    <depth>4,000</depth>
-  </ocean>
-  <ocean>
-    <name>Indian</name>
-    <area>75,000</area>
-    <depth>3,900</depth>
-  </ocean>
-  <ocean>
-    <name>Southern</name>
-    <area>20,000</area>
-    <depth>4,500</depth>
-  </ocean>
+	<ocean>
+		<name>Arctic</name>
+		<area>13,000</area>
+		<depth>1,200</depth>
+	</ocean>
+	<ocean>
+		<name>Atlantic</name>
+		<area>87,000</area>
+		<depth>3,900</depth>
+	</ocean>
+	<ocean>
+		<name>Pacific</name>
+		<area>180,000</area>
+		<depth>4,000</depth>
+	</ocean>
+	<ocean>
+		<name>Indian</name>
+		<area>75,000</area>
+		<depth>3,900</depth>
+	</ocean>
+	<ocean>
+		<name>Southern</name>
+		<area>20,000</area>
+		<depth>4,500</depth>
+	</ocean>
 </planet>
+
 \n`,
       "application/xml"
     )

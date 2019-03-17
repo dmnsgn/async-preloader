@@ -229,12 +229,9 @@ describe("AsyncPreloader", () => {
       it("should check the font with id, src, and loader, fails to load as it is not supported in Node", async () => {
         expect.assertions(1);
 
-        await expect(Preloader.loadItem(fontItem)).rejects.toEqual({
-          family: "myFont",
-          stretch: "normal",
-          style: "normal",
-          weight: "normal"
-        });
+        await expect(Preloader.loadItem(fontItem)).rejects.toThrow(
+          "3000ms timeout exceeded"
+        );
       });
     });
 

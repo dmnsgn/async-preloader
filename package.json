@@ -80,7 +80,7 @@
     "xmldom": "^0.1.27"
   },
   "dependencies": {
-    "fontfaceobserver-es": "^3.2.0",
+    "fontfaceobserver-es": "^3.3.1",
     "tslib": "^1.9.3"
   }
 }

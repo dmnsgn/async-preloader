@@ -62,7 +62,9 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="async-preloader">async-preloader</h1>
+				<a href="#async-preloader" id="async-preloader" style="color: inherit; text-decoration: none;">
+					<h1>async-preloader</h1>
+				</a>
 				<p><a href="https://travis-ci.org/dmnsgn/async-preloader"><img src="https://travis-ci.org/dmnsgn/async-preloader.svg?branch=master" alt="Build Status"></a>
 					<a href="https://www.npmjs.com/package/async-preloader"><img src="https://badge.fury.io/js/async-preloader.svg" alt="npm version"></a>
 					<a href="https://github.com/prettier/prettier"><img src="https://img.shields.io/badge/styled_with-prettier-ff69b4.svg" alt="styled with prettier"></a>
@@ -70,16 +72,24 @@
 				<blockquote>
 					<p>Assets preloader using ES2017 async/await and fetch.</p>
 				</blockquote>
-				<h2 id="install">Install</h2>
+				<a href="#install" id="install" style="color: inherit; text-decoration: none;">
+					<h2>Install</h2>
+				</a>
 				<pre><code class="language-bash">npm install --save async-preloader</code></pre>
-				<h2 id="documentation">Documentation</h2>
+				<a href="#documentation" id="documentation" style="color: inherit; text-decoration: none;">
+					<h2>Documentation</h2>
+				</a>
 				<ul>
 					<li><a href="https://dmnsgn.github.io/async-preloader/classes/_index_.asyncpreloader.html">AsyncPreloader class</a></li>
 					<li><a href="https://dmnsgn.github.io/async-preloader/modules/_types_.html">AsyncPreloader types</a></li>
 				</ul>
-				<h2 id="quick-start">Quick start</h2>
+				<a href="#quick-start" id="quick-start" style="color: inherit; text-decoration: none;">
+					<h2>Quick start</h2>
+				</a>
 				<p>This section covers the basic usage of <code>AsyncPreloader</code>. For more informations about async/await, see <a href="https://developers.google.com/web/fundamentals/primers/async-functions">Async functions - making promises friendly</a>. Usage in Node.js environment is limited to its capacity to handle <code>fetch</code> requests. Polyfills like <a href="https://www.npmjs.com/package/node-fetch"><code>node-fetch</code></a> and <a href="https://www.npmjs.com/package/xmldom"><code>xmldom</code></a> might come handy.</p>
-				<h3 id="preload-items-and-retrieve-them">Preload items and retrieve them</h3>
+				<a href="#preload-items-and-retrieve-them" id="preload-items-and-retrieve-them" style="color: inherit; text-decoration: none;">
+					<h3>Preload items and retrieve them</h3>
+				</a>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
 
 <span class="hljs-keyword">const</span> items = [
@@ -110,7 +120,9 @@ pItems
   .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error loading items"</span>, error));</code></pre>
 				<hr>
 				<p>Note: Font loader is using <a href="https://github.com/bramstein/fontfaceobserver">FontFaceObserver</a></p>
-				<h3 id="load-items-from-a-manifest-file">Load items from a manifest file</h3>
+				<a href="#load-items-from-a-manifest-file" id="load-items-from-a-manifest-file" style="color: inherit; text-decoration: none;">
+					<h3>Load items from a manifest file</h3>
+				</a>
 				<p>It works in a similar fashion as createjs&#39;s <a href="http://www.createjs.com/docs/preloadjs/classes/LoadQueue.html">PreloadJS</a>.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
 
@@ -125,9 +137,13 @@ pItems
 pItems
   .then(<span class="hljs-function"><span class="hljs-params">items</span> =&gt;</span> useLoadedItemsFromManifest(items)) <span class="hljs-comment">// or AsyncPreloader.items.get("src or id")</span>
   .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error loading items"</span>, error));</code></pre>
-				<h2 id="advanced-usage">Advanced usage</h2>
+				<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
+					<h2>Advanced usage</h2>
+				</a>
 				<p>This section takes a closer look at the options of <code>AsyncPreloader</code>.</p>
-				<h3 id="load-a-single-item-by-using-the-loaders-directly">Load a single item by using the <a href="https://github.com/dmnsgn/async-preloader/blob/master/src/index.ts#L40">loaders</a> directly</h3>
+				<a href="#load-a-single-item-by-using-the-a-hrefhttpsgithubcomdmnsgnasync-preloaderblobmastersrcindextsl40loadersa-directly" id="load-a-single-item-by-using-the-a-hrefhttpsgithubcomdmnsgnasync-preloaderblobmastersrcindextsl40loadersa-directly" style="color: inherit; text-decoration: none;">
+					<h3>Load a single item by using the <a href="https://github.com/dmnsgn/async-preloader/blob/master/src/index.ts#L40">loaders</a> directly</h3>
+				</a>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
 
 <span class="hljs-comment">// Pass a LoadItem</span>
@@ -141,7 +157,9 @@ pItem
 				<hr>
 				<p>Note: Using the loaders directly won&#39;t add the item to the <code>items</code> Map.
 				Alternatively you could use <code>AsyncPreloader.loadItem</code> and rely on the file extension or add <code>{ loader: &quot;Json&quot;}</code> to the item.</p>
-				<h3 id="get-an-arraybuffer-instead-of-the-default-blob">Get an <code>ArrayBuffer</code> instead of the default <code>Blob</code></h3>
+				<a href="#get-an-codearraybuffercode-instead-of-the-default-codeblobcode" id="get-an-codearraybuffercode-instead-of-the-default-codeblobcode" style="color: inherit; text-decoration: none;">
+					<h3>Get an <code>ArrayBuffer</code> instead of the default <code>Blob</code></h3>
+				</a>
 				<p>You can specify how the response is handle by using the <code>body</code> key in a <code>LoadItem</code>.</p>
 				<p>Typical use case: get an ArrayBuffer for the WebAudio API to decode the data with <code>baseAudioContext.decodeAudioData()</code>.</p>
 				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
@@ -153,7 +171,9 @@ pItem
   .then(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> audioContext.decodeAudioData(item))
   .then(<span class="hljs-function"><span class="hljs-params">decodedData</span> =&gt;</span> useDecodedData(decodedData))
   .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error decoding audio"</span>, error));</code></pre>
-				<h3 id="getting-the-progress">Getting the progress</h3>
+				<a href="#getting-the-progress" id="getting-the-progress" style="color: inherit; text-decoration: none;">
+					<h3>Getting the progress</h3>
+				</a>
 				<p>Since <code>fetch</code> doesn&#39;t support <code>Progress events</code> yet, you might want to get a per file progress.</p>
 				<pre><code class="language-javascript">import AsyncPreloader from "async-preloader";
 
@@ -178,7 +198,9 @@ const items = [
 })()</code></pre>
 				<hr>
 				<p>Note: the example above uses the async functions (which is the core of this module). You&#39;ll need to transpile it if you are targetting older browsers (namely IE11). See support <a href="https://caniuse.com/#feat=async-functions">here</a>.</p>
-				<h2 id="license">License</h2>
+				<a href="#license" id="license" style="color: inherit; text-decoration: none;">
+					<h2>License</h2>
+				</a>
 				<p>MIT © <a href="https://github.com/dmnsgn">Damien Seguin</a></p>
 			</div>
 		</div>
@@ -215,6 +237,7 @@ const items = [
 				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
 				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
+				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
@@ -263,7 +286,7 @@ const items = [
 	</div>
 </footer>
 <div class="container tsd-generator">
-	<p>Generated using <a href="http://typedoc.org/" target="_blank">TypeDoc</a></p>
+	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
 </div>
 <div class="overlay"></div>
 <script src="assets/js/main.js"></script>

@@ -81,6 +81,6 @@
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.3.1",
-    "tslib": "^1.11.1"
+    "tslib": "^1.11.2"
   }
 }

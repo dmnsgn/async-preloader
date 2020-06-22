@@ -36,7 +36,7 @@ export interface LoadItem {
 	 *
 	 * Used to retrieve the [[LoadedValue]] using `AsyncPreloader.items.get(id)`
 	 */
-	id?: any;
+	id?: unknown;
 	/**
 	 * Optional [[LoaderKey]].
 	 *
@@ -44,23 +44,23 @@ export interface LoadItem {
 	 * Default to `Text` if the extension doesn't match any of the extensions specified in [[AsyncPreloader.loaders]].
 	 *
 	 * Note: It needs to be specified for Font and Audio (webm, ogg).
-	*/
+	 */
 	loader?: LoaderKey;
 	/**
 	 * Optional `RequestInit` object to pass to the [fetch method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
-	*/
+	 */
 	options?: RequestInit;
 	/**
 	 * Optional [[BodyMethod]] used to handle the Response.
 	 *
 	 * Default to `blob` for Image, Video and Audio. See [[AsyncPreloader.defaultBodyMethod]].
-	*/
+	 */
 	body?: BodyMethod;
 	/**
 	 * Optional mimeType used to handle the Response.
 	 *
 	 * Note: Only used to parse the document in the Xml Loader.
-	*/
+	 */
 	mimeType?: SupportedType;
 }
 
@@ -78,7 +78,7 @@ export enum LoaderKey {
 	Video = "Video",
 	Audio = "Audio",
 	Xml = "Xml",
-	Font = "Font"
+	Font = "Font",
 }
 
 /**
@@ -87,18 +87,18 @@ export enum LoaderKey {
 export interface LoaderValue {
 	/**
 	 * [[LoadItem]] with no loader key specified will use the following array to find which loader should be used.
-	*/
+	 */
 	extensions: string[];
 	/**
 	 * Optional mimeType used to handle the Response.
 	 *
 	 * Note: Only used to parse the document in the Xml Loader.
-	*/
+	 */
 	mimeType?: { [key: string]: SupportedType };
 	/**
 	 * Optional defaultMimeType used to handle the Response.
 	 *
 	 * Note: Only used to parse the document in the Xml Loader.
-	*/
+	 */
 	defaultMimeType?: SupportedType;
-};
+}

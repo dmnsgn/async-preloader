@@ -6,7 +6,7 @@ import {
 	LoadedValue,
 	LoadedXMLValue,
 	LoaderKey,
-	LoaderValue
+	LoaderValue,
 } from "./types";
 
 const isSafari = navigator && navigator.userAgent.indexOf("Safari") > -1;
@@ -65,12 +65,12 @@ class AsyncPreloader {
 			mimeType: {
 				xml: "text/xml",
 				svg: "image/svg+xml",
-				html: "text/html"
+				html: "text/html",
 			},
-			defaultMimeType: "text/xml"
+			defaultMimeType: "text/xml",
 		})
 		.set(LoaderKey.Font, {
-			extensions: ["woff2", "woff", "ttf", "otf", "eot"]
+			extensions: ["woff2", "woff", "ttf", "otf", "eot"],
 		});
 
 	/**
@@ -102,7 +102,7 @@ class AsyncPreloader {
 
 		const loadedItem: LoadedValue = await this[`load` + loaderKey](item);
 
-		this.items.set(item.id || item.src, loadedItem);
+		this.items.set((item.id || item.src) as string, loadedItem);
 
 		return loadedItem;
 	};
@@ -117,10 +117,10 @@ class AsyncPreloader {
 	 */
 	public loadManifest = async (
 		src: string,
-		key: string = "items"
+		key = "items"
 	): Promise<LoadedValue[]> => {
 		const loadedManifest: LoadedValue = await this.loadJson({
-			src
+			src,
 		});
 		const items: LoadItem[] = AsyncPreloader.getProp(loadedManifest, key);
 
@@ -312,7 +312,7 @@ class AsyncPreloader {
 			const extension: string = AsyncPreloader.getFileExtension(item.src);
 			item = {
 				...item,
-				mimeType: AsyncPreloader.getMimeType(LoaderKey.Xml, extension)
+				mimeType: AsyncPreloader.getMimeType(LoaderKey.Xml, extension),
 			};
 		}
 
@@ -329,9 +329,12 @@ class AsyncPreloader {
 	 * @returns {Promise<string>} Fulfilled value with fontName initial id.
 	 */
 	public loadFont = async (item: LoadItem): Promise<string> => {
-		const fontName = item.id;
-		const font = new FontFaceObserver(fontName, item.options || {});
-		await (font as any).load();
+		const fontName = item.id as string;
+		const font = new FontFaceObserver(
+			fontName,
+			(item.options as FontFaceObserver.FontVariant) || {}
+		);
+		await font.load();
 
 		return fontName;
 	};
@@ -355,10 +358,10 @@ class AsyncPreloader {
 	 * @param {(string | string[])} path Path to the desired property
 	 * @returns {any} The returned object property
 	 */
-	private static getProp(object: any, path: string | string[]) {
+	private static getProp(object: unknown, path: string | string[]) {
 		const p = Array.isArray(path)
 			? path
-			: path.split(".").filter(index => index.length);
+			: path.split(".").filter((index) => index.length);
 
 		if (!p.length) return object;
 
@@ -372,7 +375,7 @@ class AsyncPreloader {
 	 * @returns {string}
 	 */
 	private static getFileExtension(path: RequestInfo | string): string {
-		return ((path as string).match(/[^\\\/]\.([^.\\\/]+)$/) || [null]).pop();
+		return ((path as string).match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop();
 	}
 
 	/**
@@ -382,7 +385,7 @@ class AsyncPreloader {
 	 * @returns {LoaderKey}
 	 */
 	private static getLoaderKey(extension: string): LoaderKey {
-		const loader = Array.from(AsyncPreloader.loaders).find(loader =>
+		const loader = Array.from(AsyncPreloader.loaders).find((loader) =>
 			loader[1].extensions.includes(extension)
 		);
 		return loader ? loader[0] : LoaderKey.Text;

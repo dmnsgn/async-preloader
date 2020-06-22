@@ -6,10 +6,10 @@ import { ArrayBufferToData } from "./utils";
 global.DOMParser = DOMParser;
 global.fetch = fetch;
 
-URL.createObjectURL = blob => {
+URL.createObjectURL = (blob) => {
   let string;
 
-  Object.getOwnPropertySymbols(blob).forEach(symbol => {
+  Object.getOwnPropertySymbols(blob).forEach((symbol) => {
     if (blob[symbol].constructor === Buffer) {
       string = ArrayBufferToData.toBase64(blob[symbol]);
     }

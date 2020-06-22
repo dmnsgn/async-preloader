@@ -14,9 +14,9 @@ export default [
       resolve(),
       commonjs(),
       typescript({
-        typescript: require("typescript")
+        typescript: require("typescript"),
       }),
-      isDev ? 0 : uglify()
+      isDev ? 0 : uglify(),
     ].filter(Boolean),
     external: ["tslib", "fontfaceobserver-es"],
     output: {
@@ -26,9 +26,9 @@ export default [
       exports: "named",
       globals: {
         tslib: "tslib",
-        "fontfaceobserver-es": "FontFaceObserver"
-      }
-    }
+        "fontfaceobserver-es": "FontFaceObserver",
+      },
+    },
   },
   {
     input: "src/index.ts",
@@ -36,29 +36,29 @@ export default [
       resolve(),
       commonjs(),
       typescript({
-        typescript: require("typescript")
+        typescript: require("typescript"),
       }),
-      isDev ? 0 : uglify()
+      isDev ? 0 : uglify(),
     ].filter(Boolean),
     external: ["tslib", "fontfaceobserver-es"],
     output: {
       format: "cjs",
       file: pkg.main,
-      exports: "named"
-    }
+      exports: "named",
+    },
   },
   {
     input: "src/index.ts",
     plugins: [
       resolve(),
       typescript({
-        typescript: require("typescript")
-      })
+        typescript: require("typescript"),
+      }),
     ],
     external: ["tslib", "fontfaceobserver-es"],
     output: {
       format: "es",
-      file: pkg.module
-    }
-  }
+      file: pkg.module,
+    },
+  },
 ];

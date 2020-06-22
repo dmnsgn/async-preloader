@@ -5,8 +5,6 @@ const excludes = ["jpg", "mp4", "mp3"];
 
 // Suite
 describe("AsyncPreloader", () => {
-  beforeEach(() => {});
-
   describe("Loader", () => {
     beforeEach(() => {
       jasmine.DEFAULT_TIMEOUT_INTERVAL = 4000;
@@ -21,7 +19,7 @@ describe("AsyncPreloader", () => {
         expect.assertions(3);
 
         let itemsToLoad = Array.from(items.values()).filter(
-          item =>
+          (item) =>
             AsyncPreloader.getFileExtension(item.src) === null ||
             !excludes.includes(AsyncPreloader.getFileExtension(item.src))
         );
@@ -104,14 +102,14 @@ describe("AsyncPreloader", () => {
       //   expect.assertions(1);
 
       //   const formData = new FormData();
-      //   formData.append("a", "1");
+      //   formData.set("greeting", "Hello, world!");
 
       //   const item = {
       //     src: "https://httpbin.org/post",
       //     options: {
       //       method: "POST",
-      //       body: formData
-      //     }
+      //       body: formData,
+      //     },
       //   };
 
       //   const data = await Preloader.loadFormData(item);
@@ -249,14 +247,15 @@ describe("AsyncPreloader", () => {
         expect.assertions(1);
 
         let itemsToLoad = Array.from(items.values()).filter(
-          item => !excludes.includes(AsyncPreloader.getFileExtension(item.src))
+          (item) =>
+            !excludes.includes(AsyncPreloader.getFileExtension(item.src))
         );
-        itemsToLoad.filter(item => item.loader !== "Font");
+        itemsToLoad.filter((item) => item.loader !== "Font");
 
         let loadedCount = 0;
         async function preload() {
           await Promise.all(
-            itemsToLoad.map(async item => {
+            itemsToLoad.map(async (item) => {
               const data = await Preloader.loadItem(item);
               loadedCount++;
               // console.log(`Progress: ${100 * loadedCount / itemsToLoad.length}%`);

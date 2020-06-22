@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>AsyncPreloader | async-preloader</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for async-preloader">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.js" data-base="..">
+				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -73,11 +73,11 @@
 						<p>AsyncPreloader: assets preloader using ES2017 async/await and fetch.</p>
 					</div>
 					<p>It exports an instance of itself as default so you can:</p>
-					<pre><code class="language-js"><span class="hljs-keyword">import</span> Preloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+					<pre><code class="language-js"><span class="hljs-keyword">import</span> Preloader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
 <span class="hljs-keyword">await</span> Preloader.loadItems([]);</code></pre>
 					<p>to use directly as a singleton or</p>
-					<pre><code class="language-js"><span class="hljs-keyword">import</span> { AsyncPreloader <span class="hljs-keyword">as</span> Preloader } <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+					<pre><code class="language-js"><span class="hljs-keyword">import</span> { AsyncPreloader <span class="hljs-keyword">as</span> Preloader } <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
 <span class="hljs-keyword">const</span> preloader = <span class="hljs-keyword">new</span> Preloader();
 <span class="hljs-keyword">await</span> preloader.loadItems([]);</code></pre>
@@ -140,7 +140,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Body<wbr>Method<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#bodymethod" class="tsd-signature-type">BodyMethod</a><span class="tsd-signature-symbol"> = &quot;blob&quot;</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L45">index.ts:45</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L45">index.ts:45</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -155,7 +155,7 @@
 					<div class="tsd-signature tsd-kind-icon">default<wbr>Loader<span class="tsd-signature-symbol">:</span> <a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a><span class="tsd-signature-symbol"> = LoaderKey.Text</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L50">index.ts:50</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L50">index.ts:50</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -170,7 +170,7 @@
 					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../modules/_types_.html#loadedvalue" class="tsd-signature-type">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Map()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L40">index.ts:40</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L40">index.ts:40</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -185,7 +185,7 @@
 					<div class="tsd-signature tsd-kind-icon">dom<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DOMParser</span><span class="tsd-signature-symbol"> = new DOMParser()</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L79">index.ts:79</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L79">index.ts:79</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -197,10 +197,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
 					<a name="loaders" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> loaders</h3>
-					<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_types_.loadervalue.html" class="tsd-signature-type">LoaderValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Map().set(LoaderKey.Text, { extensions: [&quot;txt&quot;] }).set(LoaderKey.Json, { extensions: [&quot;json&quot;] }).set(LoaderKey.Image, { extensions: [&quot;jpeg&quot;, &quot;jpg&quot;, &quot;gif&quot;, &quot;png&quot;, &quot;webp&quot;] }).set(LoaderKey.Video, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp4&quot;] }).set(LoaderKey.Audio, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp3&quot;, &quot;wav&quot;, &quot;flac&quot;] }).set(LoaderKey.Xml, {extensions: [&quot;xml&quot;, &quot;svg&quot;, &quot;html&quot;],mimeType: {xml: &quot;text/xml&quot;,svg: &quot;image/svg+xml&quot;,html: &quot;text/html&quot;},defaultMimeType: &quot;text/xml&quot;}).set(LoaderKey.Font, {extensions: [&quot;woff2&quot;, &quot;woff&quot;, &quot;ttf&quot;, &quot;otf&quot;, &quot;eot&quot;]})</span></div>
+					<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/_types_.loadervalue.html" class="tsd-signature-type">LoaderValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = new Map().set(LoaderKey.Text, { extensions: [&quot;txt&quot;] }).set(LoaderKey.Json, { extensions: [&quot;json&quot;] }).set(LoaderKey.Image, { extensions: [&quot;jpeg&quot;, &quot;jpg&quot;, &quot;gif&quot;, &quot;png&quot;, &quot;webp&quot;] }).set(LoaderKey.Video, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp4&quot;] }).set(LoaderKey.Audio, { extensions: [&quot;webm&quot;, &quot;ogg&quot;, &quot;mp3&quot;, &quot;wav&quot;, &quot;flac&quot;] }).set(LoaderKey.Xml, {extensions: [&quot;xml&quot;, &quot;svg&quot;, &quot;html&quot;],mimeType: {xml: &quot;text/xml&quot;,svg: &quot;image/svg+xml&quot;,html: &quot;text/html&quot;,},defaultMimeType: &quot;text/xml&quot;,}).set(LoaderKey.Font, {extensions: [&quot;woff2&quot;, &quot;woff&quot;, &quot;ttf&quot;, &quot;otf&quot;, &quot;eot&quot;],})</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L57">index.ts:57</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L57">index.ts:57</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -223,7 +223,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L159">index.ts:159</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L159">index.ts:159</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -257,7 +257,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L268">index.ts:268</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L268">index.ts:268</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -296,7 +296,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L170">index.ts:170</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L170">index.ts:170</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -330,7 +330,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L331">index.ts:331</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L331">index.ts:331</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -364,7 +364,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L181">index.ts:181</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L181">index.ts:181</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -398,7 +398,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L196">index.ts:196</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L196">index.ts:196</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -437,7 +437,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L98">index.ts:98</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L98">index.ts:98</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -471,7 +471,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L88">index.ts:88</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L88">index.ts:88</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -505,7 +505,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L148">index.ts:148</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L148">index.ts:148</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -539,7 +539,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L118">index.ts:118</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L118">index.ts:118</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -575,7 +575,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L137">index.ts:137</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L137">index.ts:137</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -609,7 +609,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L228">index.ts:228</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L228">index.ts:228</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -648,7 +648,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L310">index.ts:310</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L310">index.ts:310</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -687,7 +687,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L346">index.ts:346</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L349">index.ts:349</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -719,7 +719,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L374">index.ts:374</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L377">index.ts:377</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -747,7 +747,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L384">index.ts:384</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L387">index.ts:387</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -775,7 +775,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L398">index.ts:398</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L401">index.ts:401</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -800,13 +800,13 @@
 					<a name="getprop" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Prop</h3>
 					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Prop<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
+						<li class="tsd-signature tsd-kind-icon">get<wbr>Prop<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/120a0ce/src/index.ts#L358">index.ts:358</a></li>
+									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/index.ts#L361">index.ts:361</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -818,7 +818,7 @@
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>object: <span class="tsd-signature-type">any</span></h5>
+									<h5>object: <span class="tsd-signature-type">unknown</span></h5>
 									<div class="tsd-comment tsd-typography">
 										<p>Object with nested properties</p>
 									</div>
@@ -843,10 +843,10 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class="current tsd-kind-module">
 						<a href="../modules/_index_.html">&quot;index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="../modules/_types_.html">&quot;types&quot;</a>
 					</li>
 				</ul>
@@ -855,7 +855,7 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
+					<li class="current tsd-kind-class tsd-parent-kind-module">
 						<a href="_index_.asyncpreloader.html" class="tsd-kind-icon">Async<wbr>Preloader</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-class">
@@ -931,10 +931,10 @@
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module">
+					<li class=" tsd-kind-variable tsd-parent-kind-module">
 						<a href="../modules/_index_.html#asyncpreloaderinstance" class="tsd-kind-icon">Async<wbr>Preloader<wbr>Instance</a>
 					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+					<li class=" tsd-kind-variable tsd-parent-kind-module tsd-is-not-exported">
 						<a href="../modules/_index_.html#issafari" class="tsd-kind-icon">is<wbr>Safari</a>
 					</li>
 				</ul>
@@ -947,57 +947,19 @@
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
+				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
+				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
+				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
+			</ul>
+			<ul class="tsd-legend">
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>

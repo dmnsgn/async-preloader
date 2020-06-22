@@ -4,7 +4,7 @@
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<title>async-preloader</title>
-	<meta name="description" content="">
+	<meta name="description" content="Documentation for async-preloader">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="assets/css/main.css">
 </head>
@@ -13,7 +13,7 @@
 	<div class="tsd-page-toolbar">
 		<div class="container">
 			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="assets/js/search.js" data-base=".">
+				<div class="table-cell" id="tsd-search" data-index="assets/js/search.json" data-base=".">
 					<div class="field">
 						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
 						<input id="tsd-search-field" type="text" />
@@ -90,21 +90,21 @@
 				<a href="#preload-items-and-retrieve-them" id="preload-items-and-retrieve-them" style="color: inherit; text-decoration: none;">
 					<h3>Preload items and retrieve them</h3>
 				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
 <span class="hljs-keyword">const</span> items = [
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myDefaultFile"</span>,    <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/default"</span>   },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myTextFile"</span>,       <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/text.txt"</span>  },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myJsonFile"</span>,       <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/json.json"</span> },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myImageFile"</span>,      <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/image.jpg"</span> },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myVideoFile"</span>,      <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/video.mp4"</span> },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myAudioFile"</span>,      <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/audio.mp3"</span> },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myXmlFile"</span>,        <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/xml.xml"</span>   },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"mySvgFile"</span>,        <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/xml.svg"</span>   },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myHtmlFile"</span>,       <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/xml.html"</span>  },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myDefaultXmlFile"</span>, <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/xml"</span>, <span class="hljs-string">"loader"</span>: <span class="hljs-string">"Xml"</span>  },
-  { <span class="hljs-string">"id"</span>: <span class="hljs-string">"myFont"</span>,           <span class="hljs-string">"loader"</span>: <span class="hljs-string">"Font"</span> },
-  { <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/fileWithoutId"</span> } <span class="hljs-comment">// Can be retrieved with the src property eg. AsyncPreloader.items.get("assets/fileWithoutId")</span>
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myDefaultFile&quot;</span>,    <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/default&quot;</span>   },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myTextFile&quot;</span>,       <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/text.txt&quot;</span>  },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myJsonFile&quot;</span>,       <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/json.json&quot;</span> },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myImageFile&quot;</span>,      <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/image.jpg&quot;</span> },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myVideoFile&quot;</span>,      <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/video.mp4&quot;</span> },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myAudioFile&quot;</span>,      <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/audio.mp3&quot;</span> },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myXmlFile&quot;</span>,        <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/xml.xml&quot;</span>   },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;mySvgFile&quot;</span>,        <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/xml.svg&quot;</span>   },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myHtmlFile&quot;</span>,       <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/xml.html&quot;</span>  },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myDefaultXmlFile&quot;</span>, <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/xml&quot;</span>, <span class="hljs-string">&quot;loader&quot;</span>: <span class="hljs-string">&quot;Xml&quot;</span>  },
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myFont&quot;</span>,           <span class="hljs-string">&quot;loader&quot;</span>: <span class="hljs-string">&quot;Font&quot;</span> },
+  { <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/fileWithoutId&quot;</span> } <span class="hljs-comment">// Can be retrieved with the src property eg. AsyncPreloader.items.get(&quot;assets/fileWithoutId&quot;)</span>
 ];
 
 <span class="hljs-comment">// Pass an array of LoadItem</span>
@@ -114,87 +114,87 @@
 
 pItems
   .then(<span class="hljs-function"><span class="hljs-params">items</span> =&gt;</span> {
-    <span class="hljs-keyword">const</span> element = AsyncPreloader.items.get(<span class="hljs-string">"myVideoFile"</span>);
+    <span class="hljs-keyword">const</span> element = AsyncPreloader.items.get(<span class="hljs-string">&quot;myVideoFile&quot;</span>);
     <span class="hljs-built_in">document</span>.body.appendChild(element);
   })
-  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error loading items"</span>, error));</code></pre>
+  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&quot;Error loading items&quot;</span>, error));</code></pre>
 				<hr>
 				<p>Note: Font loader is using <a href="https://github.com/bramstein/fontfaceobserver">FontFaceObserver</a></p>
 				<a href="#load-items-from-a-manifest-file" id="load-items-from-a-manifest-file" style="color: inherit; text-decoration: none;">
 					<h3>Load items from a manifest file</h3>
 				</a>
 				<p>It works in a similar fashion as createjs&#39;s <a href="http://www.createjs.com/docs/preloadjs/classes/LoadQueue.html">PreloadJS</a>.</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
 <span class="hljs-comment">// Pass the file url and an optional path of the property to get in the JSON file.</span>
 <span class="hljs-comment">// It will load the file using the Json loader and look for the path key expecting an array of `LoadItem`s.</span>
-<span class="hljs-comment">// Default path is "items" eg the default manifest would look like this:</span>
-<span class="hljs-comment">// `{ "items": [ { "src": "assets/file1" }, { "src": "assets/file2" }] }`</span>
+<span class="hljs-comment">// Default path is &quot;items&quot; eg the default manifest would look like this:</span>
+<span class="hljs-comment">// `{ &quot;items&quot;: [ { &quot;src&quot;: &quot;assets/file1&quot; }, { &quot;src&quot;: &quot;assets/file2&quot; }] }`</span>
 <span class="hljs-comment">//</span>
 <span class="hljs-comment">// Returns a Promise with an array of LoadedValue</span>
-<span class="hljs-keyword">const</span> pItems = AsyncPreloader.loadManifest(<span class="hljs-string">"assets/manifest.json"</span>, <span class="hljs-string">"data.preloader.items"</span>);
+<span class="hljs-keyword">const</span> pItems = AsyncPreloader.loadManifest(<span class="hljs-string">&quot;assets/manifest.json&quot;</span>, <span class="hljs-string">&quot;data.preloader.items&quot;</span>);
 
 pItems
-  .then(<span class="hljs-function"><span class="hljs-params">items</span> =&gt;</span> useLoadedItemsFromManifest(items)) <span class="hljs-comment">// or AsyncPreloader.items.get("src or id")</span>
-  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error loading items"</span>, error));</code></pre>
+  .then(<span class="hljs-function"><span class="hljs-params">items</span> =&gt;</span> useLoadedItemsFromManifest(items)) <span class="hljs-comment">// or AsyncPreloader.items.get(&quot;src or id&quot;)</span>
+  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&quot;Error loading items&quot;</span>, error));</code></pre>
 				<a href="#advanced-usage" id="advanced-usage" style="color: inherit; text-decoration: none;">
 					<h2>Advanced usage</h2>
 				</a>
 				<p>This section takes a closer look at the options of <code>AsyncPreloader</code>.</p>
-				<a href="#load-a-single-item-by-using-the-a-hrefhttpsgithubcomdmnsgnasync-preloaderblobmastersrcindextsl40loadersa-directly" id="load-a-single-item-by-using-the-a-hrefhttpsgithubcomdmnsgnasync-preloaderblobmastersrcindextsl40loadersa-directly" style="color: inherit; text-decoration: none;">
+				<a href="#load-a-single-item-by-using-the-loaders-directly" id="load-a-single-item-by-using-the-loaders-directly" style="color: inherit; text-decoration: none;">
 					<h3>Load a single item by using the <a href="https://github.com/dmnsgn/async-preloader/blob/master/src/index.ts#L40">loaders</a> directly</h3>
 				</a>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
 <span class="hljs-comment">// Pass a LoadItem</span>
 <span class="hljs-comment">//</span>
 <span class="hljs-comment">// Returns a Promise with the LoadedValue</span>
-<span class="hljs-keyword">const</span> pItem = AsyncPreloader.loadJson({ <span class="hljs-string">"src"</span>: <span class="hljs-string">"assets/json.json"</span> });
+<span class="hljs-keyword">const</span> pItem = AsyncPreloader.loadJson({ <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/json.json&quot;</span> });
 
 pItem
   .then(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> useLoadedItem(item))
-  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error loading item"</span>, error));</code></pre>
+  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&quot;Error loading item&quot;</span>, error));</code></pre>
 				<hr>
 				<p>Note: Using the loaders directly won&#39;t add the item to the <code>items</code> Map.
 				Alternatively you could use <code>AsyncPreloader.loadItem</code> and rely on the file extension or add <code>{ loader: &quot;Json&quot;}</code> to the item.</p>
-				<a href="#get-an-codearraybuffercode-instead-of-the-default-codeblobcode" id="get-an-codearraybuffercode-instead-of-the-default-codeblobcode" style="color: inherit; text-decoration: none;">
+				<a href="#get-an-arraybuffer-instead-of-the-default-blob" id="get-an-arraybuffer-instead-of-the-default-blob" style="color: inherit; text-decoration: none;">
 					<h3>Get an <code>ArrayBuffer</code> instead of the default <code>Blob</code></h3>
 				</a>
 				<p>You can specify how the response is handle by using the <code>body</code> key in a <code>LoadItem</code>.</p>
 				<p>Typical use case: get an ArrayBuffer for the WebAudio API to decode the data with <code>baseAudioContext.decodeAudioData()</code>.</p>
-				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">"async-preloader"</span>;
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
 <span class="hljs-keyword">const</span> audioContext = <span class="hljs-keyword">new</span> AudioContext();
-<span class="hljs-keyword">const</span> pItem = AsyncPreloader.loadAudio({ <span class="hljs-attr">src</span>: <span class="hljs-string">"assets/audio.mp3"</span>, <span class="hljs-attr">body</span>: <span class="hljs-string">"arrayBuffer"</span> });
+<span class="hljs-keyword">const</span> pItem = AsyncPreloader.loadAudio({ <span class="hljs-attr">src</span>: <span class="hljs-string">&quot;assets/audio.mp3&quot;</span>, <span class="hljs-attr">body</span>: <span class="hljs-string">&quot;arrayBuffer&quot;</span> });
 
 pItem
   .then(<span class="hljs-function"><span class="hljs-params">item</span> =&gt;</span> audioContext.decodeAudioData(item))
   .then(<span class="hljs-function"><span class="hljs-params">decodedData</span> =&gt;</span> useDecodedData(decodedData))
-  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">"Error decoding audio"</span>, error));</code></pre>
+  .catch(<span class="hljs-function"><span class="hljs-params">error</span> =&gt;</span> <span class="hljs-built_in">console</span>.error(<span class="hljs-string">&quot;Error decoding audio&quot;</span>, error));</code></pre>
 				<a href="#getting-the-progress" id="getting-the-progress" style="color: inherit; text-decoration: none;">
 					<h3>Getting the progress</h3>
 				</a>
 				<p>Since <code>fetch</code> doesn&#39;t support <code>Progress events</code> yet, you might want to get a per file progress.</p>
-				<pre><code class="language-javascript">import AsyncPreloader from "async-preloader";
+				<pre><code class="language-javascript"><span class="hljs-keyword">import</span> AsyncPreloader <span class="hljs-keyword">from</span> <span class="hljs-string">&quot;async-preloader&quot;</span>;
 
-const items = [
-  { "id": "myDefaultFile", "src": "assets/default" } // ...
+<span class="hljs-keyword">const</span> items = [
+  { <span class="hljs-string">&quot;id&quot;</span>: <span class="hljs-string">&quot;myDefaultFile&quot;</span>, <span class="hljs-string">&quot;src&quot;</span>: <span class="hljs-string">&quot;assets/default&quot;</span> } <span class="hljs-comment">// ...</span>
 ];
 
-(async () =&gt; {
-  let loadedCount = 0;
+(<span class="hljs-keyword">async</span> () =&gt; {
+  <span class="hljs-keyword">let</span> loadedCount = <span class="hljs-number">0</span>;
 
-  async function preload() {
-    await Promise.all(
-      items.map(async item =&gt; {
-        const data = await AsyncPreloader.loadItem(item);
+  <span class="hljs-keyword">async</span> <span class="hljs-function"><span class="hljs-keyword">function</span> <span class="hljs-title">preload</span>(<span class="hljs-params"></span>) </span>{
+    <span class="hljs-keyword">await</span> <span class="hljs-built_in">Promise</span>.all(
+      items.map(<span class="hljs-keyword">async</span> item =&gt; {
+        <span class="hljs-keyword">const</span> data = <span class="hljs-keyword">await</span> AsyncPreloader.loadItem(item);
         loadedCount++;
-        console.log(`Progress: ${100 * loadedCount / items.length}%`);
+        <span class="hljs-built_in">console</span>.log(<span class="hljs-string">`Progress: <span class="hljs-subst">${<span class="hljs-number">100</span> * loadedCount / items.length}</span>%`</span>);
       })
     );
   }
 
-  await preload();
+  <span class="hljs-keyword">await</span> preload();
 })()</code></pre>
 				<hr>
 				<p>Note: the example above uses the async functions (which is the core of this module). You&#39;ll need to transpile it if you are targetting older browsers (namely IE11). See support <a href="https://caniuse.com/#feat=async-functions">here</a>.</p>
@@ -210,10 +210,10 @@ const items = [
 					<li class="globals  ">
 						<a href="globals.html"><em>Globals</em></a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="modules/_index_.html">&quot;index&quot;</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class=" tsd-kind-module">
 						<a href="modules/_types_.html">&quot;types&quot;</a>
 					</li>
 				</ul>
@@ -230,57 +230,17 @@ const items = [
 		<h2>Legend</h2>
 		<div class="tsd-legend-group">
 			<ul class="tsd-legend">
-				<li class="tsd-kind-module"><span class="tsd-kind-icon">Module</span></li>
-				<li class="tsd-kind-object-literal"><span class="tsd-kind-icon">Object literal</span></li>
 				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-function"><span class="tsd-kind-icon">Function</span></li>
-				<li class="tsd-kind-function tsd-has-type-parameter"><span class="tsd-kind-icon">Function with type parameter</span></li>
-				<li class="tsd-kind-index-signature"><span class="tsd-kind-icon">Index signature</span></li>
 				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-				<li class="tsd-kind-type-alias tsd-has-type-parameter"><span class="tsd-kind-icon">Type alias with type parameter</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-				<li class="tsd-kind-enum-member"><span class="tsd-kind-icon">Enumeration member</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-enum"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-enum"><span class="tsd-kind-icon">Method</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-				<li class="tsd-kind-interface tsd-has-type-parameter"><span class="tsd-kind-icon">Interface with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-interface"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-interface"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-interface"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-interface"><span class="tsd-kind-icon">Index signature</span></li>
 			</ul>
 			<ul class="tsd-legend">
 				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-class tsd-has-type-parameter"><span class="tsd-kind-icon">Class with type parameter</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class"><span class="tsd-kind-icon">Accessor</span></li>
-				<li class="tsd-kind-index-signature tsd-parent-kind-class"><span class="tsd-kind-icon">Index signature</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-constructor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-inherited"><span class="tsd-kind-icon">Inherited accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-protected"><span class="tsd-kind-icon">Protected accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private method</span></li>
-				<li class="tsd-kind-accessor tsd-parent-kind-class tsd-is-private"><span class="tsd-kind-icon">Private accessor</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-property tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static property</span></li>
-				<li class="tsd-kind-call-signature tsd-parent-kind-class tsd-is-static"><span class="tsd-kind-icon">Static method</span></li>
 			</ul>
 		</div>
 	</div>

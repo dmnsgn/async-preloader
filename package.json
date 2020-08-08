@@ -88,7 +88,7 @@
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.3.3",
-    "tslib": "^2.0.0"
+    "tslib": "^2.0.1"
   },
   "eslintConfig": {
     "parser": "@typescript-eslint/parser",

@@ -84,7 +84,7 @@
     "ts-jest": "^26.1.1",
     "typedoc": "^0.17.7",
     "typescript": "^3.9.5",
-    "xmldom": "^0.3.0"
+    "xmldom": "^0.5.0"
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.3.3",

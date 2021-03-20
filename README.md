@@ -25,8 +25,8 @@ npm install --save async-preloader
 
 ## Documentation
 
-- [AsyncPreloader class](https://dmnsgn.github.io/async-preloader/classes/_index_.asyncpreloader.html)
-- [AsyncPreloader types](https://dmnsgn.github.io/async-preloader/modules/_types_.html)
+- [AsyncPreloader class](https://dmnsgn.github.io/async-preloader/classes/index.asyncpreloader.html)
+- [AsyncPreloader types](https://dmnsgn.github.io/async-preloader/modules/types.html)
 
 ## Quick start
 

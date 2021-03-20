@@ -17,88 +17,88 @@ export type LoadedXMLValue = Document | HTMLDocument | XMLDocument;
  * Types that can be returned by all the loaders.
  */
 export type LoadedValue =
-	| BodyResolveValue
-	| HTMLImageElement
-	| HTMLVideoElement
-	| HTMLAudioElement
-	| LoadedXMLValue;
+  | BodyResolveValue
+  | HTMLImageElement
+  | HTMLVideoElement
+  | HTMLAudioElement
+  | LoadedXMLValue;
 
 /**
  * Main interface representing an object to load. src is the only mandatory key.
  */
 export interface LoadItem {
-	/**
-	 * Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
-	 */
-	src: RequestInfo | string;
-	/**
-	 * Optional key.
-	 *
-	 * Used to retrieve the [[LoadedValue]] using `AsyncPreloader.items.get(id)`
-	 */
-	id?: unknown;
-	/**
-	 * Optional [[LoaderKey]].
-	 *
-	 * If none specified, the loader is inferred from the file extension.
-	 * Default to `Text` if the extension doesn't match any of the extensions specified in [[AsyncPreloader.loaders]].
-	 *
-	 * Note: It needs to be specified for Font and Audio (webm, ogg).
-	 */
-	loader?: LoaderKey;
-	/**
-	 * Optional `RequestInit` object to pass to the [fetch method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
-	 */
-	options?: RequestInit;
-	/**
-	 * Optional [[BodyMethod]] used to handle the Response.
-	 *
-	 * Default to `blob` for Image, Video and Audio. See [[AsyncPreloader.defaultBodyMethod]].
-	 */
-	body?: BodyMethod;
-	/**
-	 * Optional mimeType used to handle the Response.
-	 *
-	 * Note: Only used to parse the document in the Xml Loader.
-	 */
-	mimeType?: SupportedType;
+  /**
+   * Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API)
+   */
+  src: RequestInfo | string;
+  /**
+   * Optional key.
+   *
+   * Used to retrieve the [[LoadedValue]] using `AsyncPreloader.items.get(id)`
+   */
+  id?: unknown;
+  /**
+   * Optional [[LoaderKey]].
+   *
+   * If none specified, the loader is inferred from the file extension.
+   * Default to `Text` if the extension doesn't match any of the extensions specified in [[AsyncPreloader.loaders]].
+   *
+   * Note: It needs to be specified for Font and Audio (webm, ogg).
+   */
+  loader?: LoaderKey;
+  /**
+   * Optional `RequestInit` object to pass to the [fetch method](https://developer.mozilla.org/en-US/docs/Web/API/WindowOrWorkerGlobalScope/fetch).
+   */
+  options?: RequestInit;
+  /**
+   * Optional [[BodyMethod]] used to handle the Response.
+   *
+   * Default to `blob` for Image, Video and Audio. See [[AsyncPreloader.defaultBodyMethod]].
+   */
+  body?: BodyMethod;
+  /**
+   * Optional mimeType used to handle the Response.
+   *
+   * Note: Only used to parse the document in the Xml Loader.
+   */
+  mimeType?: DOMParserSupportedType;
 }
 
 /**
  * Keys used for the [[AsyncPreloader.loaders]]
  */
 export enum LoaderKey {
-	Json = "Json",
-	ArrayBuffer = "ArrayBuffer",
-	Blob = "Blob",
-	FormData = "FormData",
-	Text = "Text",
+  Json = "Json",
+  ArrayBuffer = "ArrayBuffer",
+  Blob = "Blob",
+  FormData = "FormData",
+  Text = "Text",
 
-	Image = "Image",
-	Video = "Video",
-	Audio = "Audio",
-	Xml = "Xml",
-	Font = "Font",
+  Image = "Image",
+  Video = "Video",
+  Audio = "Audio",
+  Xml = "Xml",
+  Font = "Font",
 }
 
 /**
  * Values used for the [[AsyncPreloader.loaders]]
  */
 export interface LoaderValue {
-	/**
-	 * [[LoadItem]] with no loader key specified will use the following array to find which loader should be used.
-	 */
-	extensions: string[];
-	/**
-	 * Optional mimeType used to handle the Response.
-	 *
-	 * Note: Only used to parse the document in the Xml Loader.
-	 */
-	mimeType?: { [key: string]: SupportedType };
-	/**
-	 * Optional defaultMimeType used to handle the Response.
-	 *
-	 * Note: Only used to parse the document in the Xml Loader.
-	 */
-	defaultMimeType?: SupportedType;
+  /**
+   * [[LoadItem]] with no loader key specified will use the following array to find which loader should be used.
+   */
+  extensions: string[];
+  /**
+   * Optional mimeType used to handle the Response.
+   *
+   * Note: Only used to parse the document in the Xml Loader.
+   */
+  mimeType?: { [key: string]: DOMParserSupportedType };
+  /**
+   * Optional defaultMimeType used to handle the Response.
+   *
+   * Note: Only used to parse the document in the Xml Loader.
+   */
+  defaultMimeType?: DOMParserSupportedType;
 }

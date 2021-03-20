@@ -3,19 +3,24 @@
     "allowJs": true,
     "allowSyntheticDefaultImports": true,
     "declaration": true,
+    "declarationDir": "types",
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "importHelpers": true,
-    "lib": ["dom", "es2015", "es2016", "es2017", "es2018"],
+    "lib": ["DOM", "ES2015", "ES2016", "ES2017", "ES2018", "ES2019", "ES2020"],
+    "module": "ES2020",
     "moduleResolution": "node",
     "outDir": "lib",
     "sourceMap": true,
-    "target": "es5",
-    "traceResolution": true
+    "strictFunctionTypes": true,
+    "target": "ES2020"
   },
   "include": [
     "src/**/*"
   ],
   "exclude": [
     "node_modules",
+    "web_modules",
     "**/*.spec.ts"
   ]
 }

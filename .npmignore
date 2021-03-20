@@ -1,10 +1,6 @@
-src
-coverage
+examples
 docs
-.rpt2_cache
+screenshot.*
+index.html
 tsconfig.json
-test
-rollup.config.js
 .editorconfig
-.travis.yml
-.gitattributes

@@ -7,6 +7,7 @@
 	<meta name="description" content="Documentation for async-preloader">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
+	<script async src="../assets/js/search.js" id="search-script"></script>
 </head>
 <body>
 <header>
@@ -38,8 +39,8 @@
 							</div>
 							<input type="checkbox" id="tsd-filter-inherited" checked />
 							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-only-exported" />
-							<label class="tsd-widget" for="tsd-filter-only-exported">Only exported</label>
+							<input type="checkbox" id="tsd-filter-externals" checked />
+							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
 						</div>
 					</div>
 					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
@@ -51,13 +52,13 @@
 		<div class="container">
 			<ul class="tsd-breadcrumb">
 				<li>
-					<a href="../globals.html">Globals</a>
+					<a href="../modules.html">async-preloader</a>
 				</li>
 				<li>
-					<a href="../modules/_types_.html">&quot;types&quot;</a>
+					<a href="../modules/types.html">types</a>
 				</li>
 				<li>
-					<a href="_types_.loaditem.html">LoadItem</a>
+					<a href="types.loaditem.html">LoadItem</a>
 				</li>
 			</ul>
 			<h1>Interface LoadItem</h1>
@@ -89,12 +90,12 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.loaditem.html#body" class="tsd-kind-icon">body</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.loaditem.html#id" class="tsd-kind-icon">id</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.loaditem.html#loader" class="tsd-kind-icon">loader</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.loaditem.html#mimetype" class="tsd-kind-icon">mime<wbr>Type</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.loaditem.html#options" class="tsd-kind-icon">options</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_types_.loaditem.html#src" class="tsd-kind-icon">src</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="types.loaditem.html#body" class="tsd-kind-icon">body</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="types.loaditem.html#id" class="tsd-kind-icon">id</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="types.loaditem.html#loader" class="tsd-kind-icon">loader</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="types.loaditem.html#mimetype" class="tsd-kind-icon">mime<wbr>Type</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="types.loaditem.html#options" class="tsd-kind-icon">options</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="types.loaditem.html#src" class="tsd-kind-icon">src</a></li>
 							</ul>
 						</section>
 					</div>
@@ -105,17 +106,17 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="body" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> body</h3>
-					<div class="tsd-signature tsd-kind-icon">body<span class="tsd-signature-symbol">:</span> <a href="../modules/_types_.html#bodymethod" class="tsd-signature-type">BodyMethod</a></div>
+					<div class="tsd-signature tsd-kind-icon">body<span class="tsd-signature-symbol">:</span> <a href="../modules/types.html#bodymethod" class="tsd-signature-type" data-tsd-kind="Type alias">BodyMethod</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/types.ts#L58">types.ts:58</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/689dbad/src/types.ts#L58">types.ts:58</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional <a href="../modules/_types_.html#bodymethod">BodyMethod</a> used to handle the Response.</p>
+							<p>Optional <a href="../modules/types.html#bodymethod">BodyMethod</a> used to handle the Response.</p>
 						</div>
-						<p>Default to <code>blob</code> for Image, Video and Audio. See <a href="../classes/_index_.asyncpreloader.html#defaultbodymethod">AsyncPreloader.defaultBodyMethod</a>.</p>
+						<p>Default to <code>blob</code> for Image, Video and Audio. See <a href="../classes/index.asyncpreloader.html#defaultbodymethod">AsyncPreloader.defaultBodyMethod</a>.</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
@@ -124,41 +125,41 @@
 					<div class="tsd-signature tsd-kind-icon">id<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">unknown</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/types.ts#L39">types.ts:39</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/689dbad/src/types.ts#L39">types.ts:39</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
 							<p>Optional key.</p>
 						</div>
-						<p>Used to retrieve the <a href="../modules/_types_.html#loadedvalue">LoadedValue</a> using <code>AsyncPreloader.items.get(id)</code></p>
+						<p>Used to retrieve the <a href="../modules/types.html#loadedvalue">LoadedValue</a> using <code>AsyncPreloader.items.get(id)</code></p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="loader" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> loader</h3>
-					<div class="tsd-signature tsd-kind-icon">loader<span class="tsd-signature-symbol">:</span> <a href="../enums/_types_.loaderkey.html" class="tsd-signature-type">LoaderKey</a></div>
+					<div class="tsd-signature tsd-kind-icon">loader<span class="tsd-signature-symbol">:</span> <a href="../enums/types.loaderkey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/types.ts#L48">types.ts:48</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/689dbad/src/types.ts#L48">types.ts:48</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
 						<div class="lead">
-							<p>Optional <a href="../enums/_types_.loaderkey.html">LoaderKey</a>.</p>
+							<p>Optional <a href="../enums/types.loaderkey.html">LoaderKey</a>.</p>
 						</div>
 						<p>If none specified, the loader is inferred from the file extension.
-						Default to <code>Text</code> if the extension doesn&#39;t match any of the extensions specified in <a href="../classes/_index_.asyncpreloader.html#loaders">AsyncPreloader.loaders</a>.</p>
+						Default to <code>Text</code> if the extension doesn&#39;t match any of the extensions specified in <a href="../classes/index.asyncpreloader.html#loaders">AsyncPreloader.loaders</a>.</p>
 						<p>Note: It needs to be specified for Font and Audio (webm, ogg).</p>
 					</div>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="mimetype" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> mime<wbr>Type</h3>
-					<div class="tsd-signature tsd-kind-icon">mime<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">SupportedType</span></div>
+					<div class="tsd-signature tsd-kind-icon">mime<wbr>Type<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DOMParserSupportedType</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/types.ts#L64">types.ts:64</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/689dbad/src/types.ts#L64">types.ts:64</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -174,7 +175,7 @@
 					<div class="tsd-signature tsd-kind-icon">options<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RequestInit</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/types.ts#L52">types.ts:52</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/689dbad/src/types.ts#L52">types.ts:52</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -186,10 +187,10 @@
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
 					<a name="src" class="tsd-anchor"></a>
 					<h3>src</h3>
-					<div class="tsd-signature tsd-kind-icon">src<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RequestInfo</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span></div>
+					<div class="tsd-signature tsd-kind-icon">src<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">RequestInfo</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/16c0d5c/src/types.ts#L33">types.ts:33</a></li>
+							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/689dbad/src/types.ts#L33">types.ts:33</a></li>
 						</ul>
 					</aside>
 					<div class="tsd-comment tsd-typography">
@@ -203,63 +204,63 @@
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
 			<nav class="tsd-navigation primary">
 				<ul>
-					<li class="globals  ">
-						<a href="../globals.html"><em>Globals</em></a>
+					<li class=" ">
+						<a href="../modules.html">Modules</a>
 					</li>
 					<li class=" tsd-kind-module">
-						<a href="../modules/_index_.html">&quot;index&quot;</a>
+						<a href="../modules/index.html">index</a>
 					</li>
 					<li class="current tsd-kind-module">
-						<a href="../modules/_types_.html">&quot;types&quot;</a>
+						<a href="../modules/types.html">types</a>
 					</li>
 				</ul>
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-enum tsd-parent-kind-module">
-						<a href="../enums/_types_.loaderkey.html" class="tsd-kind-icon">Loader<wbr>Key</a>
+						<a href="../enums/types.loaderkey.html" class="tsd-kind-icon">Loader<wbr>Key</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-module">
-						<a href="_types_.loaditem.html" class="tsd-kind-icon">Load<wbr>Item</a>
+						<a href="types.loaditem.html" class="tsd-kind-icon">Load<wbr>Item</a>
 						<ul>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.loaditem.html#body" class="tsd-kind-icon">body</a>
+								<a href="types.loaditem.html#body" class="tsd-kind-icon">body</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.loaditem.html#id" class="tsd-kind-icon">id</a>
+								<a href="types.loaditem.html#id" class="tsd-kind-icon">id</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.loaditem.html#loader" class="tsd-kind-icon">loader</a>
+								<a href="types.loaditem.html#loader" class="tsd-kind-icon">loader</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.loaditem.html#mimetype" class="tsd-kind-icon">mime<wbr>Type</a>
+								<a href="types.loaditem.html#mimetype" class="tsd-kind-icon">mime<wbr>Type</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.loaditem.html#options" class="tsd-kind-icon">options</a>
+								<a href="types.loaditem.html#options" class="tsd-kind-icon">options</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_types_.loaditem.html#src" class="tsd-kind-icon">src</a>
+								<a href="types.loaditem.html#src" class="tsd-kind-icon">src</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-module">
-						<a href="_types_.loadervalue.html" class="tsd-kind-icon">Loader<wbr>Value</a>
+						<a href="types.loadervalue.html" class="tsd-kind-icon">Loader<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_types_.html#bodymethod" class="tsd-kind-icon">Body<wbr>Method</a>
+						<a href="../modules/types.html#bodymethod" class="tsd-kind-icon">Body<wbr>Method</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_types_.html#bodyresolvevalue" class="tsd-kind-icon">Body<wbr>Resolve<wbr>Value</a>
+						<a href="../modules/types.html#bodyresolvevalue" class="tsd-kind-icon">Body<wbr>Resolve<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_types_.html#loadedvalue" class="tsd-kind-icon">Loaded<wbr>Value</a>
+						<a href="../modules/types.html#loadedvalue" class="tsd-kind-icon">Loaded<wbr>Value</a>
 					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-module">
-						<a href="../modules/_types_.html#loadedxmlvalue" class="tsd-kind-icon">LoadedXMLValue</a>
+						<a href="../modules/types.html#loadedxmlvalue" class="tsd-kind-icon">LoadedXMLValue</a>
 					</li>
 				</ul>
 			</nav>
@@ -292,6 +293,5 @@
 </div>
 <div class="overlay"></div>
 <script src="../assets/js/main.js"></script>
-<script>if (location.protocol == 'file:') document.write('<script src="../assets/js/search.js"><' + '/script>');</script>
 </body>
 </html>

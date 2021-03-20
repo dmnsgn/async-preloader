@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "4.9.2",
+  "version": "5.0.0",
   "description": "Assets preloader using ES2017 async/await and fetch.",
   "keywords": [
     "preloader",

@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [5.2.0](https://github.com/dmnsgn/async-preloader/compare/v5.1.0...v5.2.0) (2021-10-29)
+
+
+### Features
+
+* update dependencies and ts-jest ([6a452ff](https://github.com/dmnsgn/async-preloader/commit/6a452ffd35f11e5085d4b3945c180b81fb933815))
+
+
+
 # [5.1.0](https://github.com/dmnsgn/async-preloader/compare/v5.0.2...v5.1.0) (2021-10-02)
 
 

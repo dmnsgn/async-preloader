@@ -1,5 +1,5 @@
 /**
- * Methods that can be called on a Request (object returned by fetch and that implements the [Body](https://developer.mozilla.org/en-US/docs/Web/API/Body) interface)
+ * Methods that can be called on a Request (object returned by fetch and that implements the [Body](https://developer.mozilla.org/en-US/docs/Web/API/Response/body) interface)
  */
 export type BodyMethod = "arrayBuffer" | "blob" | "formData" | "json" | "text";
 
@@ -11,7 +11,7 @@ export type BodyResolveValue = ArrayBuffer | Blob | FormData | JSON | string;
 /**
  * Types that can be returned by the Xml loader. See the [[LoadItem.mimeType]].
  */
-export type LoadedXMLValue = Document | HTMLDocument | XMLDocument;
+export type LoadedXMLValue = Document | XMLDocument;
 
 /**
  * Types that can be returned by all the loaders.

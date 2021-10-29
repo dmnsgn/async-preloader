@@ -1,15 +1,11 @@
 import Preloader, { AsyncPreloader } from "../src/";
-import { items, expected, fontItem, manifestSrc } from "./data";
+import { items, expected, fontItem, manifestSrc } from "./data.js";
 
 const excludes = ["jpg", "mp4", "mp3"];
 
 // Suite
 describe("AsyncPreloader", () => {
   describe("Loader", () => {
-    beforeEach(() => {
-      jasmine.DEFAULT_TIMEOUT_INTERVAL = 4000;
-    });
-
     afterEach(() => {
       Preloader.items.clear();
     });
@@ -83,7 +79,7 @@ describe("AsyncPreloader", () => {
         const item = items.get("mp3");
 
         const data = await Preloader.loadArrayBuffer(item);
-        expect(data).toBeInstanceOf(ArrayBuffer);
+        expect(data.constructor.name).toEqual(ArrayBuffer.name);
       });
 
       it("should load a LoadItem with Blob loader and return instanceof Blob", async () => {
@@ -94,8 +90,6 @@ describe("AsyncPreloader", () => {
         const data = await Preloader.loadBlob(item);
 
         expect(data.constructor.name).toEqual(Blob.name);
-        // node-fetch doesn't have a real Blob
-        // expect(data).toBeInstanceOf(Blob);
       });
 
       // it("should load a LoadItem with FormData loader and return instanceof FormData", async () => {
@@ -172,7 +166,7 @@ describe("AsyncPreloader", () => {
         item.body = "arrayBuffer";
 
         const data = await Preloader.loadItem(item);
-        expect(data).toBeInstanceOf(ArrayBuffer);
+        expect(data.constructor.name).toEqual(ArrayBuffer.name);
       });
 
       it("should load a LoadItem (xml) with Xml Loader and return Document", async () => {

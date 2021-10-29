@@ -1,7 +1,7 @@
 import fetch from "node-fetch";
-import { DOMParser } from "xmldom";
+import { DOMParser } from "@xmldom/xmldom";
 
-import { ArrayBufferToData } from "./utils";
+import { ArrayBufferToData } from "./utils.js";
 
 global.DOMParser = DOMParser;
 global.fetch = fetch;

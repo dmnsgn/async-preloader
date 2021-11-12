@@ -1,974 +1,124 @@
-<!doctype html>
-<html class="default no-js">
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>AsyncPreloader | async-preloader</title>
-	<meta name="description" content="Documentation for async-preloader">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<link rel="stylesheet" href="../assets/css/main.css">
-	<script async src="../assets/js/search.js" id="search-script"></script>
-</head>
-<body>
-<header>
-	<div class="tsd-page-toolbar">
-		<div class="container">
-			<div class="table-wrap">
-				<div class="table-cell" id="tsd-search" data-index="../assets/js/search.json" data-base="..">
-					<div class="field">
-						<label for="tsd-search-field" class="tsd-widget search no-caption">Search</label>
-						<input id="tsd-search-field" type="text" />
-					</div>
-					<ul class="results">
-						<li class="state loading">Preparing search index...</li>
-						<li class="state failure">The search index is not available</li>
-					</ul>
-					<a href="../index.html" class="title">async-preloader</a>
-				</div>
-				<div class="table-cell" id="tsd-widgets">
-					<div id="tsd-filter">
-						<a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a>
-						<div class="tsd-filter-group">
-							<div class="tsd-select" id="tsd-filter-visibility">
-								<span class="tsd-select-label">All</span>
-								<ul class="tsd-select-list">
-									<li data-value="public">Public</li>
-									<li data-value="protected">Public/Protected</li>
-									<li data-value="private" class="selected">All</li>
-								</ul>
-							</div>
-							<input type="checkbox" id="tsd-filter-inherited" checked />
-							<label class="tsd-widget" for="tsd-filter-inherited">Inherited</label>
-							<input type="checkbox" id="tsd-filter-externals" checked />
-							<label class="tsd-widget" for="tsd-filter-externals">Externals</label>
-						</div>
-					</div>
-					<a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a>
-				</div>
-			</div>
-		</div>
-	</div>
-	<div class="tsd-page-title">
-		<div class="container">
-			<ul class="tsd-breadcrumb">
-				<li>
-					<a href="../modules.html">async-preloader</a>
-				</li>
-				<li>
-					<a href="../modules/index.html">index</a>
-				</li>
-				<li>
-					<a href="index.AsyncPreloader.html">AsyncPreloader</a>
-				</li>
-			</ul>
-			<h1>Class AsyncPreloader</h1>
-		</div>
-	</div>
-</header>
-<div class="container container-main">
-	<div class="row">
-		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>AsyncPreloader: assets preloader using ES2017 async/await and fetch.</p>
-					</div>
-					<p>It exports an instance of itself as default so you can:</p>
-					<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> </span><span style="color: #001080">Preloader</span><span style="color: #000000"> </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;async-preloader&quot;</span><span style="color: #000000">;</span>
-
-<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">Preloader</span><span style="color: #000000">.</span><span style="color: #795E26">loadItems</span><span style="color: #000000">([]);</span>
+<!DOCTYPE html><html class="default no-js"><head><meta charSet="utf-8"/><meta http-equiv="x-ua-compatible" content="IE=edge"/><title>AsyncPreloader | async-preloader</title><meta name="description" content="Documentation for async-preloader"/><meta name="viewport" content="width=device-width, initial-scale=1"/><link rel="stylesheet" href="../assets/style.css"/><link rel="stylesheet" href="../assets/highlight.css"/><script async src="../assets/search.js" id="search-script"></script></head><body><script>document.body.classList.add(localStorage.getItem("tsd-theme") || "os")</script><header><div class="tsd-page-toolbar"><div class="container"><div class="table-wrap"><div class="table-cell" id="tsd-search" data-base=".."><div class="field"><label for="tsd-search-field" class="tsd-widget search no-caption">Search</label><input type="text" id="tsd-search-field"/></div><ul class="results"><li class="state loading">Preparing search index...</li><li class="state failure">The search index is not available</li></ul><a href="../index.html" class="title">async-preloader</a></div><div class="table-cell" id="tsd-widgets"><div id="tsd-filter"><a href="#" class="tsd-widget options no-caption" data-toggle="options">Options</a><div class="tsd-filter-group"><div class="tsd-select" id="tsd-filter-visibility"><span class="tsd-select-label">All</span><ul class="tsd-select-list"><li data-value="public">Public</li><li data-value="protected">Public/Protected</li><li data-value="private" class="selected">All</li></ul></div> <input type="checkbox" id="tsd-filter-inherited" checked/><label class="tsd-widget" for="tsd-filter-inherited">Inherited</label><input type="checkbox" id="tsd-filter-externals" checked/><label class="tsd-widget" for="tsd-filter-externals">Externals</label></div></div><a href="#" class="tsd-widget menu no-caption" data-toggle="menu">Menu</a></div></div></div></div><div class="tsd-page-title"><div class="container"><ul class="tsd-breadcrumb"><li><a href="../modules.html">async-preloader</a></li><li><a href="../modules/index.html">index</a></li><li><a href="index.AsyncPreloader.html">AsyncPreloader</a></li></ul><h1>Class AsyncPreloader</h1></div></div></header><div class="container container-main"><div class="row"><div class="col-8 col-content"><section class="tsd-panel tsd-comment"><div class="tsd-comment tsd-typography"><div class="lead">
+<p>AsyncPreloader: assets preloader using ES2017 async/await and fetch.</p>
+</div><div><p>It exports an instance of itself as default so you can:</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> </span><span class="hl-2">Preloader</span><span class="hl-0"> </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;async-preloader&quot;</span><span class="hl-0">;</span><br/><br/><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">Preloader</span><span class="hl-0">.</span><span class="hl-7">loadItems</span><span class="hl-0">([]);</span>
 </code></pre>
-					<p>to use directly as a singleton or</p>
-					<pre><code class="language-js"><span style="color: #AF00DB">import</span><span style="color: #000000"> { </span><span style="color: #001080">AsyncPreloader</span><span style="color: #000000"> </span><span style="color: #AF00DB">as</span><span style="color: #000000"> </span><span style="color: #001080">Preloader</span><span style="color: #000000"> } </span><span style="color: #AF00DB">from</span><span style="color: #000000"> </span><span style="color: #A31515">&quot;async-preloader&quot;</span><span style="color: #000000">;</span>
-
-<span style="color: #0000FF">const</span><span style="color: #000000"> </span><span style="color: #0070C1">preloader</span><span style="color: #000000"> = </span><span style="color: #0000FF">new</span><span style="color: #000000"> </span><span style="color: #795E26">Preloader</span><span style="color: #000000">();</span>
-<span style="color: #AF00DB">await</span><span style="color: #000000"> </span><span style="color: #001080">preloader</span><span style="color: #000000">.</span><span style="color: #795E26">loadItems</span><span style="color: #000000">([]);</span>
+<p>to use directly as a singleton or</p>
+<pre><code class="language-js"><span class="hl-1">import</span><span class="hl-0"> { </span><span class="hl-2">AsyncPreloader</span><span class="hl-0"> </span><span class="hl-1">as</span><span class="hl-0"> </span><span class="hl-2">Preloader</span><span class="hl-0"> } </span><span class="hl-1">from</span><span class="hl-0"> </span><span class="hl-3">&quot;async-preloader&quot;</span><span class="hl-0">;</span><br/><br/><span class="hl-4">const</span><span class="hl-0"> </span><span class="hl-5">preloader</span><span class="hl-0"> = </span><span class="hl-4">new</span><span class="hl-0"> </span><span class="hl-7">Preloader</span><span class="hl-0">();</span><br/><span class="hl-1">await</span><span class="hl-0"> </span><span class="hl-2">preloader</span><span class="hl-0">.</span><span class="hl-7">loadItems</span><span class="hl-0">([]);</span>
 </code></pre>
-					<p>if you need more than one instance.</p>
-				</div>
-			</section>
-			<section class="tsd-panel tsd-hierarchy">
-				<h3>Hierarchy</h3>
-				<ul class="tsd-hierarchy">
-					<li>
-						<span class="target">AsyncPreloader</span>
-					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel-group tsd-index-group">
-				<h2>Index</h2>
-				<section class="tsd-panel tsd-index-panel">
-					<div class="tsd-index-content">
-						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="index.AsyncPreloader.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#defaultBodyMethod" class="tsd-kind-icon">default<wbr>Body<wbr>Method</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#defaultLoader" class="tsd-kind-icon">default<wbr>Loader</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#items" class="tsd-kind-icon">items</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#domParser" class="tsd-kind-icon">dom<wbr>Parser</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#loaders" class="tsd-kind-icon">loaders</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadArrayBuffer" class="tsd-kind-icon">load<wbr>Array<wbr>Buffer</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadAudio" class="tsd-kind-icon">load<wbr>Audio</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadBlob" class="tsd-kind-icon">load<wbr>Blob</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadFont" class="tsd-kind-icon">load<wbr>Font</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadFormData" class="tsd-kind-icon">load<wbr>Form<wbr>Data</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadImage" class="tsd-kind-icon">load<wbr>Image</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadItem" class="tsd-kind-icon">load<wbr>Item</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadItems" class="tsd-kind-icon">load<wbr>Items</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadJson" class="tsd-kind-icon">load<wbr>Json</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadManifest" class="tsd-kind-icon">load<wbr>Manifest</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadText" class="tsd-kind-icon">load<wbr>Text</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadVideo" class="tsd-kind-icon">load<wbr>Video</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadXml" class="tsd-kind-icon">load<wbr>Xml</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#fetchItem" class="tsd-kind-icon">fetch<wbr>Item</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getFileExtension" class="tsd-kind-icon">get<wbr>File<wbr>Extension</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getLoaderKey" class="tsd-kind-icon">get<wbr>Loader<wbr>Key</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getMimeType" class="tsd-kind-icon">get<wbr>Mime<wbr>Type</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getProp" class="tsd-kind-icon">get<wbr>Prop</a></li>
-							</ul>
-						</section>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Async<wbr>Preloader<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.AsyncPreloader.html" class="tsd-signature-type" data-tsd-kind="Class">AsyncPreloader</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="index.AsyncPreloader.html" class="tsd-signature-type" data-tsd-kind="Class">AsyncPreloader</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="defaultBodyMethod" class="tsd-anchor"></a>
-					<h3>default<wbr>Body<wbr>Method</h3>
-					<div class="tsd-signature tsd-kind-icon">default<wbr>Body<wbr>Method<span class="tsd-signature-symbol">:</span> <a href="../modules/types.html#BodyMethod" class="tsd-signature-type" data-tsd-kind="Type alias">BodyMethod</a><span class="tsd-signature-symbol"> = &quot;blob&quot;</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L45">index.ts:45</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Default body method to be called on the Response from fetch if no body option is specified on the LoadItem</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="defaultLoader" class="tsd-anchor"></a>
-					<h3>default<wbr>Loader</h3>
-					<div class="tsd-signature tsd-kind-icon">default<wbr>Loader<span class="tsd-signature-symbol">:</span> <a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L50">index.ts:50</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Default loader to use if no loader key is specified in the <a href="../interfaces/types.LoadItem.html">LoadItem</a> or if the extension doesn&#39;t match any of the <a href="index.AsyncPreloader.html#loaders">AsyncPreloader.loaders</a> extensions</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class">
-					<a name="items" class="tsd-anchor"></a>
-					<h3>items</h3>
-					<div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L40">index.ts:40</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Object that contains the loaded items</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="domParser" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> dom<wbr>Parser</h3>
-					<div class="tsd-signature tsd-kind-icon">dom<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DOMParser</span><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L79">index.ts:79</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>DOMParser instance for the XML loader</p>
-						</div>
-					</div>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="loaders" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> loaders</h3>
-					<div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/types.LoaderValue.html" class="tsd-signature-type" data-tsd-kind="Interface">LoaderValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L57">index.ts:57</a></li>
-						</ul>
-					</aside>
-					<div class="tsd-comment tsd-typography">
-						<div class="lead">
-							<p>Loader types and the extensions they handle</p>
-						</div>
-						<p>Allows the omission of the loader key in a <a href="../interfaces/types.LoadItem.html#loader">LoadItem.loader</a> for some generic extensions</p>
-					</div>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadArrayBuffer" class="tsd-anchor"></a>
-					<h3>load<wbr>Array<wbr>Buffer</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Array<wbr>Buffer<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L159">index.ts:159</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item and parse the Response as arrayBuffer</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadAudio" class="tsd-anchor"></a>
-					<h3>load<wbr>Audio</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Audio<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L268">index.ts:268</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item in one of the following cases:</p>
-									<ul>
-										<li>item&#39;s &quot;loader&quot; option set as &quot;Audio&quot;</li>
-										<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
-										<li>direct call of the method</li>
-									</ul>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response according to the &quot;body&quot; option. Defaults to an HTMLAudioElement with a blob as srcObject or src.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadBlob" class="tsd-anchor"></a>
-					<h3>load<wbr>Blob</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Blob<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L170">index.ts:170</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item and parse the Response as blob</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadFont" class="tsd-anchor"></a>
-					<h3>load<wbr>Font</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Font<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L331">index.ts:331</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load a font via a FontFaceObserver instance</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load (id correspond to the fontName).</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value with fontName initial id.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadFormData" class="tsd-anchor"></a>
-					<h3>load<wbr>Form<wbr>Data</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Form<wbr>Data<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L181">index.ts:181</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item and parse the Response as formData</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadImage" class="tsd-anchor"></a>
-					<h3>load<wbr>Image</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Image<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L196">index.ts:196</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item in one of the following cases:</p>
-									<ul>
-										<li>item&#39;s &quot;loader&quot; option set as &quot;Image&quot;</li>
-										<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
-										<li>direct call of the method</li>
-									</ul>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response according to the &quot;body&quot; option. Defaults to an HTMLImageElement with a blob as srcObject or src.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadItem" class="tsd-anchor"></a>
-					<h3>load<wbr>Item</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Item<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L98">index.ts:98</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load a single item</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Resolve when item is loaded, reject for any error</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadItems" class="tsd-anchor"></a>
-					<h3>load<wbr>Items</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Items<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L88">index.ts:88</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load the specified manifest (array of items)</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>items: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Items to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Resolve when all items are loaded, reject for any error</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadJson" class="tsd-anchor"></a>
-					<h3>load<wbr>Json</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Json<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L148">index.ts:148</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item and parse the Response as json</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadManifest" class="tsd-anchor"></a>
-					<h3>load<wbr>Manifest</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Manifest<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L118">index.ts:118</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load a manifest of items</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>src: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Manifest src url</p>
-									</div>
-								</li>
-								<li>
-									<h5>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;items&quot;</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadText" class="tsd-anchor"></a>
-					<h3>load<wbr>Text</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Text<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L137">index.ts:137</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item and parse the Response as text</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadVideo" class="tsd-anchor"></a>
-					<h3>load<wbr>Video</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Video<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L228">index.ts:228</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item in one of the following cases:</p>
-									<ul>
-										<li>item&#39;s &quot;loader&quot; option set as &quot;Video&quot;</li>
-										<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
-										<li>direct call of the method</li>
-									</ul>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fulfilled value of parsed Response according to the &quot;body&quot; option. Defaults to an HTMLVideoElement with a blob as src.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadXml" class="tsd-anchor"></a>
-					<h3>load<wbr>Xml</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Xml<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedXMLValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedXMLValue</a><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L310">index.ts:310</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load an item in one of the following cases:</p>
-									<ul>
-										<li>item&#39;s &quot;loader&quot; option set as &quot;Xml&quot;</li>
-										<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
-										<li>direct call of the method</li>
-									</ul>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to load (need a mimeType specified or default to &quot;application/xml&quot;)</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedXMLValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedXMLValue</a><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Result of Response parsed as a document.</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="fetchItem" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> fetch<wbr>Item</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">fetch<wbr>Item<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L349">index.ts:349</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Fetch wrapper for LoadItem</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Item to fetch</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4>
-							<p>Fetch response</p>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="getFileExtension" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>File<wbr>Extension</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>File<wbr>Extension<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestInfo</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L377">index.ts:377</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get file extension from path</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>path: <span class="tsd-signature-type">RequestInfo</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="getLoaderKey" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Loader<wbr>Key</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Loader<wbr>Key<span class="tsd-signature-symbol">(</span>extension<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L387">index.ts:387</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Retrieve loader key from extension (when the loader option isn&#39;t specified in the LoadItem)</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>extension: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="getMimeType" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Mime<wbr>Type</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Mime<wbr>Type<span class="tsd-signature-symbol">(</span>loaderKey<span class="tsd-signature-symbol">: </span><a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a>, extension<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DOMParserSupportedType</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L401">index.ts:401</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Retrieve mime type from extension</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>loaderKey: <a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></h5>
-								</li>
-								<li>
-									<h5>extension: <span class="tsd-signature-type">string</span></h5>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DOMParserSupportedType</span></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-					<a name="getProp" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr>Prop</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-						<li class="tsd-signature tsd-kind-icon">get<wbr>Prop<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/6a452ff/src/index.ts#L361">index.ts:361</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Get an object property by its path in the form &#39;a[0].b.c&#39; or [&#39;a&#39;, &#39;0&#39;, &#39;b&#39;, &#39;c&#39;].
-									Similar to <a href="https://lodash.com/docs/4.17.5#get">lodash.get</a>.</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>object: <span class="tsd-signature-type">unknown</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Object with nested properties</p>
-									</div>
-								</li>
-								<li>
-									<h5>path: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<p>Path to the desired property</p>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4>
-							<p>The returned object property</p>
-						</li>
-					</ul>
-				</section>
-			</section>
-		</div>
-		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
-			<nav class="tsd-navigation primary">
-				<ul>
-					<li class=" ">
-						<a href="../modules.html">Modules</a>
-					</li>
-					<li class="current tsd-kind-module">
-						<a href="../modules/index.html">index</a>
-					</li>
-					<li class=" tsd-kind-module">
-						<a href="../modules/types.html">types</a>
-					</li>
-				</ul>
-			</nav>
-			<nav class="tsd-navigation secondary menu-sticky">
-				<ul class="before-current">
-				</ul>
-				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-module">
-						<a href="index.AsyncPreloader.html" class="tsd-kind-icon">Async<wbr>Preloader</a>
-						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#defaultBodyMethod" class="tsd-kind-icon">default<wbr>Body<wbr>Method</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#defaultLoader" class="tsd-kind-icon">default<wbr>Loader</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#items" class="tsd-kind-icon">items</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#domParser" class="tsd-kind-icon">dom<wbr>Parser</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#loaders" class="tsd-kind-icon">loaders</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadArrayBuffer" class="tsd-kind-icon">load<wbr>Array<wbr>Buffer</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadAudio" class="tsd-kind-icon">load<wbr>Audio</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadBlob" class="tsd-kind-icon">load<wbr>Blob</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadFont" class="tsd-kind-icon">load<wbr>Font</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadFormData" class="tsd-kind-icon">load<wbr>Form<wbr>Data</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadImage" class="tsd-kind-icon">load<wbr>Image</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadItem" class="tsd-kind-icon">load<wbr>Item</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadItems" class="tsd-kind-icon">load<wbr>Items</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadJson" class="tsd-kind-icon">load<wbr>Json</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadManifest" class="tsd-kind-icon">load<wbr>Manifest</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadText" class="tsd-kind-icon">load<wbr>Text</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadVideo" class="tsd-kind-icon">load<wbr>Video</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="index.AsyncPreloader.html#loadXml" class="tsd-kind-icon">load<wbr>Xml</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#fetchItem" class="tsd-kind-icon">fetch<wbr>Item</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#getFileExtension" class="tsd-kind-icon">get<wbr>File<wbr>Extension</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#getLoaderKey" class="tsd-kind-icon">get<wbr>Loader<wbr>Key</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#getMimeType" class="tsd-kind-icon">get<wbr>Mime<wbr>Type</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static">
-								<a href="index.AsyncPreloader.html#getProp" class="tsd-kind-icon">get<wbr>Prop</a>
-							</li>
-						</ul>
-					</li>
-				</ul>
-				<ul class="after-current">
-					<li class=" tsd-kind-variable tsd-parent-kind-module">
-						<a href="../modules/index.html#default" class="tsd-kind-icon">default</a>
-					</li>
-				</ul>
-			</nav>
-		</div>
-	</div>
-</div>
-<footer class="with-border-bottom">
-	<div class="container">
-		<h2>Legend</h2>
-		<div class="tsd-legend-group">
-			<ul class="tsd-legend">
-				<li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li>
-				<li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li>
-				<li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li>
-				<li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li>
-				<li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li>
-			</ul>
-			<ul class="tsd-legend">
-				<li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li>
-			</ul>
-		</div>
-	</div>
-</footer>
-<div class="container tsd-generator">
-	<p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p>
-</div>
-<div class="overlay"></div>
-<script src="../assets/js/main.js"></script>
-</body>
-</html>
+<p>if you need more than one instance.</p>
+</div></div></section><section class="tsd-panel tsd-hierarchy"><h3>Hierarchy</h3><ul class="tsd-hierarchy"><li><span class="target">AsyncPreloader</span></li></ul></section><section class="tsd-panel-group tsd-index-group"><h2>Index</h2><section class="tsd-panel tsd-index-panel"><div class="tsd-index-content"><section class="tsd-index-section "><h3>Constructors</h3><ul class="tsd-index-list"><li class="tsd-kind-constructor tsd-parent-kind-class"><a href="index.AsyncPreloader.html#constructor" class="tsd-kind-icon">constructor</a></li></ul></section><section class="tsd-index-section "><h3>Properties</h3><ul class="tsd-index-list"><li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#defaultBodyMethod" class="tsd-kind-icon">default<wbr/>Body<wbr/>Method</a></li><li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#defaultLoader" class="tsd-kind-icon">default<wbr/>Loader</a></li><li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#items" class="tsd-kind-icon">items</a></li><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#domParser" class="tsd-kind-icon">dom<wbr/>Parser</a></li><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#loaders" class="tsd-kind-icon">loaders</a></li></ul></section><section class="tsd-index-section "><h3>Methods</h3><ul class="tsd-index-list"><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadArrayBuffer" class="tsd-kind-icon">load<wbr/>Array<wbr/>Buffer</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadAudio" class="tsd-kind-icon">load<wbr/>Audio</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadBlob" class="tsd-kind-icon">load<wbr/>Blob</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadFont" class="tsd-kind-icon">load<wbr/>Font</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadFormData" class="tsd-kind-icon">load<wbr/>Form<wbr/>Data</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadImage" class="tsd-kind-icon">load<wbr/>Image</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadItem" class="tsd-kind-icon">load<wbr/>Item</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadItems" class="tsd-kind-icon">load<wbr/>Items</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadJson" class="tsd-kind-icon">load<wbr/>Json</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadManifest" class="tsd-kind-icon">load<wbr/>Manifest</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadText" class="tsd-kind-icon">load<wbr/>Text</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadVideo" class="tsd-kind-icon">load<wbr/>Video</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadXml" class="tsd-kind-icon">load<wbr/>Xml</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#fetchItem" class="tsd-kind-icon">fetch<wbr/>Item</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getFileExtension" class="tsd-kind-icon">get<wbr/>File<wbr/>Extension</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getLoaderKey" class="tsd-kind-icon">get<wbr/>Loader<wbr/>Key</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getMimeType" class="tsd-kind-icon">get<wbr/>Mime<wbr/>Type</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getProp" class="tsd-kind-icon">get<wbr/>Prop</a></li></ul></section></div></section></section><section class="tsd-panel-group tsd-member-group "><h2>Constructors</h2><section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class"><a id="constructor" class="tsd-anchor"></a><h3>constructor</h3><ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">new <wbr/>Async<wbr/>Preloader<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="index.AsyncPreloader.html" class="tsd-signature-type" data-tsd-kind="Class">AsyncPreloader</a></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><h4 class="tsd-returns-title">Returns <a href="index.AsyncPreloader.html" class="tsd-signature-type" data-tsd-kind="Class">AsyncPreloader</a></h4></li></ul></section></section><section class="tsd-panel-group tsd-member-group "><h2>Properties</h2><section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="defaultBodyMethod" class="tsd-anchor"></a><h3>default<wbr/>Body<wbr/>Method</h3><div class="tsd-signature tsd-kind-icon">default<wbr/>Body<wbr/>Method<span class="tsd-signature-symbol">:</span> <a href="../modules/types.html#BodyMethod" class="tsd-signature-type" data-tsd-kind="Type alias">BodyMethod</a><span class="tsd-signature-symbol"> = &quot;blob&quot;</span></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L45">index.ts:45</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Default body method to be called on the Response from fetch if no body option is specified on the LoadItem</p>
+</div></div></section><section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="defaultLoader" class="tsd-anchor"></a><h3>default<wbr/>Loader</h3><div class="tsd-signature tsd-kind-icon">default<wbr/>Loader<span class="tsd-signature-symbol">:</span> <a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a><span class="tsd-signature-symbol"> = LoaderKey.Text</span></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L50">index.ts:50</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Default loader to use if no loader key is specified in the <a href="../interfaces/types.LoadItem.html">LoadItem</a> or if the extension doesn&#39;t match any of the <a href="index.AsyncPreloader.html#loaders">AsyncPreloader.loaders</a> extensions</p>
+</div></div></section><section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class"><a id="items" class="tsd-anchor"></a><h3>items</h3><div class="tsd-signature tsd-kind-icon">items<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">, </span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L40">index.ts:40</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Object that contains the loaded items</p>
+</div></div></section><section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="domParser" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> dom<wbr/>Parser</h3><div class="tsd-signature tsd-kind-icon">dom<wbr/>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">DOMParser</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L79">index.ts:79</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>DOMParser instance for the XML loader</p>
+</div></div></section><section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="loaders" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> loaders</h3><div class="tsd-signature tsd-kind-icon">loaders<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">Map</span><span class="tsd-signature-symbol">&lt;</span><a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a><span class="tsd-signature-symbol">, </span><a href="../interfaces/types.LoaderValue.html" class="tsd-signature-type" data-tsd-kind="Interface">LoaderValue</a><span class="tsd-signature-symbol">&gt;</span><span class="tsd-signature-symbol"> = ...</span></div><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L57">index.ts:57</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Loader types and the extensions they handle</p>
+</div><div><p>Allows the omission of the loader key in a <a href="../interfaces/types.LoadItem.html#loader">LoadItem.loader</a> for some generic extensions</p>
+</div></div></section></section><section class="tsd-panel-group tsd-member-group "><h2>Methods</h2><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadArrayBuffer" class="tsd-anchor"></a><h3>load<wbr/>Array<wbr/>Buffer</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Array<wbr/>Buffer<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L159">index.ts:159</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item and parse the Response as arrayBuffer</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadAudio" class="tsd-anchor"></a><h3>load<wbr/>Audio</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Audio<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L268">index.ts:268</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item in one of the following cases:</p>
+<ul>
+<li>item&#39;s &quot;loader&quot; option set as &quot;Audio&quot;</li>
+<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
+<li>direct call of the method</li>
+</ul>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response according to the &quot;body&quot; option. Defaults to an HTMLAudioElement with a blob as srcObject or src.</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadBlob" class="tsd-anchor"></a><h3>load<wbr/>Blob</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Blob<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L170">index.ts:170</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item and parse the Response as blob</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadFont" class="tsd-anchor"></a><h3>load<wbr/>Font</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Font<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L331">index.ts:331</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load a font via a FontFaceObserver instance</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load (id correspond to the fontName).</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value with fontName initial id.</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadFormData" class="tsd-anchor"></a><h3>load<wbr/>Form<wbr/>Data</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Form<wbr/>Data<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L181">index.ts:181</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item and parse the Response as formData</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadImage" class="tsd-anchor"></a><h3>load<wbr/>Image</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Image<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L196">index.ts:196</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item in one of the following cases:</p>
+<ul>
+<li>item&#39;s &quot;loader&quot; option set as &quot;Image&quot;</li>
+<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
+<li>direct call of the method</li>
+</ul>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response according to the &quot;body&quot; option. Defaults to an HTMLImageElement with a blob as srcObject or src.</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadItem" class="tsd-anchor"></a><h3>load<wbr/>Item</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Item<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L98">index.ts:98</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load a single item</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Resolve when item is loaded, reject for any error</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadItems" class="tsd-anchor"></a><h3>load<wbr/>Items</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Items<span class="tsd-signature-symbol">(</span>items<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L88">index.ts:88</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load the specified manifest (array of items)</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>items: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">[]</span></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Items to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Resolve when all items are loaded, reject for any error</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadJson" class="tsd-anchor"></a><h3>load<wbr/>Json</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Json<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L148">index.ts:148</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item and parse the Response as json</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadManifest" class="tsd-anchor"></a><h3>load<wbr/>Manifest</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Manifest<span class="tsd-signature-symbol">(</span>src<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span>, key<span class="tsd-signature-symbol">?: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L118">index.ts:118</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load a manifest of items</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>src: <span class="tsd-signature-type">string</span></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Manifest src url</p>
+</div></div></li><li><h5>key: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> = &quot;items&quot;</span></h5></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">&gt;</span></h4><div></div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadText" class="tsd-anchor"></a><h3>load<wbr/>Text</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Text<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L137">index.ts:137</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item and parse the Response as text</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadVideo" class="tsd-anchor"></a><h3>load<wbr/>Video</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Video<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L228">index.ts:228</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item in one of the following cases:</p>
+<ul>
+<li>item&#39;s &quot;loader&quot; option set as &quot;Video&quot;</li>
+<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
+<li>direct call of the method</li>
+</ul>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fulfilled value of parsed Response according to the &quot;body&quot; option. Defaults to an HTMLVideoElement with a blob as src.</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class"><a id="loadXml" class="tsd-anchor"></a><h3>load<wbr/>Xml</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class"><li class="tsd-signature tsd-kind-icon">load<wbr/>Xml<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedXMLValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedXMLValue</a><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L310">index.ts:310</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Load an item in one of the following cases:</p>
+<ul>
+<li>item&#39;s &quot;loader&quot; option set as &quot;Xml&quot;</li>
+<li>item&#39;s &quot;src&quot; option extensions matching the loaders Map</li>
+<li>direct call of the method</li>
+</ul>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to load (need a mimeType specified or default to &quot;application/xml&quot;)</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><a href="../modules/types.html#LoadedXMLValue" class="tsd-signature-type" data-tsd-kind="Type alias">LoadedXMLValue</a><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Result of Response parsed as a document.</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="fetchItem" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> fetch<wbr/>Item</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><li class="tsd-signature tsd-kind-icon">fetch<wbr/>Item<span class="tsd-signature-symbol">(</span>item<span class="tsd-signature-symbol">: </span><a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L349">index.ts:349</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Fetch wrapper for LoadItem</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>item: <a href="../interfaces/types.LoadItem.html" class="tsd-signature-type" data-tsd-kind="Interface">LoadItem</a></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Item to fetch</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">Response</span><span class="tsd-signature-symbol">&gt;</span></h4><div><p>Fetch response</p>
+</div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="getFileExtension" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr/>File<wbr/>Extension</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><li class="tsd-signature tsd-kind-icon">get<wbr/>File<wbr/>Extension<span class="tsd-signature-symbol">(</span>path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">RequestInfo</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L377">index.ts:377</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Get file extension from path</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>path: <span class="tsd-signature-type">RequestInfo</span></h5></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">string</span></h4><div></div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="getLoaderKey" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr/>Loader<wbr/>Key</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><li class="tsd-signature tsd-kind-icon">get<wbr/>Loader<wbr/>Key<span class="tsd-signature-symbol">(</span>extension<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L387">index.ts:387</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Retrieve loader key from extension (when the loader option isn&#39;t specified in the LoadItem)</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>extension: <span class="tsd-signature-type">string</span></h5></li></ul><h4 class="tsd-returns-title">Returns <a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></h4><div></div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="getMimeType" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr/>Mime<wbr/>Type</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><li class="tsd-signature tsd-kind-icon">get<wbr/>Mime<wbr/>Type<span class="tsd-signature-symbol">(</span>loaderKey<span class="tsd-signature-symbol">: </span><a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a>, extension<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">DOMParserSupportedType</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L401">index.ts:401</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Retrieve mime type from extension</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>loaderKey: <a href="../enums/types.LoaderKey.html" class="tsd-signature-type" data-tsd-kind="Enumeration">LoaderKey</a></h5></li><li><h5>extension: <span class="tsd-signature-type">string</span></h5></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">DOMParserSupportedType</span></h4><div></div></li></ul></section><section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a id="getProp" class="tsd-anchor"></a><h3><span class="tsd-flag ts-flagStatic">Static</span> <span class="tsd-flag ts-flagPrivate">Private</span> get<wbr/>Prop</h3><ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><li class="tsd-signature tsd-kind-icon">get<wbr/>Prop<span class="tsd-signature-symbol">(</span>object<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">unknown</span>, path<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">any</span></li></ul><ul class="tsd-descriptions"><li class="tsd-description"><aside class="tsd-sources"><ul><li>Defined in <a href="https://github.com/dmnsgn/async-preloader/blob/fbc8b43/src/index.ts#L361">index.ts:361</a></li></ul></aside><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Get an object property by its path in the form &#39;a[0].b.c&#39; or [&#39;a&#39;, &#39;0&#39;, &#39;b&#39;, &#39;c&#39;].
+Similar to <a href="https://lodash.com/docs/4.17.5#get">lodash.get</a>.</p>
+</div></div><h4 class="tsd-parameters-title">Parameters</h4><ul class="tsd-parameters"><li><h5>object: <span class="tsd-signature-type">unknown</span></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Object with nested properties</p>
+</div></div></li><li><h5>path: <span class="tsd-signature-type">string</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">[]</span></h5><div class="tsd-comment tsd-typography"><div class="lead">
+<p>Path to the desired property</p>
+</div></div></li></ul><h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">any</span></h4><div><p>The returned object property</p>
+</div></li></ul></section></section></div><div class="col-4 col-menu menu-sticky-wrap menu-highlight"><nav class="tsd-navigation primary"><ul><li class=""><a href="../modules.html">Modules</a></li><li class="current tsd-kind-module"><a href="../modules/index.html">index</a></li><li class=" tsd-kind-module"><a href="../modules/types.html">types</a></li></ul></nav><nav class="tsd-navigation secondary menu-sticky"><ul><li class="current tsd-kind-class tsd-parent-kind-module"><a href="index.AsyncPreloader.html" class="tsd-kind-icon">Async<wbr/>Preloader</a><ul><li class="tsd-kind-constructor tsd-parent-kind-class"><a href="index.AsyncPreloader.html#constructor" class="tsd-kind-icon">constructor</a></li><li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#defaultBodyMethod" class="tsd-kind-icon">default<wbr/>Body<wbr/>Method</a></li><li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#defaultLoader" class="tsd-kind-icon">default<wbr/>Loader</a></li><li class="tsd-kind-property tsd-parent-kind-class"><a href="index.AsyncPreloader.html#items" class="tsd-kind-icon">items</a></li><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#domParser" class="tsd-kind-icon">dom<wbr/>Parser</a></li><li class="tsd-kind-property tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#loaders" class="tsd-kind-icon">loaders</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadArrayBuffer" class="tsd-kind-icon">load<wbr/>Array<wbr/>Buffer</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadAudio" class="tsd-kind-icon">load<wbr/>Audio</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadBlob" class="tsd-kind-icon">load<wbr/>Blob</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadFont" class="tsd-kind-icon">load<wbr/>Font</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadFormData" class="tsd-kind-icon">load<wbr/>Form<wbr/>Data</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadImage" class="tsd-kind-icon">load<wbr/>Image</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadItem" class="tsd-kind-icon">load<wbr/>Item</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadItems" class="tsd-kind-icon">load<wbr/>Items</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadJson" class="tsd-kind-icon">load<wbr/>Json</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadManifest" class="tsd-kind-icon">load<wbr/>Manifest</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadText" class="tsd-kind-icon">load<wbr/>Text</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadVideo" class="tsd-kind-icon">load<wbr/>Video</a></li><li class="tsd-kind-method tsd-parent-kind-class"><a href="index.AsyncPreloader.html#loadXml" class="tsd-kind-icon">load<wbr/>Xml</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#fetchItem" class="tsd-kind-icon">fetch<wbr/>Item</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getFileExtension" class="tsd-kind-icon">get<wbr/>File<wbr/>Extension</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getLoaderKey" class="tsd-kind-icon">get<wbr/>Loader<wbr/>Key</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getMimeType" class="tsd-kind-icon">get<wbr/>Mime<wbr/>Type</a></li><li class="tsd-kind-method tsd-parent-kind-class tsd-is-private tsd-is-static"><a href="index.AsyncPreloader.html#getProp" class="tsd-kind-icon">get<wbr/>Prop</a></li></ul></li></ul></nav></div></div></div><footer class="with-border-bottom"><div class="container"><h2>Legend</h2><div class="tsd-legend-group"><ul class="tsd-legend"><li class="tsd-kind-class"><span class="tsd-kind-icon">Class</span></li><li class="tsd-kind-constructor tsd-parent-kind-class"><span class="tsd-kind-icon">Constructor</span></li><li class="tsd-kind-property tsd-parent-kind-class"><span class="tsd-kind-icon">Property</span></li><li class="tsd-kind-method tsd-parent-kind-class"><span class="tsd-kind-icon">Method</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-variable"><span class="tsd-kind-icon">Variable</span></li><li class="tsd-kind-type-alias"><span class="tsd-kind-icon">Type alias</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-enum"><span class="tsd-kind-icon">Enumeration</span></li></ul><ul class="tsd-legend"><li class="tsd-kind-interface"><span class="tsd-kind-icon">Interface</span></li></ul></div><h2>Settings</h2><p>Theme <select id="theme"><option value="os">OS</option><option value="light">Light</option><option value="dark">Dark</option></select></p></div></footer><div class="container tsd-generator"><p>Generated using <a href="https://typedoc.org/" target="_blank">TypeDoc</a></p></div><div class="overlay"></div><script src="../assets/main.js"></script></body></html>

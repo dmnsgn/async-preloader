@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "5.2.0",
+  "version": "5.2.1",
   "description": "Assets preloader using ES2017 async/await and fetch.",
   "keywords": [
     "preloader",
@@ -30,8 +30,8 @@
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "test": "jest test/",
-    "jest": "jest test/ --watch --coverage --no-cache"
+    "jest": "jest test/ --watch --coverage --no-cache",
+    "test": "jest test/"
   },
   "jest": {
     "collectCoverageFrom": [

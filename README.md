@@ -2,8 +2,8 @@
 
 [![npm version](https://img.shields.io/npm/v/async-preloader)](https://www.npmjs.com/package/async-preloader)
 [![stability-stable](https://img.shields.io/badge/stability-stable-green.svg)](https://www.npmjs.com/package/async-preloader)
-[![npm minzipped size](https://img.shields.io/bundlephobia/minzip/async-preloader)](https://www.npmjs.com/package/async-preloader)
-[![dependencies](https://img.shields.io/david/dmnsgn/async-preloader)](https://github.com/dmnsgn/async-preloader/blob/main/package.json)
+[![npm minzipped size](https://img.shields.io/bundlephobia/minzip/async-preloader)](https://bundlephobia.com/package/async-preloader)
+[![dependencies](https://img.shields.io/librariesio/release/npm/async-preloader)](https://github.com/dmnsgn/async-preloader/blob/main/package.json)
 [![types](https://img.shields.io/npm/types/async-preloader)](https://github.com/microsoft/TypeScript)
 [![Conventional Commits](https://img.shields.io/badge/Conventional%20Commits-1.0.0-fa6673.svg)](https://conventionalcommits.org)
 [![styled with prettier](https://img.shields.io/badge/styled_with-Prettier-f8bc45.svg?logo=prettier)](https://github.com/prettier/prettier)

@@ -48,8 +48,10 @@ const items = [
   { id: "mySvgFile", src: "assets/xml.svg" },
   { id: "myHtmlFile", src: "assets/xml.html" },
   { id: "myDefaultXmlFile", src: "assets/xml", loader: "Xml" },
-  { id: "myFont", loader: "Font" },
-  { src: "assets/fileWithoutId" }, // Can be retrieved with the src property eg. AsyncPreloader.items.get("assets/fileWithoutId")
+  { id: "myFont", src: `assets/font.ttf` },
+  { id: "Space Regular", loader: "Font", fontOptions: { timeout: 10000 } },
+  // Can be retrieved with the src property eg. AsyncPreloader.items.get("assets/fileWithoutId")
+  { src: "assets/fileWithoutId" },
 ];
 
 // Pass an array of LoadItem
@@ -67,7 +69,7 @@ pItems
 
 ---
 
-Note: Font loader is using [FontFaceObserver](https://github.com/bramstein/fontfaceobserver)
+Note: Font loader is will try to detect the font in the page using [FontFaceObserver](https://github.com/dmnsgn/fontfaceobserver) when no src is specified.
 
 ### Load items from a manifest file
 
@@ -148,26 +150,49 @@ const items = [
   { id: "myDefaultFile", src: "assets/default" }, // ...
 ];
 
-(async () => {
-  let loadedCount = 0;
+let loadedCount = 0;
 
-  async function preload() {
-    await Promise.all(
-      items.map(async (item) => {
-        const data = await AsyncPreloader.loadItem(item);
-        loadedCount++;
-        console.log(`Progress: ${(100 * loadedCount) / items.length}%`);
-      })
-    );
-  }
+async function preload() {
+  await Promise.all(
+    items.map(async (item) => {
+      const data = await AsyncPreloader.loadItem(item);
+      loadedCount++;
+      console.log(`Progress: ${(100 * loadedCount) / items.length}%`);
+    })
+  );
+}
 
-  await preload();
-})();
+await preload();
+```
+
+### Abort one or more loadItem(s) request(s)
+
+To abort a loadItem(s) call, you can create an `AbortController` instance and pass its signal to options.
+
+```javascript
+const controller = new AbortController();
+
+const timeoutId = setTimeout(() => {
+  controller.abort();
+}, 150);
+
+try {
+  await AsyncPreloader.loadItems(
+    items.map((item) => ({
+      ...item,
+      options: { ...(item.options || {}), signal: controller.signal },
+    }))
+  );
+} catch (error) {
+  if (error.name === "AbortError") console.log("Request was aborted");
+} finally {
+  clearTimeout(timeoutId);
+}
 ```
 
 ---
 
-Note: the example above uses the async functions (which is the core of this module). You'll need to transpile it if you are targetting older browsers (namely IE11). See support [here](https://caniuse.com/#feat=async-functions).
+Note: the example above uses the async functions (which is the core of this module). You'll need to transpile it if you are targeting older browsers (namely IE11). See support [here](https://caniuse.com/#feat=async-functions).
 
 ## License
 

@@ -7,6 +7,7 @@ import {
   LoadedXMLValue,
   LoaderKey,
   LoaderValue,
+  FontOptions,
 } from "./types.js";
 
 const isSafari =
@@ -327,20 +328,36 @@ class AsyncPreloader {
   };
 
   /**
-   * Load a font via a FontFaceObserver instance
+   * Load a font via FontFace or check a font is loaded via FontFaceObserver instance
    *
-   * @param {LoadItem} item Item to load (id correspond to the fontName).
-   * @returns {Promise<string>} Fulfilled value with fontName initial id.
+   * @param {LoadItem} item Item to load (id correspond to the font family name).
+   * @returns {Promise<FontFace | string>} Fulfilled value with FontFace instance or initial id if no src provided.
    */
-  public loadFont = async (item: LoadItem): Promise<string> => {
+  public loadFont = async (item: LoadItem): Promise<FontFace | string> => {
     const fontName = item.id as string;
-    const font = new FontFaceObserver(
-      fontName,
-      (item.options as FontFaceObserver.FontVariant) || {}
-    );
-    await font.load();
+    const options = (item.fontOptions || {}) as FontOptions;
 
-    return fontName;
+    if (!item.src) {
+      const font = new FontFaceObserver(
+        fontName,
+        (options.variant as FontFaceObserver.FontVariant) || {}
+      );
+      await font.load(options.testString, options.timeout);
+
+      return fontName;
+    }
+
+    const source =
+      item.body === "arrayBuffer"
+        ? await this.loadArrayBuffer({ src: item.src })
+        : `url(${item.src})`;
+
+    const font = new FontFace(fontName, source, options.descriptors);
+
+    return await font.load().then((font) => {
+      document.fonts.add(font);
+      return font;
+    });
   };
 
   // Utils

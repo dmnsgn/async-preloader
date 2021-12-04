@@ -1,10 +1,33 @@
-import Preloader, { AsyncPreloader } from "../src/";
-import { items, expected, fontItem, manifestSrc } from "./data.js";
+import { jest } from "@jest/globals";
 
-const excludes = ["jpg", "mp4", "mp3"];
+import Preloader, { AsyncPreloader } from "../src";
+import { items, expected, manifestSrc } from "./data.js";
+import { start } from "./server.js";
+
+jest.setTimeout(50000);
+
+const excludes = ["jpg", "mp4", "mp3", "ttf"];
+const getNodeSupportedItems = () =>
+  Array.from(items.values())
+    .filter(
+      (item) =>
+        AsyncPreloader.getFileExtension(item.src) === "unknown" ||
+        !excludes.includes(AsyncPreloader.getFileExtension(item.src))
+    )
+    .filter((item) => item.loader !== "Font");
 
 // Suite
 describe("AsyncPreloader", () => {
+  let server;
+
+  beforeAll(async () => {
+    server = await start();
+  });
+
+  afterAll((done) => {
+    server.close(done);
+  });
+
   describe("Loader", () => {
     afterEach(() => {
       Preloader.items.clear();
@@ -14,16 +37,12 @@ describe("AsyncPreloader", () => {
       it("should load an array of LoadItem and return an array of LoadedValue", async () => {
         expect.assertions(3);
 
-        let itemsToLoad = Array.from(items.values()).filter(
-          (item) =>
-            AsyncPreloader.getFileExtension(item.src) === null ||
-            !excludes.includes(AsyncPreloader.getFileExtension(item.src))
-        );
+        const itemsToLoad = getNodeSupportedItems();
 
         const data = await Preloader.loadItems(itemsToLoad);
 
         expect(data).toBeInstanceOf(Array);
-        expect(data).toHaveLength(items.size - excludes.length); // TEMP: fix blob tests
+        expect(data).toHaveLength(itemsToLoad.length);
         expect(data).toEqual(
           expect.arrayContaining(Array.from(expected.values()))
         );
@@ -35,7 +54,7 @@ describe("AsyncPreloader", () => {
         const data = await Preloader.loadManifest(manifestSrc);
 
         expect(data).toBeInstanceOf(Array);
-        expect(data).toHaveLength(items.size - excludes.length); // TEMP: fix blob tests
+        expect(data).toHaveLength(7);
         expect(data).toEqual(
           expect.arrayContaining(Array.from(expected.values()))
         );
@@ -47,7 +66,7 @@ describe("AsyncPreloader", () => {
         const data = await Preloader.loadManifest(manifestSrc, "custom.path");
 
         expect(data).toBeInstanceOf(Array);
-        expect(data).toHaveLength(items.size - excludes.length); // TEMP: fix blob tests
+        expect(data).toHaveLength(7);
         expect(data).toEqual(
           expect.arrayContaining(Array.from(expected.values()))
         );
@@ -92,24 +111,24 @@ describe("AsyncPreloader", () => {
         expect(data.constructor.name).toEqual(Blob.name);
       });
 
-      // it("should load a LoadItem with FormData loader and return instanceof FormData", async () => {
-      //   expect.assertions(1);
+      it.skip("should load a LoadItem with FormData loader and return instanceof FormData", async () => {
+        expect.assertions(1);
 
-      //   const formData = new FormData();
-      //   formData.set("greeting", "Hello, world!");
+        const formData = new FormData();
+        formData.set("greeting", "Hello, world!");
 
-      //   const item = {
-      //     src: "https://httpbin.org/post",
-      //     options: {
-      //       method: "POST",
-      //       body: formData,
-      //     },
-      //   };
+        const item = {
+          src: "https://httpbin.org/post",
+          options: {
+            method: "POST",
+            body: formData,
+          },
+        };
 
-      //   const data = await Preloader.loadFormData(item);
+        const data = await Preloader.loadFormData(item);
 
-      //   expect(data.constructor.name).toEqual(FormData.name);
-      // });
+        expect(data.constructor.name).toEqual(FormData.name);
+      });
     });
 
     describe("for a single item", () => {
@@ -130,34 +149,6 @@ describe("AsyncPreloader", () => {
         const data = await Preloader.loadItem(item);
         expect(data).toEqual(expected.get("json"));
       });
-
-      // it("should load a LoadItem with Image loader and return HTMLMediaElement", async () => {
-      //   expect.assertions(1);
-
-      //   const item = items.get("jpg");
-
-      //   const data = await Preloader.loadItem(item);
-      //   // console.log(data.constructor)
-      //   expect(data).toBeInstanceOf(HTMLMediaElement);
-      // });
-
-      // it("should load a LoadItem with Video loader and return HTMLMediaElement", async () => {
-      //   expect.assertions(1);
-
-      //   const item = items.get("mp4");
-
-      //   const data = await Preloader.loadItem(item);
-      //   expect(data).toBeInstanceOf(HTMLMediaElement);
-      // });
-
-      // it("should load a LoadItem with Audio loader and return HTMLMediaElement", async () => {
-      //   expect.assertions(1);
-
-      //   const item = items.get("mp3");
-
-      //   const data = await Preloader.loadItem(item);
-      //   expect(data).toBeInstanceOf(HTMLMediaElement);
-      // });
 
       it("should load a LoadItem with body = arrayBuffer with Audio Loader and return an ArrayBuffer", async () => {
         expect.assertions(1);
@@ -218,11 +209,11 @@ describe("AsyncPreloader", () => {
         expect(data).toBe(expected.get("string"));
       });
 
-      it("should check the font with id, src, and loader, fails to load as it is not supported in Node", async () => {
+      it("should try to load a LoadItem (ttf) with FontFace Loader and throw", async () => {
         expect.assertions(1);
 
-        await expect(Preloader.loadItem(fontItem)).rejects.toThrow(
-          "3000ms timeout exceeded"
+        await expect(Preloader.loadItem(items.get("font"))).rejects.toThrow(
+          "FontFace is not defined"
         );
       });
     });
@@ -240,11 +231,7 @@ describe("AsyncPreloader", () => {
       it("should load an array of LoadItem and update a loadedCount variable", async () => {
         expect.assertions(1);
 
-        let itemsToLoad = Array.from(items.values()).filter(
-          (item) =>
-            !excludes.includes(AsyncPreloader.getFileExtension(item.src))
-        );
-        itemsToLoad.filter((item) => item.loader !== "Font");
+        const itemsToLoad = getNodeSupportedItems();
 
         let loadedCount = 0;
         async function preload() {
@@ -257,7 +244,7 @@ describe("AsyncPreloader", () => {
           );
         }
         await preload();
-        expect(loadedCount).toEqual(items.size - excludes.length); // TEMP: fix blob tests
+        expect(loadedCount).toEqual(itemsToLoad.length);
       });
     });
   });

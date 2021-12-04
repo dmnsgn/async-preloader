@@ -9,7 +9,10 @@ import {
   LoaderValue,
 } from "./types.js";
 
-const isSafari = navigator && navigator.userAgent.indexOf("Safari") > -1;
+const isSafari =
+  typeof navigator !== "undefined" &&
+  navigator &&
+  navigator.userAgent.indexOf("Safari") > -1;
 
 /**
  * AsyncPreloader: assets preloader using ES2017 async/await and fetch.
@@ -76,7 +79,8 @@ class AsyncPreloader {
   /**
    * DOMParser instance for the XML loader
    */
-  private static domParser = new DOMParser();
+  private static domParser =
+    typeof DOMParser !== "undefined" && new DOMParser();
 
   // API
   /**

@@ -2,6 +2,27 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [6.0.0](https://github.com/dmnsgn/async-preloader/compare/v5.2.1...v6.0.0) (2021-12-04)
+
+
+### Bug Fixes
+
+* enhance node support by checking for navigator and DOMParser ([9e4f6c5](https://github.com/dmnsgn/async-preloader/commit/9e4f6c555ea82950d446f4db0146c0ffe99db9c4))
+* handle falsy path in getFileExtension ([aadd369](https://github.com/dmnsgn/async-preloader/commit/aadd36949ce2fbec3fa2aa23b782be35e17ad672))
+* update returned types for loaders ([fe46654](https://github.com/dmnsgn/async-preloader/commit/fe4665488645f1b3708afaeaf7dfc13d0d416f5c))
+
+
+### Features
+
+* add support for FontFace ([3830dd7](https://github.com/dmnsgn/async-preloader/commit/3830dd78a0231e3fc87e452036403f27bf2509e8)), closes [#79](https://github.com/dmnsgn/async-preloader/issues/79)
+
+
+### BREAKING CHANGES
+
+* new behaviour for loadFont
+
+
+
 ## [5.2.1](https://github.com/dmnsgn/async-preloader/compare/v5.2.0...v5.2.1) (2021-11-12)
 
 

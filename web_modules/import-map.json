@@ -1,0 +1,6 @@
+{
+  "imports": {
+    "es-module-shims": "./es-module-shims.js",
+    "fontfaceobserver-es": "./fontfaceobserver-es.js"
+  }
+}

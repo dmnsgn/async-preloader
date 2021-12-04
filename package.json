@@ -30,46 +30,73 @@
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "jest": "jest test/ --watch --coverage --no-cache",
-    "test": "jest test/"
+    "prejest": "npx snowdev install",
+    "jest": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --watch --coverage --no-cache",
+    "pretest": "npx snowdev install && npx snowdev build --no-docs --no-lint",
+    "test": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --runInBand"
   },
   "jest": {
     "collectCoverageFrom": [
       "src/**/*.ts"
     ],
     "coverageDirectory": "coverage",
+    "globalSetup": "jest-environment-puppeteer/setup",
+    "globalTeardown": "jest-environment-puppeteer/teardown",
+    "globals": {
+      "ts-jest": {
+        "useESM": true
+      }
+    },
+    "moduleNameMapper": {
+      "^(\\.{1,2}/.*)\\.js$": "$1"
+    },
     "preset": "ts-jest/presets/js-with-ts-esm",
     "resolver": "jest-ts-webcompat-resolver",
     "setupFiles": [
       "<rootDir>/test/setupFile.js"
     ],
+    "setupFilesAfterEnv": [
+      "expect-puppeteer"
+    ],
     "testEnvironment": "jsdom",
     "testRegex": "(/__tests__/.*|(\\.|/)(test|spec))\\.(ts|js)x?$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
-    },
-    "transformIgnorePatterns": [
-      "node_modules/(?!(fontfaceobserver-es|node-fetch|fetch-blob)/)"
-    ]
+    }
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.3.3",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
-    "@types/jest": "^27.0.2",
-    "@types/node": "^16.11.6",
+    "@types/css-font-loading-module": "^0.0.7",
+    "@types/expect-puppeteer": "^4.4.7",
+    "@types/jest": "^27.0.3",
+    "@types/jest-environment-puppeteer": "^4.4.1",
+    "@types/node": "^15.14.9",
+    "@types/puppeteer": "^5.4.4",
     "@xmldom/xmldom": "^0.7.5",
-    "core-js": "^3.19.0",
-    "jest": "^27.3.1",
+    "core-js": "^3.19.2",
+    "es-module-shims": "^0.10.4",
+    "jest": "^27.4.3",
+    "jest-puppeteer": "^6.0.2",
     "jest-ts-webcompat-resolver": "^1.0.0",
-    "jsdom": "^18.0.0",
+    "jsdom": "^19.0.0",
+    "mime-types": "^2.1.34",
     "node-fetch": "^3.0.0",
+    "puppeteer": "^12.0.1",
+    "snowdev": "^1.6.2",
     "ts-jest": "^27.0.7",
-    "typescript": "^4.4.4"
+    "typescript": "^4.5.2"
   },
   "engines": {
     "node": ">=15.0.0",
     "npm": ">=7.0.0"
+  },
+  "snowdev": {
+    "dependencies": [
+      "fontfaceobserver-es",
+      "es-module-shims"
+    ]
   }
 }

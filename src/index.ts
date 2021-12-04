@@ -123,7 +123,7 @@ class AsyncPreloader {
     src: string,
     key = "items"
   ): Promise<LoadedValue[]> => {
-    const loadedManifest: LoadedValue = await this.loadJson({
+    const loadedManifest: JSON = await this.loadJson({
       src,
     });
     const items: LoadItem[] = AsyncPreloader.getProp(loadedManifest, key);
@@ -136,9 +136,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as text
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<string>} Fulfilled value of parsed Response
    */
-  public loadText = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadText = async (item: LoadItem): Promise<string> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.text();
   };
@@ -147,9 +147,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as json
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<JSON>} Fulfilled value of parsed Response
    */
-  public loadJson = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadJson = async (item: LoadItem): Promise<JSON> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.json();
   };
@@ -158,9 +158,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as arrayBuffer
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<ArrayBuffer>} Fulfilled value of parsed Response
    */
-  public loadArrayBuffer = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadArrayBuffer = async (item: LoadItem): Promise<ArrayBuffer> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.arrayBuffer();
   };
@@ -169,9 +169,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as blob
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<Blob>} Fulfilled value of parsed Response
    */
-  public loadBlob = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadBlob = async (item: LoadItem): Promise<Blob> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.blob();
   };
@@ -180,9 +180,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as formData
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<FormData>} Fulfilled value of parsed Response
    */
-  public loadFormData = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadFormData = async (item: LoadItem): Promise<FormData> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.formData();
   };
@@ -216,7 +216,7 @@ class AsyncPreloader {
         image.removeEventListener("error", error);
         reject(image);
       });
-      image.src = URL.createObjectURL(data);
+      image.src = URL.createObjectURL(data as Blob);
     });
   };
 
@@ -253,7 +253,7 @@ class AsyncPreloader {
         if (isSafari) throw "";
         video.srcObject = data as Blob;
       } catch (error) {
-        video.src = URL.createObjectURL(data);
+        video.src = URL.createObjectURL(data as Blob);
       }
 
       video.load();
@@ -295,7 +295,7 @@ class AsyncPreloader {
         if (isSafari) throw "";
         audio.srcObject = data as Blob;
       } catch (error) {
-        audio.src = URL.createObjectURL(data);
+        audio.src = URL.createObjectURL(data as Blob);
       }
 
       audio.load();
@@ -321,7 +321,7 @@ class AsyncPreloader {
     }
 
     const response: Response = await AsyncPreloader.fetchItem(item);
-    const data: LoadedValue = await response.text();
+    const data: string = await response.text();
 
     return AsyncPreloader.domParser.parseFromString(data, item.mimeType);
   };

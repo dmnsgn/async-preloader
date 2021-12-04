@@ -7,9 +7,13 @@ import {
   LoadedXMLValue,
   LoaderKey,
   LoaderValue,
+  FontOptions,
 } from "./types.js";
 
-const isSafari = navigator && navigator.userAgent.indexOf("Safari") > -1;
+const isSafari =
+  typeof navigator !== "undefined" &&
+  navigator &&
+  navigator.userAgent.indexOf("Safari") > -1;
 
 /**
  * AsyncPreloader: assets preloader using ES2017 async/await and fetch.
@@ -76,7 +80,8 @@ class AsyncPreloader {
   /**
    * DOMParser instance for the XML loader
    */
-  private static domParser = new DOMParser();
+  private static domParser =
+    typeof DOMParser !== "undefined" && new DOMParser();
 
   // API
   /**
@@ -119,7 +124,7 @@ class AsyncPreloader {
     src: string,
     key = "items"
   ): Promise<LoadedValue[]> => {
-    const loadedManifest: LoadedValue = await this.loadJson({
+    const loadedManifest: JSON = await this.loadJson({
       src,
     });
     const items: LoadItem[] = AsyncPreloader.getProp(loadedManifest, key);
@@ -132,9 +137,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as text
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<string>} Fulfilled value of parsed Response
    */
-  public loadText = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadText = async (item: LoadItem): Promise<string> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.text();
   };
@@ -143,9 +148,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as json
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<JSON>} Fulfilled value of parsed Response
    */
-  public loadJson = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadJson = async (item: LoadItem): Promise<JSON> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.json();
   };
@@ -154,9 +159,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as arrayBuffer
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<ArrayBuffer>} Fulfilled value of parsed Response
    */
-  public loadArrayBuffer = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadArrayBuffer = async (item: LoadItem): Promise<ArrayBuffer> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.arrayBuffer();
   };
@@ -165,9 +170,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as blob
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<Blob>} Fulfilled value of parsed Response
    */
-  public loadBlob = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadBlob = async (item: LoadItem): Promise<Blob> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.blob();
   };
@@ -176,9 +181,9 @@ class AsyncPreloader {
    * Load an item and parse the Response as formData
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response
+   * @returns {Promise<FormData>} Fulfilled value of parsed Response
    */
-  public loadFormData = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadFormData = async (item: LoadItem): Promise<FormData> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
     return await response.formData();
   };
@@ -212,7 +217,7 @@ class AsyncPreloader {
         image.removeEventListener("error", error);
         reject(image);
       });
-      image.src = URL.createObjectURL(data);
+      image.src = URL.createObjectURL(data as Blob);
     });
   };
 
@@ -249,7 +254,7 @@ class AsyncPreloader {
         if (isSafari) throw "";
         video.srcObject = data as Blob;
       } catch (error) {
-        video.src = URL.createObjectURL(data);
+        video.src = URL.createObjectURL(data as Blob);
       }
 
       video.load();
@@ -291,7 +296,7 @@ class AsyncPreloader {
         if (isSafari) throw "";
         audio.srcObject = data as Blob;
       } catch (error) {
-        audio.src = URL.createObjectURL(data);
+        audio.src = URL.createObjectURL(data as Blob);
       }
 
       audio.load();
@@ -317,26 +322,42 @@ class AsyncPreloader {
     }
 
     const response: Response = await AsyncPreloader.fetchItem(item);
-    const data: LoadedValue = await response.text();
+    const data: string = await response.text();
 
     return AsyncPreloader.domParser.parseFromString(data, item.mimeType);
   };
 
   /**
-   * Load a font via a FontFaceObserver instance
+   * Load a font via FontFace or check a font is loaded via FontFaceObserver instance
    *
-   * @param {LoadItem} item Item to load (id correspond to the fontName).
-   * @returns {Promise<string>} Fulfilled value with fontName initial id.
+   * @param {LoadItem} item Item to load (id correspond to the font family name).
+   * @returns {Promise<FontFace | string>} Fulfilled value with FontFace instance or initial id if no src provided.
    */
-  public loadFont = async (item: LoadItem): Promise<string> => {
+  public loadFont = async (item: LoadItem): Promise<FontFace | string> => {
     const fontName = item.id as string;
-    const font = new FontFaceObserver(
-      fontName,
-      (item.options as FontFaceObserver.FontVariant) || {}
-    );
-    await font.load();
+    const options = (item.fontOptions || {}) as FontOptions;
 
-    return fontName;
+    if (!item.src) {
+      const font = new FontFaceObserver(
+        fontName,
+        (options.variant as FontFaceObserver.FontVariant) || {}
+      );
+      await font.load(options.testString, options.timeout);
+
+      return fontName;
+    }
+
+    const source =
+      item.body === "arrayBuffer"
+        ? await this.loadArrayBuffer({ src: item.src })
+        : `url(${item.src})`;
+
+    const font = new FontFace(fontName, source, options.descriptors);
+
+    return await font.load().then((font) => {
+      document.fonts.add(font);
+      return font;
+    });
   };
 
   // Utils
@@ -374,8 +395,10 @@ class AsyncPreloader {
    * @param {(RequestInfo | string)} path
    * @returns {string}
    */
-  private static getFileExtension(path: RequestInfo | string): string {
-    return ((path as string).match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop();
+  private static getFileExtension(path?: RequestInfo | string): string {
+    return (
+      path && ((path as string).match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop()
+    );
   }
 
   /**

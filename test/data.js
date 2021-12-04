@@ -1,8 +1,7 @@
-const rootUrl =
-  "https://raw.githubusercontent.com/dmnsgn/async-preloader/master/test/assets/";
+const rootUrl = "http://localhost:3000/test/assets/";
 
 export const items = new Map()
-  .set("default", { id: "myDefaultFile", src: `${rootUrl}default` })
+  .set("default", { id: "myDefaultFile", src: `${rootUrl}default.unknown` })
   .set("txt", { id: "myTextFile", src: `${rootUrl}text.txt` })
   .set("json", { id: "myJsonFile", src: `${rootUrl}json.json` })
   .set("jpg", { id: "myImageFile", src: `${rootUrl}image.jpg` })
@@ -13,8 +12,14 @@ export const items = new Map()
   .set("html", { id: "myHtmlFile", src: `${rootUrl}xml.html` })
   .set("defaultXml", {
     id: "myXmlDefaultFile",
-    src: `${rootUrl}xml`,
-    loader: "Xml"
+    src: `${rootUrl}xml.unknown`,
+    loader: "Xml",
+  })
+  .set("font", { id: "myFont", src: `${rootUrl}font.ttf` })
+  .set("fontface", {
+    id: "Space Regular",
+    loader: "Font",
+    fontOptions: { timeout: 10000 },
   });
 
 export const expected = new Map()
@@ -122,11 +127,5 @@ export const expected = new Map()
     )
   )
   .set("json", { test: "json" });
-
-export const fontItem = {
-  id: "myFont",
-  src: "Open Sans Regular",
-  loader: "Font"
-};
 
 export const manifestSrc = `${rootUrl}manifest.json`;

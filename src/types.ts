@@ -51,6 +51,10 @@ export interface LoadItem {
    */
   options?: RequestInit;
   /**
+   * Font options used by FontFace and FontFaceObserver
+   */
+  fontOptions?: FontOptions;
+  /**
    * Optional [[BodyMethod]] used to handle the Response.
    *
    * Default to `blob` for Image, Video and Audio. See [[AsyncPreloader.defaultBodyMethod]].
@@ -79,6 +83,28 @@ export enum LoaderKey {
   Audio = "Audio",
   Xml = "Xml",
   Font = "Font",
+}
+
+/**
+ * Font options used by FontFace and FontFaceObserver
+ */
+export interface FontOptions {
+  /**
+   * [FontFace constructor descriptors](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/FontFace)
+   */
+  descriptors?: FontFaceDescriptors;
+  /**
+   * FontFaceObserver.FontVariant
+   */
+  variant?: FontFaceObserver.FontVariant;
+  /**
+   * Argument for [FontFace.load](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)
+   */
+  testString?: string;
+  /**
+   * Argument for [FontFace.load](https://developer.mozilla.org/en-US/docs/Web/API/FontFace/load)
+   */
+  timeout?: number;
 }
 
 /**

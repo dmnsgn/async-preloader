@@ -32,8 +32,13 @@ describe("Browser", () => {
     //   );
   });
 
-  afterAll((done) => {
-    server.close(done);
+  afterAll(async () => {
+    await new Promise((resolve, reject) => {
+      server.close((error) => {
+        if (error) return reject(error);
+        resolve();
+      });
+    });
   });
 
   it("should load a LoadItem with Image loader and return HTMLImageElement", async () => {

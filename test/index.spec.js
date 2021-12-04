@@ -24,8 +24,13 @@ describe("AsyncPreloader", () => {
     server = await start();
   });
 
-  afterAll((done) => {
-    server.close(done);
+  afterAll(async () => {
+    await new Promise((resolve, reject) => {
+      server.close((error) => {
+        if (error) return reject(error);
+        resolve();
+      });
+    });
   });
 
   describe("Loader", () => {

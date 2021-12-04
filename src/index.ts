@@ -395,8 +395,10 @@ class AsyncPreloader {
    * @param {(RequestInfo | string)} path
    * @returns {string}
    */
-  private static getFileExtension(path: RequestInfo | string): string {
-    return ((path as string).match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop();
+  private static getFileExtension(path?: RequestInfo | string): string {
+    return (
+      path && ((path as string).match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop()
+    );
   }
 
   /**

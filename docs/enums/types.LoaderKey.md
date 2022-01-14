@@ -29,7 +29,7 @@ Keys used for the [AsyncPreloader.loaders](../classes/index.AsyncPreloader.md#lo
 
 #### Defined in
 
-[types.ts:76](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L76)
+[types.ts:76](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L76)
 
 ___
 
@@ -39,7 +39,7 @@ ___
 
 #### Defined in
 
-[types.ts:83](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L83)
+[types.ts:83](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L83)
 
 ___
 
@@ -49,7 +49,7 @@ ___
 
 #### Defined in
 
-[types.ts:77](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L77)
+[types.ts:77](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L77)
 
 ___
 
@@ -59,7 +59,7 @@ ___
 
 #### Defined in
 
-[types.ts:85](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L85)
+[types.ts:85](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L85)
 
 ___
 
@@ -69,7 +69,7 @@ ___
 
 #### Defined in
 
-[types.ts:78](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L78)
+[types.ts:78](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L78)
 
 ___
 
@@ -79,7 +79,7 @@ ___
 
 #### Defined in
 
-[types.ts:81](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L81)
+[types.ts:81](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L81)
 
 ___
 
@@ -89,7 +89,7 @@ ___
 
 #### Defined in
 
-[types.ts:75](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L75)
+[types.ts:75](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L75)
 
 ___
 
@@ -99,7 +99,7 @@ ___
 
 #### Defined in
 
-[types.ts:79](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L79)
+[types.ts:79](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L79)
 
 ___
 
@@ -109,7 +109,7 @@ ___
 
 #### Defined in
 
-[types.ts:82](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L82)
+[types.ts:82](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L82)
 
 ___
 
@@ -119,4 +119,4 @@ ___
 
 #### Defined in
 
-[types.ts:84](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L84)
+[types.ts:84](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L84)

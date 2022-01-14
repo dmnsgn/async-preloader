@@ -20,4 +20,4 @@
 
 #### Defined in
 
-[index.ts:461](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L461)
+[index.ts:461](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/index.ts#L461)

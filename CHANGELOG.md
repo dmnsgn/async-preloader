@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [6.1.0](https://github.com/dmnsgn/async-preloader/compare/v6.0.0...v6.1.0) (2022-01-14)
+
+
+### Features
+
+* compute font name from src if no id is present ([6703830](https://github.com/dmnsgn/async-preloader/commit/6703830085a40a360e5ce6539614d2361c1c38ec))
+
+
+
 # [6.0.0](https://github.com/dmnsgn/async-preloader/compare/v5.2.1...v6.0.0) (2021-12-04)
 
 

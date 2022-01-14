@@ -54,7 +54,9 @@ if you need more than one instance.
 - [loadVideo](index.AsyncPreloader.md#loadvideo)
 - [loadXml](index.AsyncPreloader.md#loadxml)
 - [fetchItem](index.AsyncPreloader.md#fetchitem)
+- [getFileBaseName](index.AsyncPreloader.md#getfilebasename)
 - [getFileExtension](index.AsyncPreloader.md#getfileextension)
+- [getFileName](index.AsyncPreloader.md#getfilename)
 - [getLoaderKey](index.AsyncPreloader.md#getloaderkey)
 - [getMimeType](index.AsyncPreloader.md#getmimetype)
 - [getProp](index.AsyncPreloader.md#getprop)
@@ -75,7 +77,7 @@ Default body method to be called on the Response from fetch if no body option is
 
 #### Defined in
 
-[index.ts:49](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L49)
+[index.ts:49](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L49)
 
 ___
 
@@ -87,7 +89,7 @@ Default loader to use if no loader key is specified in the [LoadItem](../interfa
 
 #### Defined in
 
-[index.ts:54](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L54)
+[index.ts:54](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L54)
 
 ___
 
@@ -99,7 +101,7 @@ Object that contains the loaded items
 
 #### Defined in
 
-[index.ts:44](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L44)
+[index.ts:44](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L44)
 
 ___
 
@@ -111,7 +113,7 @@ DOMParser instance for the XML loader
 
 #### Defined in
 
-[index.ts:83](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L83)
+[index.ts:83](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L83)
 
 ___
 
@@ -125,7 +127,7 @@ Allows the omission of the loader key in a [LoadItem.loader](../interfaces/types
 
 #### Defined in
 
-[index.ts:61](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L61)
+[index.ts:61](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L61)
 
 ## Methods
 
@@ -149,7 +151,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:164](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L164)
+[index.ts:166](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L166)
 
 ___
 
@@ -176,7 +178,7 @@ Fulfilled value of parsed Response according to the "body" option. Defaults to a
 
 #### Defined in
 
-[index.ts:273](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L273)
+[index.ts:275](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L275)
 
 ___
 
@@ -200,7 +202,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:175](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L175)
+[index.ts:177](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L177)
 
 ___
 
@@ -224,7 +226,7 @@ Fulfilled value with FontFace instance or initial id if no src provided.
 
 #### Defined in
 
-[index.ts:336](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L336)
+[index.ts:340](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L340)
 
 ___
 
@@ -248,7 +250,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:186](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L186)
+[index.ts:188](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L188)
 
 ___
 
@@ -275,7 +277,7 @@ Fulfilled value of parsed Response according to the "body" option. Defaults to a
 
 #### Defined in
 
-[index.ts:201](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L201)
+[index.ts:203](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L203)
 
 ___
 
@@ -299,7 +301,7 @@ Resolve when item is loaded, reject for any error
 
 #### Defined in
 
-[index.ts:103](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L103)
+[index.ts:103](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L103)
 
 ___
 
@@ -323,7 +325,7 @@ Resolve when all items are loaded, reject for any error
 
 #### Defined in
 
-[index.ts:93](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L93)
+[index.ts:93](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L93)
 
 ___
 
@@ -347,7 +349,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:153](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L153)
+[index.ts:155](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L155)
 
 ___
 
@@ -370,7 +372,7 @@ Load a manifest of items
 
 #### Defined in
 
-[index.ts:123](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L123)
+[index.ts:125](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L125)
 
 ___
 
@@ -394,7 +396,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:142](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L142)
+[index.ts:144](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L144)
 
 ___
 
@@ -421,7 +423,7 @@ Fulfilled value of parsed Response according to the "body" option. Defaults to a
 
 #### Defined in
 
-[index.ts:233](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L233)
+[index.ts:235](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L235)
 
 ___
 
@@ -448,7 +450,7 @@ Result of Response parsed as a document.
 
 #### Defined in
 
-[index.ts:315](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L315)
+[index.ts:317](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L317)
 
 ___
 
@@ -472,21 +474,21 @@ Fetch response
 
 #### Defined in
 
-[index.ts:370](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L370)
+[index.ts:375](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L375)
 
 ___
 
-### getFileExtension
+### getFileBaseName
 
-▸ `Static` `Private` **getFileExtension**(`path?`): `string`
+▸ `Static` `Private` **getFileBaseName**(`path`): `string`
 
-Get file extension from path
+Get file base name
 
 #### Parameters
 
 | Name | Type |
 | :------ | :------ |
-| `path?` | `RequestInfo` |
+| `path` | `string` |
 
 #### Returns
 
@@ -494,7 +496,51 @@ Get file extension from path
 
 #### Defined in
 
-[index.ts:398](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L398)
+[index.ts:413](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L413)
+
+___
+
+### getFileExtension
+
+▸ `Static` `Private` **getFileExtension**(`path`): `string`
+
+Get file extension
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `path` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[index.ts:403](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L403)
+
+___
+
+### getFileName
+
+▸ `Static` `Private` **getFileName**(`path`): `string`
+
+Get file name
+
+#### Parameters
+
+| Name | Type |
+| :------ | :------ |
+| `path` | `string` |
+
+#### Returns
+
+`string`
+
+#### Defined in
+
+[index.ts:423](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L423)
 
 ___
 
@@ -516,7 +562,7 @@ Retrieve loader key from extension (when the loader option isn't specified in th
 
 #### Defined in
 
-[index.ts:410](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L410)
+[index.ts:436](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L436)
 
 ___
 
@@ -539,7 +585,7 @@ Retrieve mime type from extension
 
 #### Defined in
 
-[index.ts:424](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L424)
+[index.ts:450](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L450)
 
 ___
 
@@ -565,4 +611,4 @@ The returned object property
 
 #### Defined in
 
-[index.ts:382](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/index.ts#L382)
+[index.ts:387](https://github.com/dmnsgn/async-preloader/blob/6703830/src/index.ts#L387)

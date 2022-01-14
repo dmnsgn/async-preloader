@@ -26,7 +26,7 @@ Note: Only used to parse the document in the Xml Loader.
 
 #### Defined in
 
-[types.ts:129](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/types.ts#L129)
+[types.ts:129](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L129)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-[types.ts:117](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/types.ts#L117)
+[types.ts:117](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L117)
 
 ___
 
@@ -56,4 +56,4 @@ Note: Only used to parse the document in the Xml Loader.
 
 #### Defined in
 
-[types.ts:123](https://github.com/dmnsgn/async-preloader/blob/5ae1c38/src/types.ts#L123)
+[types.ts:123](https://github.com/dmnsgn/async-preloader/blob/6703830/src/types.ts#L123)

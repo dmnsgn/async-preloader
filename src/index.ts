@@ -101,7 +101,9 @@ class AsyncPreloader {
    * @returns {Promise<LoadedValue>} Resolve when item is loaded, reject for any error
    */
   public loadItem = async (item: LoadItem): Promise<LoadedValue> => {
-    const extension: string = AsyncPreloader.getFileExtension(item.src);
+    const extension: string = AsyncPreloader.getFileExtension(
+      (item.src as string) || ""
+    );
     const loaderKey: LoaderKey =
       item.loader || AsyncPreloader.getLoaderKey(extension);
 
@@ -314,7 +316,9 @@ class AsyncPreloader {
    */
   public loadXml = async (item: LoadItem): Promise<LoadedXMLValue> => {
     if (!item.mimeType) {
-      const extension: string = AsyncPreloader.getFileExtension(item.src);
+      const extension: string = AsyncPreloader.getFileExtension(
+        item.src as string
+      );
       item = {
         ...item,
         mimeType: AsyncPreloader.getMimeType(LoaderKey.Xml, extension),
@@ -334,7 +338,8 @@ class AsyncPreloader {
    * @returns {Promise<FontFace | string>} Fulfilled value with FontFace instance or initial id if no src provided.
    */
   public loadFont = async (item: LoadItem): Promise<FontFace | string> => {
-    const fontName = item.id as string;
+    const fontName = (item.id ||
+      AsyncPreloader.getFileName(item.src as string)) as string;
     const options = (item.fontOptions || {}) as FontOptions;
 
     if (!item.src) {
@@ -390,14 +395,35 @@ class AsyncPreloader {
   }
 
   /**
-   * Get file extension from path
+   * Get file extension
    *
-   * @param {(RequestInfo | string)} path
+   * @param {string} path
    * @returns {string}
    */
-  private static getFileExtension(path?: RequestInfo | string): string {
+  private static getFileExtension(path: string): string {
+    return (path?.match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop();
+  }
+
+  /**
+   * Get file base name
+   *
+   * @param {string} path
+   * @returns {string}
+   */
+  private static getFileBaseName(path: string): string {
+    return path.split(/[\\/]/).pop();
+  }
+
+  /**
+   * Get file name
+   *
+   * @param {string} path
+   * @returns {string}
+   */
+  private static getFileName(path: string): string {
     return (
-      path && ((path as string).match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop()
+      AsyncPreloader.getFileBaseName(path).split(".").slice(0, -1).join(".") ||
+      path
     );
   }
 

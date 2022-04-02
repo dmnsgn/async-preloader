@@ -16,8 +16,8 @@
 
 ### default
 
-• **default**: [`AsyncPreloader`](../classes/index.AsyncPreloader.md)
+• `Const` **default**: [`AsyncPreloader`](../classes/index.AsyncPreloader.md)
 
 #### Defined in
 
-[index.ts:461](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/index.ts#L461)
+[index.ts:461](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L461)

@@ -2,6 +2,10 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [6.1.2](https://github.com/dmnsgn/async-preloader/compare/v6.1.1...v6.1.2) (2022-04-02)
+
+
+
 ## [6.1.1](https://github.com/dmnsgn/async-preloader/compare/v6.1.0...v6.1.1) (2022-01-14)
 
 

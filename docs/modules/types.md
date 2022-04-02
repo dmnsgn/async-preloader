@@ -31,7 +31,7 @@ Methods that can be called on a Request (object returned by fetch and that imple
 
 #### Defined in
 
-[types.ts:4](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L4)
+[types.ts:4](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L4)
 
 ___
 
@@ -43,7 +43,7 @@ Types that can be returned by all the [BodyMethod](types.md#bodymethod)
 
 #### Defined in
 
-[types.ts:9](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L9)
+[types.ts:9](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L9)
 
 ___
 
@@ -55,7 +55,7 @@ Types that can be returned by all the loaders.
 
 #### Defined in
 
-[types.ts:19](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L19)
+[types.ts:19](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L19)
 
 ___
 
@@ -67,4 +67,4 @@ Types that can be returned by the Xml loader. See the [LoadItem.mimeType](../int
 
 #### Defined in
 
-[types.ts:14](https://github.com/dmnsgn/async-preloader/blob/ec8b4a0/src/types.ts#L14)
+[types.ts:14](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L14)

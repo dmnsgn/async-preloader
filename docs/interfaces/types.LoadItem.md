@@ -30,7 +30,7 @@ Default to `blob` for Image, Video and Audio. See [AsyncPreloader.defaultBodyMet
 
 #### Defined in
 
-[types.ts:62](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L62)
+[types.ts:62](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L62)
 
 ___
 
@@ -42,7 +42,7 @@ Font options used by FontFace and FontFaceObserver
 
 #### Defined in
 
-[types.ts:56](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L56)
+[types.ts:56](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L56)
 
 ___
 
@@ -56,7 +56,7 @@ Used to retrieve the [LoadedValue](../modules/types.md#loadedvalue) using `Async
 
 #### Defined in
 
-[types.ts:39](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L39)
+[types.ts:39](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L39)
 
 ___
 
@@ -73,7 +73,7 @@ Note: It needs to be specified for Font and Audio (webm, ogg).
 
 #### Defined in
 
-[types.ts:48](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L48)
+[types.ts:48](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L48)
 
 ___
 
@@ -87,7 +87,7 @@ Note: Only used to parse the document in the Xml Loader.
 
 #### Defined in
 
-[types.ts:68](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L68)
+[types.ts:68](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L68)
 
 ___
 
@@ -99,7 +99,7 @@ Optional `RequestInit` object to pass to the [fetch method](https://developer.mo
 
 #### Defined in
 
-[types.ts:52](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L52)
+[types.ts:52](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L52)
 
 ___
 
@@ -111,4 +111,4 @@ Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch
 
 #### Defined in
 
-[types.ts:33](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L33)
+[types.ts:33](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L33)

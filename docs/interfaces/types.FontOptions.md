@@ -25,7 +25,7 @@ Font options used by FontFace and FontFaceObserver
 
 #### Defined in
 
-[types.ts:95](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L95)
+[types.ts:95](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L95)
 
 ___
 
@@ -37,7 +37,7 @@ Argument for [FontFace.load](https://developer.mozilla.org/en-US/docs/Web/API/Fo
 
 #### Defined in
 
-[types.ts:103](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L103)
+[types.ts:103](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L103)
 
 ___
 
@@ -49,7 +49,7 @@ Argument for [FontFace.load](https://developer.mozilla.org/en-US/docs/Web/API/Fo
 
 #### Defined in
 
-[types.ts:107](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L107)
+[types.ts:107](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L107)
 
 ___
 
@@ -61,4 +61,4 @@ FontFaceObserver.FontVariant
 
 #### Defined in
 
-[types.ts:99](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L99)
+[types.ts:99](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L99)

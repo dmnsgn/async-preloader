@@ -2,6 +2,20 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [7.0.0](https://github.com/dmnsgn/async-preloader/compare/v6.1.2...v7.0.0) (2022-06-13)
+
+
+### Bug Fixes
+
+* exclude android and chrome from isSafari regex ([acf8770](https://github.com/dmnsgn/async-preloader/commit/acf87707d3a6cbb099b990b88a1bb4de42d7c4d6))
+
+
+### BREAKING CHANGES
+
+* changes audio and video loading in Chrome
+
+
+
 ## [6.1.2](https://github.com/dmnsgn/async-preloader/compare/v6.1.1...v6.1.2) (2022-04-02)
 
 

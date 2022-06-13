@@ -8,7 +8,7 @@ Keys used for the [AsyncPreloader.loaders](../classes/index.AsyncPreloader.md#lo
 
 ## Table of contents
 
-### Enumeration members
+### Enumeration Members
 
 - [ArrayBuffer](types.LoaderKey.md#arraybuffer)
 - [Audio](types.LoaderKey.md#audio)
@@ -21,102 +21,102 @@ Keys used for the [AsyncPreloader.loaders](../classes/index.AsyncPreloader.md#lo
 - [Video](types.LoaderKey.md#video)
 - [Xml](types.LoaderKey.md#xml)
 
-## Enumeration members
+## Enumeration Members
 
 ### ArrayBuffer
 
-• **ArrayBuffer** = `"ArrayBuffer"`
+• **ArrayBuffer**
 
 #### Defined in
 
-[types.ts:76](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L76)
+[types.ts:76](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L76)
 
 ___
 
 ### Audio
 
-• **Audio** = `"Audio"`
+• **Audio**
 
 #### Defined in
 
-[types.ts:83](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L83)
+[types.ts:83](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L83)
 
 ___
 
 ### Blob
 
-• **Blob** = `"Blob"`
+• **Blob**
 
 #### Defined in
 
-[types.ts:77](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L77)
+[types.ts:77](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L77)
 
 ___
 
 ### Font
 
-• **Font** = `"Font"`
+• **Font**
 
 #### Defined in
 
-[types.ts:85](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L85)
+[types.ts:85](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L85)
 
 ___
 
 ### FormData
 
-• **FormData** = `"FormData"`
+• **FormData**
 
 #### Defined in
 
-[types.ts:78](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L78)
+[types.ts:78](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L78)
 
 ___
 
 ### Image
 
-• **Image** = `"Image"`
+• **Image**
 
 #### Defined in
 
-[types.ts:81](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L81)
+[types.ts:81](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L81)
 
 ___
 
 ### Json
 
-• **Json** = `"Json"`
+• **Json**
 
 #### Defined in
 
-[types.ts:75](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L75)
+[types.ts:75](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L75)
 
 ___
 
 ### Text
 
-• **Text** = `"Text"`
+• **Text**
 
 #### Defined in
 
-[types.ts:79](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L79)
+[types.ts:79](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L79)
 
 ___
 
 ### Video
 
-• **Video** = `"Video"`
+• **Video**
 
 #### Defined in
 
-[types.ts:82](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L82)
+[types.ts:82](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L82)
 
 ___
 
 ### Xml
 
-• **Xml** = `"Xml"`
+• **Xml**
 
 #### Defined in
 
-[types.ts:84](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/types.ts#L84)
+[types.ts:84](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L84)

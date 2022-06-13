@@ -77,7 +77,7 @@ Default body method to be called on the Response from fetch if no body option is
 
 #### Defined in
 
-[index.ts:49](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L49)
+[index.ts:47](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L47)
 
 ___
 
@@ -89,7 +89,7 @@ Default loader to use if no loader key is specified in the [LoadItem](../interfa
 
 #### Defined in
 
-[index.ts:54](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L54)
+[index.ts:52](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L52)
 
 ___
 
@@ -101,7 +101,7 @@ Object that contains the loaded items
 
 #### Defined in
 
-[index.ts:44](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L44)
+[index.ts:42](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L42)
 
 ___
 
@@ -113,7 +113,7 @@ DOMParser instance for the XML loader
 
 #### Defined in
 
-[index.ts:83](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L83)
+[index.ts:81](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L81)
 
 ___
 
@@ -127,7 +127,7 @@ Allows the omission of the loader key in a [LoadItem.loader](../interfaces/types
 
 #### Defined in
 
-[index.ts:61](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L61)
+[index.ts:59](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L59)
 
 ## Methods
 
@@ -151,7 +151,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:166](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L166)
+[index.ts:164](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L164)
 
 ___
 
@@ -178,7 +178,7 @@ Fulfilled value of parsed Response according to the "body" option. Defaults to a
 
 #### Defined in
 
-[index.ts:275](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L275)
+[index.ts:273](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L273)
 
 ___
 
@@ -202,7 +202,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:177](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L177)
+[index.ts:175](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L175)
 
 ___
 
@@ -226,7 +226,7 @@ Fulfilled value with FontFace instance or initial id if no src provided.
 
 #### Defined in
 
-[index.ts:340](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L340)
+[index.ts:338](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L338)
 
 ___
 
@@ -250,7 +250,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:188](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L188)
+[index.ts:186](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L186)
 
 ___
 
@@ -277,7 +277,7 @@ Fulfilled value of parsed Response according to the "body" option. Defaults to a
 
 #### Defined in
 
-[index.ts:203](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L203)
+[index.ts:201](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L201)
 
 ___
 
@@ -301,7 +301,7 @@ Resolve when item is loaded, reject for any error
 
 #### Defined in
 
-[index.ts:103](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L103)
+[index.ts:101](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L101)
 
 ___
 
@@ -325,7 +325,7 @@ Resolve when all items are loaded, reject for any error
 
 #### Defined in
 
-[index.ts:93](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L93)
+[index.ts:91](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L91)
 
 ___
 
@@ -349,7 +349,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:155](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L155)
+[index.ts:153](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L153)
 
 ___
 
@@ -372,7 +372,7 @@ Load a manifest of items
 
 #### Defined in
 
-[index.ts:125](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L125)
+[index.ts:123](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L123)
 
 ___
 
@@ -396,7 +396,7 @@ Fulfilled value of parsed Response
 
 #### Defined in
 
-[index.ts:144](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L144)
+[index.ts:142](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L142)
 
 ___
 
@@ -423,7 +423,7 @@ Fulfilled value of parsed Response according to the "body" option. Defaults to a
 
 #### Defined in
 
-[index.ts:235](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L235)
+[index.ts:233](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L233)
 
 ___
 
@@ -450,7 +450,7 @@ Result of Response parsed as a document.
 
 #### Defined in
 
-[index.ts:317](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L317)
+[index.ts:315](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L315)
 
 ___
 
@@ -474,7 +474,7 @@ Fetch response
 
 #### Defined in
 
-[index.ts:375](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L375)
+[index.ts:373](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L373)
 
 ___
 
@@ -496,7 +496,7 @@ Get file base name
 
 #### Defined in
 
-[index.ts:413](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L413)
+[index.ts:411](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L411)
 
 ___
 
@@ -518,7 +518,7 @@ Get file extension
 
 #### Defined in
 
-[index.ts:403](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L403)
+[index.ts:401](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L401)
 
 ___
 
@@ -540,7 +540,7 @@ Get file name
 
 #### Defined in
 
-[index.ts:423](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L423)
+[index.ts:421](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L421)
 
 ___
 
@@ -562,7 +562,7 @@ Retrieve loader key from extension (when the loader option isn't specified in th
 
 #### Defined in
 
-[index.ts:436](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L436)
+[index.ts:434](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L434)
 
 ___
 
@@ -585,7 +585,7 @@ Retrieve mime type from extension
 
 #### Defined in
 
-[index.ts:450](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L450)
+[index.ts:448](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L448)
 
 ___
 
@@ -611,4 +611,4 @@ The returned object property
 
 #### Defined in
 
-[index.ts:387](https://github.com/dmnsgn/async-preloader/blob/be46c7d/src/index.ts#L387)
+[index.ts:385](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/index.ts#L385)

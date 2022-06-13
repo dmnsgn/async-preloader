@@ -11,9 +11,7 @@ import {
 } from "./types.js";
 
 const isSafari =
-  typeof navigator !== "undefined" &&
-  navigator &&
-  navigator.userAgent.indexOf("Safari") > -1;
+  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) === true;
 
 /**
  * AsyncPreloader: assets preloader using ES2017 async/await and fetch.

@@ -197,29 +197,34 @@ class AsyncPreloader {
    * - direct call of the method
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLImageElement with a blob as srcObject or src.
+   * @returns {Promise<LoadedValue>} Fulfilled value with a decoded HTMLImageElement instance of or a parsed Response according to the "body" option. Defaults to a decoded HTMLImageElement.
    */
   public loadImage = async (item: LoadItem): Promise<LoadedValue> => {
-    const response: Response = await AsyncPreloader.fetchItem(item);
-    const data: LoadedValue = await response[
-      item.body || this.defaultBodyMethod
-    ]();
-
-    if (item.body) return data;
-
     const image = new Image();
 
-    return await new Promise<HTMLImageElement>((resolve, reject) => {
-      image.addEventListener("load", function load() {
-        image.removeEventListener("load", load);
-        resolve(image);
+    if (item.body) {
+      const response: Response = await AsyncPreloader.fetchItem(item);
+      const data: LoadedValue = await response[item.body]();
+
+      if (item.body !== "blob") return data;
+
+      return await new Promise<HTMLImageElement>((resolve, reject) => {
+        image.addEventListener("load", function load() {
+          image.removeEventListener("load", load);
+          resolve(image);
+        });
+        image.addEventListener("error", function error(event) {
+          image.removeEventListener("error", error);
+          reject(event);
+        });
+        image.src = URL.createObjectURL(data as Blob);
       });
-      image.addEventListener("error", function error() {
-        image.removeEventListener("error", error);
-        reject(image);
-      });
-      image.src = URL.createObjectURL(data as Blob);
-    });
+    }
+
+    image.src = item.src as string;
+    await image.decode();
+
+    return image;
   };
 
   /**

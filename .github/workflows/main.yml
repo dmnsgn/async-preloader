@@ -12,7 +12,7 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        node_version: ["16", "17"]
+        node_version: ["18"]
     steps:
       - uses: actions/checkout@v2
       - uses: actions/setup-node@v2

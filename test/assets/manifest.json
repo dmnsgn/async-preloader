@@ -2,31 +2,31 @@
   "items": [
     {
       "id": "myDefaultFile",
-      "src": "http://localhost:3000/test/assets/default.unknown"
+      "src": "/test/assets/default.unknown"
     },
     {
       "id": "myTextFile",
-      "src": "http://localhost:3000/test/assets/text.txt"
+      "src": "/test/assets/text.txt"
     },
     {
       "id": "myJsonFile",
-      "src": "http://localhost:3000/test/assets/json.json"
+      "src": "/test/assets/json.json"
     },
     {
       "id": "myXmlFile",
-      "src": "http://localhost:3000/test/assets/xml.xml"
+      "src": "/test/assets/xml.xml"
     },
     {
       "id": "mySvgFile",
-      "src": "http://localhost:3000/test/assets/xml.svg"
+      "src": "/test/assets/xml.svg"
     },
     {
       "id": "myHtmlFile",
-      "src": "http://localhost:3000/test/assets/xml.html"
+      "src": "/test/assets/xml.html"
     },
     {
       "id": "myXmlDefaulFile",
-      "src": "http://localhost:3000/test/assets/xml.unknown",
+      "src": "/test/assets/xml.unknown",
       "loader": "Xml"
     }
   ],
@@ -34,31 +34,31 @@
     "path": [
       {
         "id": "myDefaultFile",
-        "src": "http://localhost:3000/test/assets/default.unknown"
+        "src": "/test/assets/default.unknown"
       },
       {
         "id": "myTextFile",
-        "src": "http://localhost:3000/test/assets/text.txt"
+        "src": "/test/assets/text.txt"
       },
       {
         "id": "myJsonFile",
-        "src": "http://localhost:3000/test/assets/json.json"
+        "src": "/test/assets/json.json"
       },
       {
         "id": "myXmlFile",
-        "src": "http://localhost:3000/test/assets/xml.xml"
+        "src": "/test/assets/xml.xml"
       },
       {
         "id": "mySvgFile",
-        "src": "http://localhost:3000/test/assets/xml.svg"
+        "src": "/test/assets/xml.svg"
       },
       {
         "id": "myHtmlFile",
-        "src": "http://localhost:3000/test/assets/xml.html"
+        "src": "/test/assets/xml.html"
       },
       {
         "id": "myXmlDefaulFile",
-        "src": "http://localhost:3000/test/assets/xml.unknown",
+        "src": "/test/assets/xml.unknown",
         "loader": "Xml"
       }
     ]

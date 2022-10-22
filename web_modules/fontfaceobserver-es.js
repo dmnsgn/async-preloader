@@ -1,4 +1,4 @@
-import { _ as _export, ad as asyncIteratorIteration, ae as iterate, O as anObject } from './common/esnext.iterator.filter-bd9c4317.js';
+import { _ as _export, j as asyncIteratorIteration, k as iterate, g as getIteratorDirect } from './common/esnext.iterator.filter-8f36a6d4.js';
 
 // https://github.com/tc39/proposal-iterator-helpers
 
@@ -17,7 +17,7 @@ _export({ target: 'AsyncIterator', proto: true, real: true, forced: true }, {
 
 _export({ target: 'Iterator', proto: true, real: true, forced: true }, {
   forEach: function forEach(fn) {
-    iterate(anObject(this), fn, { IS_ITERATOR: true });
+    iterate(getIteratorDirect(this), fn, { IS_RECORD: true });
   }
 });
 
@@ -27,7 +27,6 @@ function _classCallCheck(instance, Constructor) {
     throw new TypeError("Cannot call a class as a function");
   }
 }
-
 function _defineProperties(target, props) {
   for (var i = 0; i < props.length; i++) {
     var descriptor = props[i];
@@ -37,13 +36,11 @@ function _defineProperties(target, props) {
     Object.defineProperty(target, descriptor.key, descriptor);
   }
 }
-
 function _createClass(Constructor, protoProps, staticProps) {
   if (protoProps) _defineProperties(Constructor.prototype, protoProps);
   if (staticProps) _defineProperties(Constructor, staticProps);
   return Constructor;
 }
-
 function _defineProperty(obj, key, value) {
   if (key in obj) {
     Object.defineProperty(obj, key, {
@@ -55,29 +52,23 @@ function _defineProperty(obj, key, value) {
   } else {
     obj[key] = value;
   }
-
   return obj;
 }
-
 function _objectSpread(target) {
   for (var i = 1; i < arguments.length; i++) {
     var source = arguments[i] != null ? arguments[i] : {};
     var ownKeys = Object.keys(source);
-
     if (typeof Object.getOwnPropertySymbols === 'function') {
       ownKeys = ownKeys.concat(Object.getOwnPropertySymbols(source).filter(function (sym) {
         return Object.getOwnPropertyDescriptor(source, sym).enumerable;
       }));
     }
-
     ownKeys.forEach(function (key) {
       _defineProperty(target, key, source[key]);
     });
   }
-
   return target;
 }
-
 var styles = {
   maxWidth: "none",
   display: "inline-block",
@@ -108,15 +99,14 @@ var fontStyle = {
   whiteSpace: "nowrap",
   fontSynthesis: "none"
 };
-
-var Ruler = /*#__PURE__*/function () {
+var Ruler = /*#__PURE__*/
+function () {
   /**
    *
    * @param {string} text
    */
   function Ruler(text) {
     _classCallCheck(this, Ruler);
-
     this.element = document.createElement("div");
     this.element.setAttribute("aria-hidden", "true");
     this.element.appendChild(document.createTextNode(text));
@@ -138,7 +128,6 @@ var Ruler = /*#__PURE__*/function () {
    * @return {Element}
    */
 
-
   _createClass(Ruler, [{
     key: "getElement",
     value: function getElement() {
@@ -147,7 +136,6 @@ var Ruler = /*#__PURE__*/function () {
     /**
      * @param {string} font
      */
-
   }, {
     key: "setFont",
     value: function setFont(font) {
@@ -158,7 +146,6 @@ var Ruler = /*#__PURE__*/function () {
     /**
      * @return {number}
      */
-
   }, {
     key: "getWidth",
     value: function getWidth() {
@@ -167,7 +154,6 @@ var Ruler = /*#__PURE__*/function () {
     /**
      * @param {string} width
      */
-
   }, {
     key: "setWidth",
     value: function setWidth(width) {
@@ -178,7 +164,6 @@ var Ruler = /*#__PURE__*/function () {
      *
      * @return {boolean}
      */
-
   }, {
     key: "reset",
     value: function reset() {
@@ -187,7 +172,6 @@ var Ruler = /*#__PURE__*/function () {
       this.expandableInner.style.width = width + "px";
       this.expandable.scrollLeft = width;
       this.collapsible.scrollLeft = this.collapsible.scrollWidth + 100;
-
       if (this.lastOffsetWidth !== offsetWidth) {
         this.lastOffsetWidth = offsetWidth;
         return true;
@@ -199,7 +183,6 @@ var Ruler = /*#__PURE__*/function () {
      * @private
      * @param {function(number)} callback
      */
-
   }, {
     key: "onScroll",
     value: function onScroll(callback) {
@@ -210,25 +193,20 @@ var Ruler = /*#__PURE__*/function () {
     /**
      * @param {function(number)} callback
      */
-
   }, {
     key: "onResize",
     value: function onResize(callback) {
       var that = this;
-
       function onScroll() {
         that.onScroll(callback);
       }
-
       this.collapsible.addEventListener("scroll", onScroll);
       this.expandable.addEventListener("scroll", onScroll);
       this.reset();
     }
   }]);
-
   return Ruler;
 }();
-
 function onReady(callback) {
   document.body ? callback() : document.addEventListener ? document.addEventListener("DOMContentLoaded", function c() {
     document.removeEventListener("DOMContentLoaded", c);
@@ -237,13 +215,13 @@ function onReady(callback) {
     if ("interactive" == document.readyState || "complete" == document.readyState) document.detachEvent("onreadystatechange", k), callback();
   });
 }
+
 /** Class for FontFaceObserver. */
 
-
-var FontFaceObserver = /*#__PURE__*/function () {
+var FontFaceObserver = /*#__PURE__*/
+function () {
   _createClass(FontFaceObserver, null, [{
     key: "getUserAgent",
-
     /**
      * @type {null|boolean}
      */
@@ -273,7 +251,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
     /**
      * @return {string}
      */
-
   }, {
     key: "getNavigatorVendor",
     value: function getNavigatorVendor() {
@@ -285,7 +262,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
      *
      * @return {boolean}
      */
-
   }, {
     key: "hasWebKitFallbackBug",
     value: function hasWebKitFallbackBug() {
@@ -293,7 +269,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
         var match = /AppleWebKit\/([0-9]+)(?:\.([0-9]+))/.exec(FontFaceObserver.getUserAgent());
         FontFaceObserver.HAS_WEBKIT_FALLBACK_BUG = !!match && (parseInt(match[1], 10) < 536 || parseInt(match[1], 10) === 536 && parseInt(match[2], 10) <= 11);
       }
-
       return FontFaceObserver.HAS_WEBKIT_FALLBACK_BUG;
     }
     /**
@@ -312,7 +287,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
      *
      * @return {boolean}
      */
-
   }, {
     key: "hasSafari10Bug",
     value: function hasSafari10Bug() {
@@ -324,7 +298,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
           FontFaceObserver.HAS_SAFARI_10_BUG = false;
         }
       }
-
       return FontFaceObserver.HAS_SAFARI_10_BUG;
     }
     /**
@@ -332,14 +305,12 @@ var FontFaceObserver = /*#__PURE__*/function () {
      *
      * @return {boolean}
      */
-
   }, {
     key: "supportsNativeFontLoading",
     value: function supportsNativeFontLoading() {
       if (FontFaceObserver.SUPPORTS_NATIVE_FONT_LOADING === null) {
         FontFaceObserver.SUPPORTS_NATIVE_FONT_LOADING = !!document["fonts"];
       }
-
       return FontFaceObserver.SUPPORTS_NATIVE_FONT_LOADING;
     }
     /**
@@ -348,20 +319,16 @@ var FontFaceObserver = /*#__PURE__*/function () {
      *
      * @return {boolean}
      */
-
   }, {
     key: "supportStretch",
     value: function supportStretch() {
       if (FontFaceObserver.SUPPORTS_STRETCH === null) {
         var div = document.createElement("div");
-
         try {
           div.style.font = "condensed 100px sans-serif";
         } catch (e) {}
-
         FontFaceObserver.SUPPORTS_STRETCH = div.style.font !== "";
       }
-
       return FontFaceObserver.SUPPORTS_STRETCH;
     }
     /**
@@ -378,14 +345,11 @@ var FontFaceObserver = /*#__PURE__*/function () {
      * (optional). The object can contain `weight`, `style`, and `stretch`
      * properties. If a property is not present it will default to `normal`.
      */
-
   }]);
 
   function FontFaceObserver(family) {
     var descriptors = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : {};
-
     _classCallCheck(this, FontFaceObserver);
-
     this.family = family;
     this.style = descriptors.style || "normal";
     this.weight = descriptors.weight || "normal";
@@ -400,7 +364,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
    * @return {Promise.<FontFaceObserver>}
    */
 
-
   _createClass(FontFaceObserver, [{
     key: "load",
     value: function load(text, timeout) {
@@ -414,7 +377,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
           var loader = new Promise(function (resolve, reject) {
             var check = function check() {
               var now = that.getTime();
-
               if (now - start >= timeoutValue) {
                 reject(new Error("" + timeoutValue + "ms timeout exceeded"));
               } else {
@@ -427,7 +389,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
                 }, reject);
               }
             };
-
             check();
           });
           var timer = new Promise(function (resolve, reject) {
@@ -479,7 +440,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
              *    timeout).
              */
 
-
             function check() {
               if (widthA != -1 && widthB != -1 || widthA != -1 && widthC != -1 || widthB != -1 && widthC != -1) {
                 if (widthA == widthB || widthA == widthC || widthB == widthC) {
@@ -496,14 +456,12 @@ var FontFaceObserver = /*#__PURE__*/function () {
                       return;
                     }
                   }
-
                   removeContainer();
                   clearTimeout(timeoutId);
                   resolve(that);
                 }
               }
             } // This ensures the scroll direction is correct.
-
 
             container.dir = "ltr";
             rulerA.setFont(that.getStyle("sans-serif"));
@@ -516,27 +474,22 @@ var FontFaceObserver = /*#__PURE__*/function () {
             fallbackWidthA = rulerA.getWidth();
             fallbackWidthB = rulerB.getWidth();
             fallbackWidthC = rulerC.getWidth();
-
             function checkForTimeout() {
               var now = that.getTime();
-
               if (now - start >= timeoutValue) {
                 removeContainer();
                 reject(new Error("" + timeoutValue + "ms timeout exceeded"));
               } else {
                 var hidden = document["hidden"];
-
                 if (hidden === true || hidden === undefined) {
                   widthA = rulerA.getWidth();
                   widthB = rulerB.getWidth();
                   widthC = rulerC.getWidth();
                   check();
                 }
-
                 timeoutId = setTimeout(checkForTimeout, 50);
               }
             }
-
             checkForTimeout();
             rulerA.onResize(function (width) {
               widthA = width;
@@ -563,7 +516,6 @@ var FontFaceObserver = /*#__PURE__*/function () {
      * @param {string} family
      * @return {string}
      */
-
   }, {
     key: "getStyle",
     value: function getStyle(family) {
@@ -574,27 +526,19 @@ var FontFaceObserver = /*#__PURE__*/function () {
      *
      * @return {number}
      */
-
   }, {
     key: "getTime",
     value: function getTime() {
       return new Date().getTime();
     }
   }]);
-
   return FontFaceObserver;
 }();
-
 _defineProperty(FontFaceObserver, "Ruler", Ruler);
-
 _defineProperty(FontFaceObserver, "HAS_WEBKIT_FALLBACK_BUG", null);
-
 _defineProperty(FontFaceObserver, "HAS_SAFARI_10_BUG", null);
-
 _defineProperty(FontFaceObserver, "SUPPORTS_STRETCH", null);
-
 _defineProperty(FontFaceObserver, "SUPPORTS_NATIVE_FONT_LOADING", null);
-
 _defineProperty(FontFaceObserver, "DEFAULT_TIMEOUT", 3000);
 
 export default FontFaceObserver;

@@ -1,21 +1,24 @@
-const rootUrl = "http://localhost:3000/test/assets/";
+import { AsyncPreloader } from "../src";
+import { DOMParser } from "@xmldom/xmldom";
+
+const pathname = "test/assets/";
 
 export const items = new Map()
-  .set("default", { id: "myDefaultFile", src: `${rootUrl}default.unknown` })
-  .set("txt", { id: "myTextFile", src: `${rootUrl}text.txt` })
-  .set("json", { id: "myJsonFile", src: `${rootUrl}json.json` })
-  .set("jpg", { id: "myImageFile", src: `${rootUrl}image.jpg` })
-  .set("mp4", { id: "myVideoFile", src: `${rootUrl}video.mp4` })
-  .set("mp3", { id: "myAudioFile", src: `${rootUrl}audio.mp3` })
-  .set("xml", { id: "myXmlFile", src: `${rootUrl}xml.xml` })
-  .set("svg", { id: "mySvgFile", src: `${rootUrl}xml.svg` })
-  .set("html", { id: "myHtmlFile", src: `${rootUrl}xml.html` })
+  .set("default", { id: "myDefaultFile", src: `${pathname}default.unknown` })
+  .set("txt", { id: "myTextFile", src: `${pathname}text.txt` })
+  .set("json", { id: "myJsonFile", src: `${pathname}json.json` })
+  .set("jpg", { id: "myImageFile", src: `${pathname}image.jpg` })
+  .set("mp4", { id: "myVideoFile", src: `${pathname}video.mp4` })
+  .set("mp3", { id: "myAudioFile", src: `${pathname}audio.mp3` })
+  .set("xml", { id: "myXmlFile", src: `${pathname}xml.xml` })
+  .set("svg", { id: "mySvgFile", src: `${pathname}xml.svg` })
+  .set("html", { id: "myHtmlFile", src: `${pathname}xml.html` })
   .set("defaultXml", {
     id: "myXmlDefaultFile",
-    src: `${rootUrl}xml.unknown`,
+    src: `${pathname}xml.unknown`,
     loader: "Xml",
   })
-  .set("font", { id: "myFont", src: `${rootUrl}font.ttf` })
+  .set("font", { id: "myFont", src: `${pathname}font.ttf` })
   .set("fontface", {
     id: "Space Regular",
     loader: "Font",
@@ -128,4 +131,17 @@ export const expected = new Map()
   )
   .set("json", { test: "json" });
 
-export const manifestSrc = `${rootUrl}manifest.json`;
+export const manifestSrc = `${pathname}manifest.json`;
+
+// Node
+const filterNodeSupportedItems = (key) =>
+  ["default", "txt", "json", "string"].includes(key);
+
+export const getNodeSupportedItems = (items) =>
+  Array.from(
+    new Map([...items].filter(([k]) => filterNodeSupportedItems(k))).values()
+  );
+
+export const expectedNode = new Map(
+  [...expected].filter(([k]) => filterNodeSupportedItems(k))
+);

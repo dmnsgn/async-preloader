@@ -229,7 +229,7 @@ class AsyncPreloader {
    * - direct call of the method
    *
    * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLVideoElement with a blob as src.
+   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLVideoElement with a blob as srcObject or src.
    */
   public loadVideo = async (item: LoadItem): Promise<LoadedValue> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -246,9 +246,9 @@ class AsyncPreloader {
         video.removeEventListener("canplaythrough", canplaythrough);
         resolve(video);
       });
-      video.addEventListener("error", function error() {
+      video.addEventListener("error", function error(event) {
         video.removeEventListener("error", error);
-        reject(video);
+        reject(event);
       });
 
       try {
@@ -288,9 +288,9 @@ class AsyncPreloader {
         audio.removeEventListener("canplaythrough", canplaythrough);
         resolve(audio);
       });
-      audio.addEventListener("error", function error() {
+      audio.addEventListener("error", function error(event) {
         audio.removeEventListener("error", error);
-        reject(audio);
+        reject(event);
       });
 
       try {

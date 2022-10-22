@@ -11,7 +11,8 @@ import {
 } from "./types.js";
 
 const isSafari =
-  /^((?!chrome|android).)*safari/i.test(navigator.userAgent) === true;
+  /^((?!chrome|android).)*safari/i.test(globalThis.navigator?.userAgent) ===
+  true;
 
 /**
  * AsyncPreloader: assets preloader using ES2017 async/await and fetch.
@@ -321,6 +322,10 @@ class AsyncPreloader {
         ...item,
         mimeType: AsyncPreloader.getMimeType(LoaderKey.Xml, extension),
       };
+    }
+
+    if (!AsyncPreloader.domParser) {
+      throw new Error("DomParser is not supported.");
     }
 
     const response: Response = await AsyncPreloader.fetchItem(item);

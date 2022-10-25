@@ -2,6 +2,28 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+# [8.0.0](https://github.com/dmnsgn/async-preloader/compare/v7.0.0...v8.0.0) (2022-10-25)
+
+
+### Bug Fixes
+
+* check for unsupported features in nodes ([5ad3ae6](https://github.com/dmnsgn/async-preloader/commit/5ad3ae6e2c7e613f4c2be6d6d6a6830ec92801b2))
+* reject with error event in loadAudio/Video ([5735f9a](https://github.com/dmnsgn/async-preloader/commit/5735f9a6bf040308bbc436a828e5f39d1aa30fa0))
+
+
+### Features
+
+* add noDecode ([7394e0d](https://github.com/dmnsgn/async-preloader/commit/7394e0d200a546d1c480866c3d8d5a711d5d1d2a))
+* allow string for loadItem(s) ([7025c7d](https://github.com/dmnsgn/async-preloader/commit/7025c7d95f885b01c1121e1e8de877b61aa8ca81))
+* use HTMLImageElement.decode() ([2388d40](https://github.com/dmnsgn/async-preloader/commit/2388d40d5fd134efab2ea01a67acb1574d91be64)), closes [#89](https://github.com/dmnsgn/async-preloader/issues/89)
+
+
+### BREAKING CHANGES
+
+* loadImage now decodes the image by default
+
+
+
 # [7.0.0](https://github.com/dmnsgn/async-preloader/compare/v6.1.2...v7.0.0) (2022-06-13)
 
 

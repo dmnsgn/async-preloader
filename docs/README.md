@@ -13,7 +13,7 @@ async-preloader / [Modules](modules.md)
 [![tested with jest](https://img.shields.io/badge/tested_with-jest-99424f.svg)](https://github.com/facebook/jest)
 [![license](https://img.shields.io/github/license/dmnsgn/async-preloader)](https://github.com/dmnsgn/async-preloader/blob/main/LICENSE.md)
 
-Assets preloader using ES2017 async/await and fetch.
+Assets preloader using async/await and fetch for usage both in the browser and Node.js.
 
 [![paypal](https://img.shields.io/badge/donate-paypal-informational?logo=paypal)](https://paypal.me/dmnsgn)
 [![coinbase](https://img.shields.io/badge/donate-coinbase-informational?logo=coinbase)](https://commerce.coinbase.com/checkout/56cbdf28-e323-48d8-9c98-7019e72c97f3)
@@ -32,7 +32,7 @@ npm install --save async-preloader
 
 ## Quick start
 
-This section covers the basic usage of `AsyncPreloader`. For more informations about async/await, see [Async functions - making promises friendly](https://developers.google.com/web/fundamentals/primers/async-functions). Usage in Node.js environment is limited to its capacity to handle `fetch` requests. Polyfills like [`node-fetch`](https://www.npmjs.com/package/node-fetch) and [`xmldom`](https://www.npmjs.com/package/xmldom) might come handy.
+This section covers the basic usage of `AsyncPreloader`. For more informations about async/await, see [Async functions - making promises friendly](https://developers.google.com/web/fundamentals/primers/async-functions). Usage in Node.js environment is limited to its capacity to handle `fetch` requests and DOM APIs. Polyfills like [`undici`](https://www.npmjs.com/package/undici/)/[`node-fetch`](https://www.npmjs.com/package/node-fetch) (for Node.js below 18) and [`xmldom`](https://www.npmjs.com/package/xmldom) might come handy .
 
 ### Preload items and retrieve them
 
@@ -71,7 +71,7 @@ pItems
 
 ---
 
-Note: Font loader is will try to detect the font in the page using [FontFaceObserver](https://github.com/dmnsgn/fontfaceobserver) when no src is specified.
+Note: Font loader will try to detect the font in the page using [FontFaceObserver](https://github.com/dmnsgn/fontfaceobserver) when no src is specified.
 
 ### Load items from a manifest file
 
@@ -100,7 +100,7 @@ pItems
 
 This section takes a closer look at the options of `AsyncPreloader`.
 
-### Load a single item by using the [loaders](https://github.com/dmnsgn/async-preloader/blob/master/src/index.ts#L40) directly
+### Load a single item by using the [loaders](https://github.com/dmnsgn/async-preloader/blob/main/src/index.ts#L60) directly
 
 ```javascript
 import AsyncPreloader from "async-preloader";
@@ -119,6 +119,21 @@ pItem
 
 Note: Using the loaders directly won't add the item to the `items` Map.
 Alternatively you could use `AsyncPreloader.loadItem` and rely on the file extension or add `{ loader: "Json"}` to the item.
+
+### Load a single item by using a string directly
+
+```javascript
+import AsyncPreloader from "async-preloader";
+
+try {
+  // Pass a string
+  //
+  // Returns a Promise with the LoadedValue
+  const pItem = await AsyncPreloader.loadItem("assets/json.json");
+} catch (error) {
+  console.error(error);
+}
+```
 
 ### Get an `ArrayBuffer` instead of the default `Blob`
 
@@ -191,10 +206,6 @@ try {
   clearTimeout(timeoutId);
 }
 ```
-
----
-
-Note: the example above uses the async functions (which is the core of this module). You'll need to transpile it if you are targeting older browsers (namely IE11). See support [here](https://caniuse.com/#feat=async-functions).
 
 ## License
 

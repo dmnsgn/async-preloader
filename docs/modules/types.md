@@ -31,7 +31,7 @@ Methods that can be called on a Request (object returned by fetch and that imple
 
 #### Defined in
 
-[types.ts:4](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L4)
+[types.ts:4](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L4)
 
 ___
 
@@ -43,7 +43,7 @@ Types that can be returned by all the [BodyMethod](types.md#bodymethod)
 
 #### Defined in
 
-[types.ts:9](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L9)
+[types.ts:9](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L9)
 
 ___
 
@@ -55,7 +55,7 @@ Types that can be returned by all the loaders.
 
 #### Defined in
 
-[types.ts:19](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L19)
+[types.ts:19](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L19)
 
 ___
 
@@ -63,8 +63,8 @@ ___
 
 Ƭ **LoadedXMLValue**: `Document` \| `XMLDocument`
 
-Types that can be returned by the Xml loader. See the [LoadItem.mimeType](../interfaces/types.LoadItem.md#mimetype).
+Types that can be returned by the Xml loader. See the [mimeType](../interfaces/types.LoadItem.md#mimetype).
 
 #### Defined in
 
-[types.ts:14](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L14)
+[types.ts:14](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L14)

@@ -15,6 +15,7 @@ Main interface representing an object to load. src is the only mandatory key.
 - [id](types.LoadItem.md#id)
 - [loader](types.LoadItem.md#loader)
 - [mimeType](types.LoadItem.md#mimetype)
+- [noDecode](types.LoadItem.md#nodecode)
 - [options](types.LoadItem.md#options)
 - [src](types.LoadItem.md#src)
 
@@ -24,13 +25,13 @@ Main interface representing an object to load. src is the only mandatory key.
 
 • `Optional` **body**: [`BodyMethod`](../modules/types.md#bodymethod)
 
-Optional [BodyMethod](../modules/types.md#bodymethod) used to handle the Response.
+Optional[BodyMethod](../modules/types.md#bodymethod) used to handle the Response.
 
-Default to `blob` for Image, Video and Audio. See [AsyncPreloader.defaultBodyMethod](../classes/index.AsyncPreloader.md#defaultbodymethod).
+Default to `blob` for Image, Video and Audio. See AsyncPreloader.defaultBodyMethod.
 
 #### Defined in
 
-[types.ts:62](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L62)
+[types.ts:62](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L62)
 
 ___
 
@@ -42,7 +43,7 @@ Font options used by FontFace and FontFaceObserver
 
 #### Defined in
 
-[types.ts:56](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L56)
+[types.ts:56](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L56)
 
 ___
 
@@ -56,7 +57,7 @@ Used to retrieve the [LoadedValue](../modules/types.md#loadedvalue) using `Async
 
 #### Defined in
 
-[types.ts:39](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L39)
+[types.ts:39](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L39)
 
 ___
 
@@ -67,13 +68,13 @@ ___
 Optional [LoaderKey](../enums/types.LoaderKey.md).
 
 If none specified, the loader is inferred from the file extension.
-Default to `Text` if the extension doesn't match any of the extensions specified in [AsyncPreloader.loaders](../classes/index.AsyncPreloader.md#loaders).
+Default to `Text` if the extension doesn't match any of the extensions specified in AsyncPreloader.loaders.
 
 Note: It needs to be specified for Font and Audio (webm, ogg).
 
 #### Defined in
 
-[types.ts:48](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L48)
+[types.ts:48](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L48)
 
 ___
 
@@ -87,7 +88,21 @@ Note: Only used to parse the document in the Xml Loader.
 
 #### Defined in
 
-[types.ts:68](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L68)
+[types.ts:68](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L68)
+
+___
+
+### noDecode
+
+• `Optional` **noDecode**: `boolean`
+
+Optional disable [image decoding](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode).
+
+Note: Only used for loadImage.
+
+#### Defined in
+
+[types.ts:74](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L74)
 
 ___
 
@@ -99,7 +114,7 @@ Optional `RequestInit` object to pass to the [fetch method](https://developer.mo
 
 #### Defined in
 
-[types.ts:52](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L52)
+[types.ts:52](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L52)
 
 ___
 
@@ -111,4 +126,4 @@ Input for the [Fetch API](https://developer.mozilla.org/en-US/docs/Web/API/Fetch
 
 #### Defined in
 
-[types.ts:33](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L33)
+[types.ts:33](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L33)

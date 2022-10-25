@@ -4,7 +4,7 @@
 
 [types](../modules/types.md).LoaderValue
 
-Values used for the [AsyncPreloader.loaders](../classes/index.AsyncPreloader.md#loaders)
+Values used for the AsyncPreloader.loaders
 
 ## Table of contents
 
@@ -26,7 +26,7 @@ Note: Only used to parse the document in the Xml Loader.
 
 #### Defined in
 
-[types.ts:129](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L129)
+[types.ts:135](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L135)
 
 ___
 
@@ -38,7 +38,7 @@ ___
 
 #### Defined in
 
-[types.ts:117](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L117)
+[types.ts:123](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L123)
 
 ___
 
@@ -56,4 +56,4 @@ Note: Only used to parse the document in the Xml Loader.
 
 #### Defined in
 
-[types.ts:123](https://github.com/dmnsgn/async-preloader/blob/acf8770/src/types.ts#L123)
+[types.ts:129](https://github.com/dmnsgn/async-preloader/blob/dfdf759/src/types.ts#L129)

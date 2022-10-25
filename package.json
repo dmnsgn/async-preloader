@@ -1,14 +1,15 @@
 {
   "name": "async-preloader",
   "version": "7.0.0",
-  "description": "Assets preloader using ES2017 async/await and fetch.",
+  "description": "Assets preloader using async/await and fetch for usage both in the browser and Node.js.",
   "keywords": [
     "preloader",
     "assets",
     "async",
     "await",
     "typescript",
-    "ES2017"
+    "ES2017",
+    "fetch"
   ],
   "homepage": "https://github.com/dmnsgn/async-preloader",
   "bugs": "https://github.com/dmnsgn/async-preloader/issues",

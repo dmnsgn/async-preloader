@@ -66,6 +66,12 @@ export interface LoadItem {
    * Note: Only used to parse the document in the Xml Loader.
    */
   mimeType?: DOMParserSupportedType;
+  /**
+   * Optional disable [image decoding](https://developer.mozilla.org/en-US/docs/Web/API/HTMLImageElement/decode).
+   *
+   * Note: Only used for loadImage.
+   */
+  noDecode?: boolean;
 }
 
 /**

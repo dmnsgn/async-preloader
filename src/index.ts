@@ -222,7 +222,8 @@ class AsyncPreloader {
     }
 
     image.src = item.src as string;
-    await image.decode();
+
+    if (!item.noDecode) await image.decode();
 
     return image;
   };

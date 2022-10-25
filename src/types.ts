@@ -4,12 +4,12 @@
 export type BodyMethod = "arrayBuffer" | "blob" | "formData" | "json" | "text";
 
 /**
- * Types that can be returned by all the [[BodyMethod]]
+ * Types that can be returned by all the {@link BodyMethod}
  */
 export type BodyResolveValue = ArrayBuffer | Blob | FormData | JSON | string;
 
 /**
- * Types that can be returned by the Xml loader. See the [[LoadItem.mimeType]].
+ * Types that can be returned by the Xml loader. See the {@link LoadItem.mimeType}.
  */
 export type LoadedXMLValue = Document | XMLDocument;
 
@@ -34,14 +34,14 @@ export interface LoadItem {
   /**
    * Optional key.
    *
-   * Used to retrieve the [[LoadedValue]] using `AsyncPreloader.items.get(id)`
+   * Used to retrieve the {@link LoadedValue} using `AsyncPreloader.items.get(id)`
    */
   id?: unknown;
   /**
-   * Optional [[LoaderKey]].
+   * Optional {@link LoaderKey}.
    *
    * If none specified, the loader is inferred from the file extension.
-   * Default to `Text` if the extension doesn't match any of the extensions specified in [[AsyncPreloader.loaders]].
+   * Default to `Text` if the extension doesn't match any of the extensions specified in {@link AsyncPreloader.loaders}.
    *
    * Note: It needs to be specified for Font and Audio (webm, ogg).
    */
@@ -55,9 +55,9 @@ export interface LoadItem {
    */
   fontOptions?: FontOptions;
   /**
-   * Optional [[BodyMethod]] used to handle the Response.
+   * Optional{@link BodyMethod} used to handle the Response.
    *
-   * Default to `blob` for Image, Video and Audio. See [[AsyncPreloader.defaultBodyMethod]].
+   * Default to `blob` for Image, Video and Audio. See {@link AsyncPreloader.defaultBodyMethod}.
    */
   body?: BodyMethod;
   /**
@@ -75,7 +75,7 @@ export interface LoadItem {
 }
 
 /**
- * Keys used for the [[AsyncPreloader.loaders]]
+ * Keys used for the {@link AsyncPreloader.loaders}
  */
 export enum LoaderKey {
   Json = "Json",
@@ -114,11 +114,11 @@ export interface FontOptions {
 }
 
 /**
- * Values used for the [[AsyncPreloader.loaders]]
+ * Values used for the {@link AsyncPreloader.loaders}
  */
 export interface LoaderValue {
   /**
-   * [[LoadItem]] with no loader key specified will use the following array to find which loader should be used.
+   * {@link LoadItem} with no loader key specified will use the following array to find which loader should be used.
    */
   extensions: string[];
   /**

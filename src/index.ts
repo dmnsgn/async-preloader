@@ -48,14 +48,14 @@ class AsyncPreloader {
   public defaultBodyMethod: BodyMethod = "blob";
 
   /**
-   * Default loader to use if no loader key is specified in the [[LoadItem]] or if the extension doesn't match any of the [[AsyncPreloader.loaders]] extensions
+   * Default loader to use if no loader key is specified in the {@link LoadItem} or if the extension doesn't match any of the {@link AsyncPreloader.loaders} extensions
    */
   public defaultLoader: LoaderKey = LoaderKey.Text;
 
   /**
    * Loader types and the extensions they handle
    *
-   * Allows the omission of the loader key in a [[LoadItem.loader]] for some generic extensions
+   * Allows the omission of the loader key in a {@link LoadItem.loader} for some generic extensions
    */
   private static loaders: Map<LoaderKey, LoaderValue> = new Map()
     .set(LoaderKey.Text, { extensions: ["txt"] })

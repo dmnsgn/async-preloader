@@ -1,4 +1,3 @@
-import { jest } from "@jest/globals";
 import { getPortPromise } from "portfinder";
 
 import Preloader, { AsyncPreloader } from "../src";
@@ -8,8 +7,6 @@ import {
   getNodeSupportedItems,
 } from "./data.js";
 import { start } from "./server.js";
-
-jest.setTimeout(50000);
 
 // Suite
 describe("AsyncPreloader", () => {
@@ -51,6 +48,20 @@ describe("AsyncPreloader", () => {
 
         const itemsToLoad = getNodeSupportedItems(items);
         const data = await Preloader.loadItems(itemsToLoad);
+
+        expect(data).toBeInstanceOf(Array);
+        expect(data).toHaveLength(itemsToLoad.length);
+        expect(data).toEqual(
+          expect.arrayContaining(Array.from(expectedNode.values()))
+        );
+      });
+      it("should load an array of strings and return an array of LoadedValue", async () => {
+        expect.assertions(3);
+
+        const itemsToLoad = getNodeSupportedItems(items);
+        const data = await Preloader.loadItems(
+          itemsToLoad.map(({ src }) => src)
+        );
 
         expect(data).toBeInstanceOf(Array);
         expect(data).toHaveLength(itemsToLoad.length);

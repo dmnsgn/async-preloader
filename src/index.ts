@@ -86,20 +86,24 @@ class AsyncPreloader {
   /**
    * Load the specified manifest (array of items)
    *
-   * @param {LoadItem[]} items Items to load
+   * @param {(LoadItem[] | string[])} items Items to load
    * @returns {Promise<LoadedValue[]>} Resolve when all items are loaded, reject for any error
    */
-  public loadItems = async (items: LoadItem[]): Promise<LoadedValue[]> => {
+  public loadItems = async (
+    items: LoadItem[] | string[]
+  ): Promise<LoadedValue[]> => {
     return await Promise.all(items.map(this.loadItem));
   };
 
   /**
    * Load a single item
    *
-   * @param {LoadItem} item Item to load
+   * @param {(LoadItem | string)} item Item to load
    * @returns {Promise<LoadedValue>} Resolve when item is loaded, reject for any error
    */
-  public loadItem = async (item: LoadItem): Promise<LoadedValue> => {
+  public loadItem = async (item: LoadItem | string): Promise<LoadedValue> => {
+    if (typeof item === "string") item = { src: item };
+
     const extension: string = AsyncPreloader.getFileExtension(
       (item.src as string) || ""
     );

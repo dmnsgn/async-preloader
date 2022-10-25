@@ -9,7 +9,7 @@ import { getPortPromise } from "portfinder";
 import { start } from "./server.js";
 import { items, manifestSrc } from "./data.js";
 
-jest.setTimeout(50000);
+jest.setTimeout(20000);
 
 describe("Browser", () => {
   let server;

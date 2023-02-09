@@ -87,24 +87,17 @@ var FunctionPrototype = Function.prototype;
 var call$1 = FunctionPrototype.call;
 var uncurryThisWithBind = functionBindNative && FunctionPrototype.bind.bind(call$1, call$1);
 
-var functionUncurryThisRaw = function (fn) {
-  return functionBindNative ? uncurryThisWithBind(fn) : function () {
+var functionUncurryThis = functionBindNative ? uncurryThisWithBind : function (fn) {
+  return function () {
     return call$1.apply(fn, arguments);
   };
 };
 
-var toString = functionUncurryThisRaw({}.toString);
-var stringSlice = functionUncurryThisRaw(''.slice);
+var toString = functionUncurryThis({}.toString);
+var stringSlice = functionUncurryThis(''.slice);
 
 var classofRaw = function (it) {
   return stringSlice(toString(it), 8, -1);
-};
-
-var functionUncurryThis = function (fn) {
-  // Nashorn bug:
-  //   https://github.com/zloirock/core-js/issues/1128
-  //   https://github.com/zloirock/core-js/issues/1130
-  if (classofRaw(fn) === 'Function') return functionUncurryThisRaw(fn);
 };
 
 var $Object = Object;
@@ -145,6 +138,7 @@ var toIndexedObject = function (it) {
 var documentAll = typeof document == 'object' && document.all;
 
 // https://tc39.es/ecma262/#sec-IsHTMLDDA-internal-slot
+// eslint-disable-next-line unicorn/no-typeof-undefined -- required for testing
 var IS_HTMLDDA = typeof documentAll == 'undefined' && documentAll !== undefined;
 
 var documentAll_1 = {
@@ -180,7 +174,7 @@ var getBuiltIn = function (namespace, method) {
 
 var objectIsPrototypeOf = functionUncurryThis({}.isPrototypeOf);
 
-var engineUserAgent = getBuiltIn('navigator', 'userAgent') || '';
+var engineUserAgent = typeof navigator != 'undefined' && String(navigator.userAgent) || '';
 
 var process = global_1.process;
 var Deno = global_1.Deno;
@@ -294,10 +288,10 @@ var shared = createCommonjsModule(function (module) {
 (module.exports = function (key, value) {
   return sharedStore[key] || (sharedStore[key] = value !== undefined ? value : {});
 })('versions', []).push({
-  version: '3.25.5',
+  version: '3.27.2',
   mode:  'global',
-  copyright: '© 2014-2022 Denis Pushkarev (zloirock.ru)',
-  license: 'https://github.com/zloirock/core-js/blob/v3.25.5/LICENSE',
+  copyright: '© 2014-2023 Denis Pushkarev (zloirock.ru)',
+  license: 'https://github.com/zloirock/core-js/blob/v3.27.2/LICENSE',
   source: 'https://github.com/zloirock/core-js'
 });
 });
@@ -327,21 +321,15 @@ var uid = function (key) {
   return 'Symbol(' + (key === undefined ? '' : key) + ')_' + toString$1(++id + postfix, 36);
 };
 
-var WellKnownSymbolsStore = shared('wks');
 var Symbol$1 = global_1.Symbol;
-var symbolFor = Symbol$1 && Symbol$1['for'];
-var createWellKnownSymbol = useSymbolAsUid ? Symbol$1 : Symbol$1 && Symbol$1.withoutSetter || uid;
+var WellKnownSymbolsStore = shared('wks');
+var createWellKnownSymbol = useSymbolAsUid ? Symbol$1['for'] || Symbol$1 : Symbol$1 && Symbol$1.withoutSetter || uid;
 
 var wellKnownSymbol = function (name) {
-  if (!hasOwnProperty_1(WellKnownSymbolsStore, name) || !(symbolConstructorDetection || typeof WellKnownSymbolsStore[name] == 'string')) {
-    var description = 'Symbol.' + name;
-    if (symbolConstructorDetection && hasOwnProperty_1(Symbol$1, name)) {
-      WellKnownSymbolsStore[name] = Symbol$1[name];
-    } else if (useSymbolAsUid && symbolFor) {
-      WellKnownSymbolsStore[name] = symbolFor(description);
-    } else {
-      WellKnownSymbolsStore[name] = createWellKnownSymbol(description);
-    }
+  if (!hasOwnProperty_1(WellKnownSymbolsStore, name)) {
+    WellKnownSymbolsStore[name] = symbolConstructorDetection && hasOwnProperty_1(Symbol$1, name)
+      ? Symbol$1[name]
+      : createWellKnownSymbol('Symbol.' + name);
   } return WellKnownSymbolsStore[name];
 };
 
@@ -580,8 +568,12 @@ var CONFIGURABLE_FUNCTION_NAME = functionName.CONFIGURABLE;
 
 var enforceInternalState = internalState.enforce;
 var getInternalState = internalState.get;
+var $String = String;
 // eslint-disable-next-line es/no-object-defineproperty -- safe
 var defineProperty = Object.defineProperty;
+var stringSlice = functionUncurryThis(''.slice);
+var replace = functionUncurryThis(''.replace);
+var join = functionUncurryThis([].join);
 
 var CONFIGURABLE_LENGTH = descriptors && !fails(function () {
   return defineProperty(function () { /* empty */ }, 'length', { value: 8 }).length !== 8;
@@ -590,8 +582,8 @@ var CONFIGURABLE_LENGTH = descriptors && !fails(function () {
 var TEMPLATE = String(String).split('String');
 
 var makeBuiltIn = module.exports = function (value, name, options) {
-  if (String(name).slice(0, 7) === 'Symbol(') {
-    name = '[' + String(name).replace(/^Symbol\(([^)]*)\)/, '$1') + ']';
+  if (stringSlice($String(name), 0, 7) === 'Symbol(') {
+    name = '[' + replace($String(name), /^Symbol\(([^)]*)\)/, '$1') + ']';
   }
   if (options && options.getter) name = 'get ' + name;
   if (options && options.setter) name = 'set ' + name;
@@ -610,7 +602,7 @@ var makeBuiltIn = module.exports = function (value, name, options) {
   } catch (error) { /* empty */ }
   var state = enforceInternalState(value);
   if (!hasOwnProperty_1(state, 'source')) {
-    state.source = TEMPLATE.join(typeof name == 'string' ? name : '');
+    state.source = join(TEMPLATE, typeof name == 'string' ? name : '');
   } return value;
 };
 
@@ -1071,17 +1063,14 @@ var iteratorClose = function (iterator, kind, value) {
 
 var Promise = getBuiltIn('Promise');
 
+var TO_STRING_TAG = wellKnownSymbol('toStringTag');
 var ASYNC_ITERATOR_HELPER = 'AsyncIteratorHelper';
 var WRAP_FOR_VALID_ASYNC_ITERATOR = 'WrapForValidAsyncIterator';
 var setInternalState = internalState.set;
 
-var TO_STRING_TAG = wellKnownSymbol('toStringTag');
-
 var createAsyncIteratorProxyPrototype = function (IS_ITERATOR) {
   var IS_GENERATOR = !IS_ITERATOR;
-  var ASYNC_ITERATOR_PROXY = IS_ITERATOR ? WRAP_FOR_VALID_ASYNC_ITERATOR : ASYNC_ITERATOR_HELPER;
-
-  var getInternalState = internalState.getterFor(ASYNC_ITERATOR_PROXY);
+  var getInternalState = internalState.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ASYNC_ITERATOR : ASYNC_ITERATOR_HELPER);
 
   var getStateOrEarlyExit = function (that) {
     var stateCompletion = perform(function () {
@@ -1111,7 +1100,7 @@ var createAsyncIteratorProxyPrototype = function (IS_ITERATOR) {
     return state.awaiting ? state.awaiting = state.awaiting.then(task, task) : task();
   };
 
-  var AsyncIteratorProxyPrototype = defineBuiltIns(objectCreate(asyncIteratorPrototype), {
+  return defineBuiltIns(objectCreate(asyncIteratorPrototype), {
     next: function next() {
       var stateCompletion = getStateOrEarlyExit(this);
       var exit = stateCompletion.exit;
@@ -1135,11 +1124,10 @@ var createAsyncIteratorProxyPrototype = function (IS_ITERATOR) {
       return exit ? state : enqueue(state, function () {
         state.done = true;
         var iterator = state.iterator;
-        var innerIterator = state.innerIterator;
         var returnMethod, result;
         var completion = perform(function () {
-          if (innerIterator) try {
-            iteratorClose(innerIterator, 'return');
+          if (state.inner) try {
+            iteratorClose(state.inner.iterator, 'normal');
           } catch (error) {
             return iteratorClose(iterator, 'throw', error);
           }
@@ -1160,27 +1148,22 @@ var createAsyncIteratorProxyPrototype = function (IS_ITERATOR) {
       });
     }
   });
-
-  if (IS_GENERATOR) {
-    createNonEnumerableProperty(AsyncIteratorProxyPrototype, TO_STRING_TAG, 'Async Iterator Helper');
-  }
-
-  return AsyncIteratorProxyPrototype;
 };
 
-var AsyncIteratorHelperPrototype = createAsyncIteratorProxyPrototype(false);
 var WrapForValidAsyncIteratorPrototype = createAsyncIteratorProxyPrototype(true);
+var AsyncIteratorHelperPrototype = createAsyncIteratorProxyPrototype(false);
+
+createNonEnumerableProperty(AsyncIteratorHelperPrototype, TO_STRING_TAG, 'Async Iterator Helper');
 
 var asyncIteratorCreateProxy = function (nextHandler, IS_ITERATOR) {
-  var ASYNC_ITERATOR_PROXY = IS_ITERATOR ? WRAP_FOR_VALID_ASYNC_ITERATOR : ASYNC_ITERATOR_HELPER;
-
   var AsyncIteratorProxy = function AsyncIterator(record, state) {
     if (state) {
       state.iterator = record.iterator;
       state.next = record.next;
     } else state = record;
-    state.type = ASYNC_ITERATOR_PROXY;
+    state.type = IS_ITERATOR ? WRAP_FOR_VALID_ASYNC_ITERATOR : ASYNC_ITERATOR_HELPER;
     state.nextHandler = nextHandler;
+    state.counter = 0;
     state.done = false;
     state.awaiting = null;
     setInternalState(this, state);
@@ -1249,18 +1232,15 @@ var IteratorPrototype$1 = iteratorsCore.IteratorPrototype;
 
 
 
+var TO_STRING_TAG$1 = wellKnownSymbol('toStringTag');
 var ITERATOR_HELPER = 'IteratorHelper';
 var WRAP_FOR_VALID_ITERATOR = 'WrapForValidIterator';
 var setInternalState$1 = internalState.set;
 
-var TO_STRING_TAG$1 = wellKnownSymbol('toStringTag');
-
 var createIteratorProxyPrototype = function (IS_ITERATOR) {
-  var ITERATOR_PROXY = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
+  var getInternalState = internalState.getterFor(IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER);
 
-  var getInternalState = internalState.getterFor(ITERATOR_PROXY);
-
-  var IteratorProxyPrototype = defineBuiltIns(objectCreate(IteratorPrototype$1), {
+  return defineBuiltIns(objectCreate(IteratorPrototype$1), {
     next: function next() {
       var state = getInternalState(this);
       // for simplification:
@@ -1283,37 +1263,31 @@ var createIteratorProxyPrototype = function (IS_ITERATOR) {
         var returnMethod = getMethod(iterator, 'return');
         return returnMethod ? functionCall(returnMethod, iterator) : createIterResultObject(undefined, true);
       }
-      var innerIterator = state.innerIterator;
-      if (innerIterator) try {
-        iteratorClose(innerIterator, 'return');
+      if (state.inner) try {
+        iteratorClose(state.inner.iterator, 'normal');
       } catch (error) {
         return iteratorClose(iterator, 'throw', error);
       }
-      iteratorClose(iterator, 'return');
+      iteratorClose(iterator, 'normal');
       return createIterResultObject(undefined, true);
     }
   });
-
-  if (!IS_ITERATOR) {
-    createNonEnumerableProperty(IteratorProxyPrototype, TO_STRING_TAG$1, 'Iterator Helper');
-  }
-
-  return IteratorProxyPrototype;
 };
 
-var IteratorHelperPrototype = createIteratorProxyPrototype(false);
 var WrapForValidIteratorPrototype = createIteratorProxyPrototype(true);
+var IteratorHelperPrototype = createIteratorProxyPrototype(false);
+
+createNonEnumerableProperty(IteratorHelperPrototype, TO_STRING_TAG$1, 'Iterator Helper');
 
 var iteratorCreateProxy = function (nextHandler, IS_ITERATOR) {
-  var ITERATOR_PROXY = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
-
   var IteratorProxy = function Iterator(record, state) {
     if (state) {
       state.iterator = record.iterator;
       state.next = record.next;
     } else state = record;
-    state.type = ITERATOR_PROXY;
+    state.type = IS_ITERATOR ? WRAP_FOR_VALID_ITERATOR : ITERATOR_HELPER;
     state.nextHandler = nextHandler;
+    state.counter = 0;
     state.done = false;
     setInternalState$1(this, state);
   };
@@ -1350,6 +1324,7 @@ var doesNotExceedSafeInteger = function (it) {
 
 
 
+
 var createMethod$1 = function (TYPE) {
   var IS_TO_ARRAY = TYPE == 0;
   var IS_FOR_EACH = TYPE == 1;
@@ -1360,7 +1335,7 @@ var createMethod$1 = function (TYPE) {
     var Promise = getBuiltIn('Promise');
     var iterator = record.iterator;
     var next = record.next;
-    var index = 0;
+    var counter = 0;
     var MAPPING = fn !== undefined;
     if (MAPPING || !IS_TO_ARRAY) aCallable(fn);
 
@@ -1371,36 +1346,41 @@ var createMethod$1 = function (TYPE) {
 
       var loop = function () {
         try {
-          if (IS_TO_ARRAY && MAPPING) try {
-            doesNotExceedSafeInteger(index);
+          if (MAPPING) try {
+            doesNotExceedSafeInteger(counter);
           } catch (error5) { ifAbruptCloseAsyncIterator(error5); }
           Promise.resolve(anObject(functionCall(next, iterator))).then(function (step) {
             try {
               if (anObject(step).done) {
                 if (IS_TO_ARRAY) {
-                  target.length = index;
+                  target.length = counter;
                   resolve(target);
                 } else resolve(IS_SOME ? false : IS_EVERY || undefined);
               } else {
                 var value = step.value;
                 try {
                   if (MAPPING) {
-                    Promise.resolve(IS_TO_ARRAY ? fn(value, index) : fn(value)).then(function (result) {
+                    var result = fn(value, counter);
+
+                    var handler = function ($result) {
                       if (IS_FOR_EACH) {
                         loop();
                       } else if (IS_EVERY) {
-                        result ? loop() : asyncIteratorClose(iterator, resolve, false, reject);
+                        $result ? loop() : asyncIteratorClose(iterator, resolve, false, reject);
                       } else if (IS_TO_ARRAY) {
                         try {
-                          target[index++] = result;
+                          target[counter++] = $result;
                           loop();
                         } catch (error4) { ifAbruptCloseAsyncIterator(error4); }
                       } else {
-                        result ? asyncIteratorClose(iterator, resolve, IS_SOME || value, reject) : loop();
+                        $result ? asyncIteratorClose(iterator, resolve, IS_SOME || value, reject) : loop();
                       }
-                    }, ifAbruptCloseAsyncIterator);
+                    };
+
+                    if (isObject(result)) Promise.resolve(result).then(handler, ifAbruptCloseAsyncIterator);
+                    else handler(result);
                   } else {
-                    target[index++] = value;
+                    target[counter++] = value;
                     loop();
                   }
                 } catch (error3) { ifAbruptCloseAsyncIterator(error3); }
@@ -1430,15 +1410,6 @@ var anInstance = function (it, Prototype) {
   throw $TypeError$7('Incorrect invocation');
 };
 
-// https://github.com/tc39/proposal-iterator-helpers
-
-
-
-
-
-
-
-
 var IteratorPrototype$2 = iteratorsCore.IteratorPrototype;
 
 
@@ -1466,11 +1437,20 @@ if (FORCED || !hasOwnProperty_1(IteratorPrototype$2, 'constructor') || IteratorP
 
 IteratorConstructor.prototype = IteratorPrototype$2;
 
+// `Iterator` constructor
+// https://github.com/tc39/proposal-iterator-helpers
 _export({ global: true, constructor: true, forced: FORCED }, {
   Iterator: IteratorConstructor
 });
 
-var bind = functionUncurryThis(functionUncurryThis.bind);
+var functionUncurryThisClause = function (fn) {
+  // Nashorn bug:
+  //   https://github.com/zloirock/core-js/issues/1128
+  //   https://github.com/zloirock/core-js/issues/1130
+  if (classofRaw(fn) === 'Function') return functionUncurryThis(fn);
+};
+
+var bind = functionUncurryThisClause(functionUncurryThisClause.bind);
 
 // optional / simple context binding
 var functionBindContext = function (fn, that) {
@@ -1706,6 +1686,16 @@ var errorStackInstallable = !fails(function () {
   return error.stack !== 7;
 });
 
+// non-standard V8
+var captureStackTrace = Error.captureStackTrace;
+
+var errorStackInstall = function (error, C, stack, dropEntries) {
+  if (errorStackInstallable) {
+    if (captureStackTrace) captureStackTrace(error, C);
+    else createNonEnumerableProperty(error, 'stack', errorStackClear(stack, dropEntries));
+  }
+};
+
 var wrapErrorConstructorWithCause = function (FULL_NAME, wrapper, FORCED, IS_AGGREGATE_ERROR) {
   var STACK_TRACE_LIMIT = 'stackTraceLimit';
   var OPTIONS_POSITION = IS_AGGREGATE_ERROR ? 2 : 1;
@@ -1728,7 +1718,7 @@ var wrapErrorConstructorWithCause = function (FULL_NAME, wrapper, FORCED, IS_AGG
     var message = normalizeStringArgument(IS_AGGREGATE_ERROR ? b : a, undefined);
     var result = IS_AGGREGATE_ERROR ? new OriginalError(a) : new OriginalError();
     if (message !== undefined) createNonEnumerableProperty(result, 'message', message);
-    if (errorStackInstallable) createNonEnumerableProperty(result, 'stack', errorStackClear(result.stack, 2));
+    errorStackInstall(result, WrappedError, result.stack, 2);
     if (this && objectIsPrototypeOf(OriginalErrorPrototype, this)) inheritIfRequired(result, this, WrappedError);
     if (arguments.length > OPTIONS_POSITION) installErrorCause(result, arguments[OPTIONS_POSITION]);
     return result;
@@ -1782,6 +1772,7 @@ var exportWebAssemblyErrorCauseWrapper = function (ERROR_NAME, wrapper) {
   }
 };
 
+// https://tc39.es/ecma262/#sec-nativeerror
 // https://github.com/tc39/proposal-error-cause
 exportGlobalErrorCauseWrapper('Error', function (init) {
   return function Error(message) { return functionApply(init, this, arguments); };
@@ -1814,20 +1805,10 @@ exportWebAssemblyErrorCauseWrapper('RuntimeError', function (init) {
   return function RuntimeError(message) { return functionApply(init, this, arguments); };
 });
 
-// https://github.com/tc39/proposal-iterator-helpers
-
-
-
-
-
-
-
-
-
 var AsyncIteratorProxy = asyncIteratorCreateProxy(function (Promise) {
   var state = this;
   var iterator = state.iterator;
-  var filterer = state.filterer;
+  var predicate = state.predicate;
 
   return new Promise(function (resolve, reject) {
     var doneAndReject = function (error) {
@@ -1849,9 +1830,14 @@ var AsyncIteratorProxy = asyncIteratorCreateProxy(function (Promise) {
             } else {
               var value = step.value;
               try {
-                Promise.resolve(filterer(value)).then(function (selected) {
+                var result = predicate(value, state.counter++);
+
+                var handler = function (selected) {
                   selected ? resolve(createIterResultObject(value, false)) : loop();
-                }, ifAbruptCloseAsyncIterator);
+                };
+
+                if (isObject(result)) Promise.resolve(result).then(handler, ifAbruptCloseAsyncIterator);
+                else handler(result);
               } catch (error3) { ifAbruptCloseAsyncIterator(error3); }
             }
           } catch (error2) { doneAndReject(error2); }
@@ -1863,26 +1849,19 @@ var AsyncIteratorProxy = asyncIteratorCreateProxy(function (Promise) {
   });
 });
 
-_export({ target: 'AsyncIterator', proto: true, real: true, forced: true }, {
-  filter: function filter(filterer) {
+// `AsyncIterator.prototype.filter` method
+// https://github.com/tc39/proposal-iterator-helpers
+_export({ target: 'AsyncIterator', proto: true, real: true }, {
+  filter: function filter(predicate) {
     return new AsyncIteratorProxy(getIteratorDirect(this), {
-      filterer: aCallable(filterer)
+      predicate: aCallable(predicate)
     });
   }
 });
 
-// https://github.com/tc39/proposal-iterator-helpers
-
-
-
-
-
-
-
-
 var IteratorProxy = iteratorCreateProxy(function () {
   var iterator = this.iterator;
-  var filterer = this.filterer;
+  var predicate = this.predicate;
   var next = this.next;
   var result, done, value;
   while (true) {
@@ -1890,16 +1869,18 @@ var IteratorProxy = iteratorCreateProxy(function () {
     done = this.done = !!result.done;
     if (done) return;
     value = result.value;
-    if (callWithSafeIterationClosing(iterator, filterer, value)) return value;
+    if (callWithSafeIterationClosing(iterator, predicate, [value, this.counter++], true)) return value;
   }
 });
 
-_export({ target: 'Iterator', proto: true, real: true, forced: true }, {
-  filter: function filter(filterer) {
+// `Iterator.prototype.filter` method
+// https://github.com/tc39/proposal-iterator-helpers
+_export({ target: 'Iterator', proto: true, real: true }, {
+  filter: function filter(predicate) {
     return new IteratorProxy(getIteratorDirect(this), {
-      filterer: aCallable(filterer)
+      predicate: aCallable(predicate)
     });
   }
 });
 
-export { defineBuiltIn as A, lengthOfArrayLike as B, toIntegerOrInfinity as C, toObject as D, indexedObject as E, functionBindContext as F, classofRaw as G, getBuiltIn as H, functionUncurryThis as I, fails as J, inspectSource as K, isNullOrUndefined as L, objectCreate as M, toPropertyKey as N, toPrimitive as O, toAbsoluteIndex as P, commonjsGlobal as Q, _export as _, aCallable as a, asyncIteratorCreateProxy as b, anObject as c, createIterResultObject as d, asyncIteratorClose as e, functionCall as f, getIteratorDirect as g, callWithSafeIterationClosing as h, iteratorCreateProxy as i, asyncIteratorIteration as j, iterate as k, global_1 as l, objectSetPrototypeOf as m, classof as n, objectGetPrototypeOf as o, isCallable as p, descriptors as q, hasOwnProperty_1 as r, isObject as s, createNonEnumerableProperty as t, uid as u, objectDefineProperty as v, wellKnownSymbol as w, internalState as x, objectIsPrototypeOf as y, tryToString as z };
+export { defineBuiltIn as A, lengthOfArrayLike as B, toIntegerOrInfinity as C, toObject as D, indexedObject as E, functionBindContext as F, classofRaw as G, getBuiltIn as H, functionUncurryThis as I, fails as J, inspectSource as K, isNullOrUndefined as L, objectCreate as M, toPropertyKey as N, toPrimitive as O, toAbsoluteIndex as P, commonjsGlobal as Q, _export as _, aCallable as a, asyncIteratorCreateProxy as b, anObject as c, createIterResultObject as d, asyncIteratorClose as e, functionCall as f, getIteratorDirect as g, iteratorCreateProxy as h, isObject as i, callWithSafeIterationClosing as j, asyncIteratorIteration as k, iterate as l, global_1 as m, objectSetPrototypeOf as n, objectGetPrototypeOf as o, classof as p, isCallable as q, descriptors as r, hasOwnProperty_1 as s, createNonEnumerableProperty as t, uid as u, objectDefineProperty as v, wellKnownSymbol as w, internalState as x, objectIsPrototypeOf as y, tryToString as z };

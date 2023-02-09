@@ -1,14 +1,4 @@
-import { _ as _export, g as getIteratorDirect, a as aCallable, b as asyncIteratorCreateProxy, c as anObject, f as functionCall, d as createIterResultObject, e as asyncIteratorClose, i as iteratorCreateProxy, h as callWithSafeIterationClosing, j as asyncIteratorIteration, k as iterate, l as global_1, o as objectGetPrototypeOf, w as wellKnownSymbol, u as uid, m as objectSetPrototypeOf, n as classof, p as isCallable, q as descriptors, r as hasOwnProperty_1, s as isObject, t as createNonEnumerableProperty, v as objectDefineProperty, x as internalState, y as objectIsPrototypeOf, z as tryToString, A as defineBuiltIn, B as lengthOfArrayLike, C as toIntegerOrInfinity, D as toObject, E as indexedObject, F as functionBindContext, G as classofRaw, H as getBuiltIn, I as functionUncurryThis, J as fails, K as inspectSource, L as isNullOrUndefined, M as objectCreate, N as toPropertyKey, O as toPrimitive, P as toAbsoluteIndex, Q as commonjsGlobal } from './common/esnext.iterator.filter-8f36a6d4.js';
-
-// https://github.com/tc39/proposal-iterator-helpers
-
-
-
-
-
-
-
-
+import { g as getIteratorDirect, a as aCallable, b as asyncIteratorCreateProxy, c as anObject, f as functionCall, d as createIterResultObject, i as isObject, e as asyncIteratorClose, _ as _export, h as iteratorCreateProxy, j as callWithSafeIterationClosing, k as asyncIteratorIteration, l as iterate, m as global_1, o as objectGetPrototypeOf, w as wellKnownSymbol, u as uid, n as objectSetPrototypeOf, p as classof, q as isCallable, r as descriptors, s as hasOwnProperty_1, t as createNonEnumerableProperty, v as objectDefineProperty, x as internalState, y as objectIsPrototypeOf, z as tryToString, A as defineBuiltIn, B as lengthOfArrayLike, C as toIntegerOrInfinity, D as toObject, E as indexedObject, F as functionBindContext, G as classofRaw, H as getBuiltIn, I as functionUncurryThis, J as fails, K as inspectSource, L as isNullOrUndefined, M as objectCreate, N as toPropertyKey, O as toPrimitive, P as toAbsoluteIndex, Q as commonjsGlobal } from './common/esnext.iterator.filter-5febfa06.js';
 
 var AsyncIteratorProxy = asyncIteratorCreateProxy(function (Promise) {
   var state = this;
@@ -33,9 +23,14 @@ var AsyncIteratorProxy = asyncIteratorCreateProxy(function (Promise) {
         } else {
           var value = step.value;
           try {
-            Promise.resolve(mapper(value)).then(function (mapped) {
+            var result = mapper(value, state.counter++);
+
+            var handler = function (mapped) {
               resolve(createIterResultObject(mapped, false));
-            }, ifAbruptCloseAsyncIterator);
+            };
+
+            if (isObject(result)) Promise.resolve(result).then(handler, ifAbruptCloseAsyncIterator);
+            else handler(result);
           } catch (error2) { ifAbruptCloseAsyncIterator(error2); }
         }
       } catch (error) { doneAndReject(error); }
@@ -43,60 +38,60 @@ var AsyncIteratorProxy = asyncIteratorCreateProxy(function (Promise) {
   });
 });
 
-_export({ target: 'AsyncIterator', proto: true, real: true, forced: true }, {
-  map: function map(mapper) {
-    return new AsyncIteratorProxy(getIteratorDirect(this), {
-      mapper: aCallable(mapper)
-    });
-  }
-});
-
+// `AsyncIterator.prototype.map` method
 // https://github.com/tc39/proposal-iterator-helpers
+var asyncIteratorMap = function map(mapper) {
+  return new AsyncIteratorProxy(getIteratorDirect(this), {
+    mapper: aCallable(mapper)
+  });
+};
 
-
-
-
-
-
-
+// `AsyncIterator.prototype.map` method
+// https://github.com/tc39/proposal-iterator-helpers
+_export({ target: 'AsyncIterator', proto: true, real: true }, {
+  map: asyncIteratorMap
+});
 
 var IteratorProxy = iteratorCreateProxy(function () {
   var iterator = this.iterator;
   var result = anObject(functionCall(this.next, iterator));
   var done = this.done = !!result.done;
-  if (!done) return callWithSafeIterationClosing(iterator, this.mapper, result.value);
+  if (!done) return callWithSafeIterationClosing(iterator, this.mapper, [result.value, this.counter++], true);
 });
 
-_export({ target: 'Iterator', proto: true, real: true, forced: true }, {
-  map: function map(mapper) {
-    return new IteratorProxy(getIteratorDirect(this), {
-      mapper: aCallable(mapper)
-    });
-  }
-});
-
+// `Iterator.prototype.map` method
 // https://github.com/tc39/proposal-iterator-helpers
+var iteratorMap = function map(mapper) {
+  return new IteratorProxy(getIteratorDirect(this), {
+    mapper: aCallable(mapper)
+  });
+};
+
+// `Iterator.prototype.map` method
+// https://github.com/tc39/proposal-iterator-helpers
+_export({ target: 'Iterator', proto: true, real: true }, {
+  map: iteratorMap
+});
 
 var $some = asyncIteratorIteration.some;
 
-_export({ target: 'AsyncIterator', proto: true, real: true, forced: true }, {
-  some: function some(fn) {
-    return $some(this, fn);
+// `AsyncIterator.prototype.some` method
+// https://github.com/tc39/proposal-iterator-helpers
+_export({ target: 'AsyncIterator', proto: true, real: true }, {
+  some: function some(predicate) {
+    return $some(this, predicate);
   }
 });
 
+// `Iterator.prototype.some` method
 // https://github.com/tc39/proposal-iterator-helpers
-
-
-
-
-
-_export({ target: 'Iterator', proto: true, real: true, forced: true }, {
-  some: function some(fn) {
+_export({ target: 'Iterator', proto: true, real: true }, {
+  some: function some(predicate) {
     var record = getIteratorDirect(this);
-    aCallable(fn);
+    var counter = 0;
+    aCallable(predicate);
     return iterate(record, function (value, stop) {
-      if (fn(value)) return stop();
+      if (predicate(value, counter++)) return stop();
     }, { IS_RECORD: true, INTERRUPTED: true }).stopped;
   }
 });
@@ -622,10 +617,9 @@ exportTypedArrayMethod$7('toSorted', function toSorted(compareFn) {
   return sort(A, compareFn);
 });
 
-var slice = functionUncurryThis(''.slice);
-
 var isBigIntArray = function (it) {
-  return slice(classof(it), 0, 3) === 'Big';
+  var klass = classof(it);
+  return klass == 'BigInt64Array' || klass == 'BigUint64Array';
 };
 
 var $TypeError$1 = TypeError;
@@ -707,11 +701,43 @@ exportTypedArrayMethod$8('toSpliced', function toSpliced(start, deleteCount /* ,
   return A;
 }, !PROPER_ORDER);
 
-var Map = getBuiltIn('Map');
+// eslint-disable-next-line es/no-map -- safe
 var MapPrototype = Map.prototype;
-var mapForEach = functionUncurryThis(MapPrototype.forEach);
-var mapHas = functionUncurryThis(MapPrototype.has);
-var mapSet = functionUncurryThis(MapPrototype.set);
+
+var mapHelpers = {
+  // eslint-disable-next-line es/no-map -- safe
+  Map: Map,
+  set: functionUncurryThis(MapPrototype.set),
+  get: functionUncurryThis(MapPrototype.get),
+  has: functionUncurryThis(MapPrototype.has),
+  remove: functionUncurryThis(MapPrototype['delete']),
+  proto: MapPrototype
+};
+
+var iterateSimple = function (iterator, fn, $next) {
+  var next = $next || iterator.next;
+  var step, result;
+  while (!(step = functionCall(next, iterator)).done) {
+    result = fn(step.value);
+    if (result !== undefined) return result;
+  }
+};
+
+var Map$1 = mapHelpers.Map;
+var MapPrototype$1 = mapHelpers.proto;
+var forEach = functionUncurryThis(MapPrototype$1.forEach);
+var entries = functionUncurryThis(MapPrototype$1.entries);
+var next = entries(new Map$1()).next;
+
+var mapIterate = function (map, fn, interruptible) {
+  return interruptible ? iterateSimple(entries(map), function (entry) {
+    return fn(entry[1], entry[0]);
+  }, next) : forEach(map, fn);
+};
+
+var Map$2 = mapHelpers.Map;
+var mapHas = mapHelpers.has;
+var mapSet = mapHelpers.set;
 var push$2 = functionUncurryThis([].push);
 
 // `Array.prototype.uniqueBy` method
@@ -719,8 +745,8 @@ var push$2 = functionUncurryThis([].push);
 var arrayUniqueBy = function uniqueBy(resolver) {
   var that = toObject(this);
   var length = lengthOfArrayLike(that);
-  var result = arraySpeciesCreate(that, 0);
-  var map = new Map();
+  var result = [];
+  var map = new Map$2();
   var resolverFunction = !isNullOrUndefined(resolver) ? aCallable(resolver) : function (value) {
     return value;
   };
@@ -730,20 +756,22 @@ var arrayUniqueBy = function uniqueBy(resolver) {
     key = resolverFunction(item);
     if (!mapHas(map, key)) mapSet(map, key, item);
   }
-  mapForEach(map, function (value) {
+  mapIterate(map, function (value) {
     push$2(result, value);
   });
   return result;
 };
 
 var aTypedArray$9 = arrayBufferViewCore.aTypedArray;
+var getTypedArrayConstructor$5 = arrayBufferViewCore.getTypedArrayConstructor;
 var exportTypedArrayMethod$9 = arrayBufferViewCore.exportTypedArrayMethod;
 var arrayUniqueBy$1 = functionUncurryThis(arrayUniqueBy);
 
 // `%TypedArray%.prototype.uniqueBy` method
 // https://github.com/tc39/proposal-array-unique
 exportTypedArrayMethod$9('uniqueBy', function uniqueBy(resolver) {
-  return typedArrayFromSpeciesAndList(this, arrayUniqueBy$1(aTypedArray$9(this), resolver));
+  aTypedArray$9(this);
+  return arrayFromConstructorAndList(getTypedArrayConstructor$5(this), arrayUniqueBy$1(this, resolver));
 }, true);
 
 var $RangeError = RangeError;
@@ -762,7 +790,7 @@ var arrayWith = function (O, C, index, value) {
 };
 
 var aTypedArray$a = arrayBufferViewCore.aTypedArray;
-var getTypedArrayConstructor$5 = arrayBufferViewCore.getTypedArrayConstructor;
+var getTypedArrayConstructor$6 = arrayBufferViewCore.getTypedArrayConstructor;
 var exportTypedArrayMethod$a = arrayBufferViewCore.exportTypedArrayMethod;
 
 var PROPER_ORDER$1 = !!function () {
@@ -782,10 +810,10 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
   var O = aTypedArray$a(this);
   var relativeIndex = toIntegerOrInfinity(index);
   var actualValue = isBigIntArray(O) ? toBigInt(value) : +value;
-  return arrayWith(O, getTypedArrayConstructor$5(O), relativeIndex, actualValue);
+  return arrayWith(O, getTypedArrayConstructor$6(O), relativeIndex, actualValue);
 } }['with'], !PROPER_ORDER$1);
 
-/* ES Module Shims 1.6.2 */
+/* ES Module Shims 1.6.3 */
 (function () {
   const hasWindow = typeof window !== 'undefined';
   const hasDocument = typeof document !== 'undefined';
@@ -1091,7 +1119,7 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
     });
   });
 
-  /* es-module-lexer 1.0.5 */
+  /* es-module-lexer 1.1.0 */
   let e,
     a,
     r,
@@ -1538,9 +1566,9 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
           f[70] = k;
           r = w(1) | 0;
           e = f[70] | 0;
-          if (!((e | 0) == (k | 0) ? !(I(r) | 0) : 0)) b = 3;
+          if (!((e | 0) == (k | 0) ? !(I(r) | 0) : 0)) l = 3;
           e: do {
-            if ((b | 0) == 3) {
+            if ((l | 0) == 3) {
               a: do {
                 switch (r << 16 >> 16) {
                   case 123:
@@ -1566,25 +1594,25 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
                         a = r;
                         r = f[70] | 0;
                         if (e << 16 >> 16 == 125) {
-                          b = 15;
+                          l = 15;
                           break;
                         }
                         if ((r | 0) == (a | 0)) {
-                          b = 12;
+                          l = 12;
                           break;
                         }
                         if (r >>> 0 > (f[71] | 0) >>> 0) {
-                          b = 14;
+                          l = 14;
                           break;
                         }
                       }
-                      if ((b | 0) == 12) {
+                      if ((l | 0) == 12) {
                         Q();
                         break e;
-                      } else if ((b | 0) == 14) {
+                      } else if ((l | 0) == 14) {
                         Q();
                         break e;
-                      } else if ((b | 0) == 15) {
+                      } else if ((l | 0) == 15) {
                         f[70] = r + 2;
                         break a;
                       }
@@ -1612,19 +1640,24 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
                               if ((F(a) | 0 ? (m(a + 2 | 0, 58, 8) | 0) == 0 : 0) ? (t = a + 10 | 0, D(s[t >> 1] | 0) | 0) : 0) {
                                 f[70] = t;
                                 a = w(0) | 0;
-                                b = 23;
-                              } else a = 97;
-                            } else b = 23;
+                                l = 23;
+                              } else {
+                                a = 97;
+                                l = 32;
+                              }
+                            } else l = 23;
                             r: do {
-                              if ((b | 0) == 23) {
+                              if ((l | 0) == 23) {
                                 if (a << 16 >> 16 == 102) {
                                   a = f[70] | 0;
                                   if (!(F(a) | 0)) {
                                     a = 102;
+                                    l = 32;
                                     break;
                                   }
                                   if (m(a + 2 | 0, 66, 14) | 0) {
                                     a = 102;
+                                    l = 32;
                                     break;
                                   }
                                   r = a + 16 | 0;
@@ -1636,6 +1669,7 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
                                     default:
                                       {
                                         a = 102;
+                                        l = 32;
                                         break r;
                                       }
                                   }
@@ -1647,28 +1681,54 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
                                   }
                                   if (a << 16 >> 16 == 40) {
                                     O(e, c, 0, 0);
-                                    f[70] = c;
+                                    f[70] = e + 12;
                                     break e;
+                                  } else t = 1;
+                                } else t = 0;
+                                r = f[70] | 0;
+                                do {
+                                  if (a << 16 >> 16 == 99) {
+                                    if ((F(r) | 0 ? (m(r + 2 | 0, 36, 8) | 0) == 0 : 0) ? (b = r + 10 | 0, k = s[b >> 1] | 0, R(k) | 0 | k << 16 >> 16 == 123) : 0) {
+                                      f[70] = b;
+                                      a = w(1) | 0;
+                                      if (a << 16 >> 16 == 123) {
+                                        O(e, c, 0, 0);
+                                        f[70] = e + 12;
+                                        break e;
+                                      } else {
+                                        r = f[70] | 0;
+                                        P(a) | 0;
+                                        break;
+                                      }
+                                    } else {
+                                      a = 99;
+                                      l = 40;
+                                    }
+                                  } else l = 40;
+                                } while (0);
+                                if ((l | 0) == 40) {
+                                  P(a) | 0;
+                                  if (!t) {
+                                    l = 43;
+                                    break;
                                   }
                                 }
-                                if (a << 16 >> 16 == 99) {
-                                  a = f[70] | 0;
-                                  if ((F(a) | 0 ? (m(a + 2 | 0, 36, 8) | 0) == 0 : 0) ? (l = a + 10 | 0, k = s[l >> 1] | 0, R(k) | 0 | k << 16 >> 16 == 123) : 0) {
-                                    f[70] = l;
-                                    a = w(1) | 0;
-                                    if (a << 16 >> 16 == 123) {
-                                      O(e, c, 0, 0);
-                                      f[70] = c;
-                                      break e;
-                                    }
-                                  } else a = 99;
-                                }
+                                a = f[70] | 0;
+                                if (a >>> 0 > r >>> 0) {
+                                  O(e, c, r, a);
+                                  e = (f[70] | 0) + -2 | 0;
+                                } else l = 43;
                               }
                             } while (0);
-                            k = f[70] | 0;
-                            P(a) | 0;
-                            O(e, c, k, f[70] | 0);
-                            f[70] = c;
+                            if ((l | 0) == 32) {
+                              P(a) | 0;
+                              l = 43;
+                            }
+                            if ((l | 0) == 43) {
+                              O(e, c, 0, 0);
+                              e = e + 12 | 0;
+                            }
+                            f[70] = e;
                             break e;
                           }
                         case 97:
@@ -1676,12 +1736,12 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
                             f[70] = e + 10;
                             w(1) | 0;
                             e = f[70] | 0;
-                            b = 40;
+                            l = 46;
                             break;
                           }
                         case 102:
                           {
-                            b = 40;
+                            l = 46;
                             break;
                           }
                         case 99:
@@ -1706,7 +1766,7 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
                         default:
                           break e;
                       }
-                      if ((b | 0) == 40) {
+                      if ((l | 0) == 46) {
                         f[70] = e + 16;
                         e = w(1) | 0;
                         if (e << 16 >> 16 == 42) {
@@ -3277,7 +3337,7 @@ exportTypedArrayMethod$a('with', { 'with': function (index, value) {
         s,
         e,
         ln
-      }) => `${source.slice(s, e)}: ${ln}`).join(',')}})}catch(_){};\n`;
+      }) => `${source.slice(s, e)}:${ln}`).join(',')}})}catch(_){};\n`;
       pushStringTo(source.length);
     }
     let hasSourceURL = false;

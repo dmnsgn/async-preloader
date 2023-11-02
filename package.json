@@ -60,37 +60,42 @@
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.3.3",
-    "tslib": "^2.5.0"
+    "tslib": "^2.6.2"
   },
   "devDependencies": {
-    "@types/css-font-loading-module": "^0.0.7",
-    "@types/expect-puppeteer": "^5.0.2",
-    "@types/jest": "^29.4.0",
-    "@types/jest-environment-puppeteer": "^5.0.3",
-    "@types/node": "^18.13.0",
+    "@types/css-font-loading-module": "^0.0.10",
+    "@types/expect-puppeteer": "^5.0.5",
+    "@types/jest": "^29.5.7",
+    "@types/jest-environment-puppeteer": "^5.0.5",
+    "@types/node": "^20.8.10",
     "@types/puppeteer": "^5.4.7",
-    "@xmldom/xmldom": "^0.8.6",
-    "es-module-shims": "^1.6.3",
-    "jest": "^29.4.2",
-    "jest-puppeteer": "^7.0.0",
+    "@xmldom/xmldom": "^0.8.10",
+    "es-module-shims": "^1.8.1",
+    "jest": "^29.7.0",
+    "jest-puppeteer": "^9.0.1",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "mime-types": "^2.1.35",
     "nyc": "^15.1.0",
     "portfinder": "^1.0.32",
-    "puppeteer": "^19.6.3",
+    "puppeteer": "^21.4.1",
     "puppeteer-to-istanbul": "^1.4.0",
-    "snowdev": "^1.14.0",
-    "ts-jest": "^29.0.5",
-    "typescript": "^4.9.5"
+    "snowdev": "^2.0.0-alpha.20",
+    "ts-jest": "^29.1.1",
+    "typescript": "^5.2.2"
   },
   "engines": {
-    "node": ">=16.0.0",
-    "npm": ">=7.0.0"
+    "node": ">=20.0.0",
+    "npm": ">=9.6.4"
+  },
+  "jest-puppeteer": {
+    "launch": {
+      "headless": "new"
+    }
   },
   "snowdev": {
     "dependencies": [
-      "fontfaceobserver-es",
-      "es-module-shims"
+      "es-module-shims",
+      "fontfaceobserver-es"
     ]
   }
 }

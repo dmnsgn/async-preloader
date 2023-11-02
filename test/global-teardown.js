@@ -1,6 +1,6 @@
 import { promisify } from "util";
 import { exec as execCb } from "child_process";
-import { teardown as teardownPuppeteer } from "jest-environment-puppeteer";
+import teardownPuppeteer from "jest-environment-puppeteer/teardown";
 
 const exec = promisify(execCb);
 

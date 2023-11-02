@@ -86,11 +86,11 @@ class AsyncPreloader {
   /**
    * Load the specified manifest (array of items)
    *
-   * @param {(LoadItem[] | string[])} items Items to load
-   * @returns {Promise<LoadedValue[]>} Resolve when all items are loaded, reject for any error
+   * @param items Items to load
+   * @returns Resolve when all items are loaded, reject for any error
    */
   public loadItems = async (
-    items: LoadItem[] | string[]
+    items: LoadItem[] | string[],
   ): Promise<LoadedValue[]> => {
     return await Promise.all(items.map(this.loadItem));
   };
@@ -98,14 +98,14 @@ class AsyncPreloader {
   /**
    * Load a single item
    *
-   * @param {(LoadItem | string)} item Item to load
-   * @returns {Promise<LoadedValue>} Resolve when item is loaded, reject for any error
+   * @param item Item to load
+   * @returns Resolve when item is loaded, reject for any error
    */
   public loadItem = async (item: LoadItem | string): Promise<LoadedValue> => {
     if (typeof item === "string") item = { src: item };
 
     const extension: string = AsyncPreloader.getFileExtension(
-      (item.src as string) || ""
+      (item.src as string) || "",
     );
     const loaderKey: LoaderKey =
       item.loader || AsyncPreloader.getLoaderKey(extension);
@@ -121,13 +121,13 @@ class AsyncPreloader {
   /**
    * Load a manifest of items
    *
-   * @param {string} src Manifest src url
-   * @param {string} [key="items"] Manifest key in the JSON object containing the array of LoadItem.
-   * @returns {Promise<LoadedValue[]>}
+   * @param src Manifest src url
+   * @param key Manifest key in the JSON object containing the array of LoadItem.
+   * @returns
    */
   public loadManifest = async (
     src: string,
-    key = "items"
+    key = "items",
   ): Promise<LoadedValue[]> => {
     const loadedManifest: JSON = await this.loadJson({
       src,
@@ -141,8 +141,8 @@ class AsyncPreloader {
   /**
    * Load an item and parse the Response as text
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<string>} Fulfilled value of parsed Response
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response
    */
   public loadText = async (item: LoadItem): Promise<string> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -152,8 +152,8 @@ class AsyncPreloader {
   /**
    * Load an item and parse the Response as json
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<JSON>} Fulfilled value of parsed Response
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response
    */
   public loadJson = async (item: LoadItem): Promise<JSON> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -163,8 +163,8 @@ class AsyncPreloader {
   /**
    * Load an item and parse the Response as arrayBuffer
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<ArrayBuffer>} Fulfilled value of parsed Response
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response
    */
   public loadArrayBuffer = async (item: LoadItem): Promise<ArrayBuffer> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -174,8 +174,8 @@ class AsyncPreloader {
   /**
    * Load an item and parse the Response as blob
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<Blob>} Fulfilled value of parsed Response
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response
    */
   public loadBlob = async (item: LoadItem): Promise<Blob> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -185,8 +185,8 @@ class AsyncPreloader {
   /**
    * Load an item and parse the Response as formData
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<FormData>} Fulfilled value of parsed Response
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response
    */
   public loadFormData = async (item: LoadItem): Promise<FormData> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -200,8 +200,8 @@ class AsyncPreloader {
    * - item's "src" option extensions matching the loaders Map
    * - direct call of the method
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value with a decoded HTMLImageElement instance of or a parsed Response according to the "body" option. Defaults to a decoded HTMLImageElement.
+   * @param item Item to load
+   * @returns Fulfilled value with a decoded HTMLImageElement instance of or a parsed Response according to the "body" option. Defaults to a decoded HTMLImageElement.
    */
   public loadImage = async (item: LoadItem): Promise<LoadedValue> => {
     const image = new Image();
@@ -238,14 +238,13 @@ class AsyncPreloader {
    * - item's "src" option extensions matching the loaders Map
    * - direct call of the method
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLVideoElement with a blob as srcObject or src.
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLVideoElement with a blob as srcObject or src.
    */
   public loadVideo = async (item: LoadItem): Promise<LoadedValue> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
-    const data: LoadedValue = await response[
-      item.body || this.defaultBodyMethod
-    ]();
+    const data: LoadedValue =
+      await response[item.body || this.defaultBodyMethod]();
 
     if (item.body) return data;
 
@@ -278,14 +277,13 @@ class AsyncPreloader {
    * - item's "src" option extensions matching the loaders Map
    * - direct call of the method
    *
-   * @param {LoadItem} item Item to load
-   * @returns {Promise<LoadedValue>} Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLAudioElement with a blob as srcObject or src.
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response according to the "body" option. Defaults to an HTMLAudioElement with a blob as srcObject or src.
    */
   public loadAudio = async (item: LoadItem): Promise<LoadedValue> => {
     const response: Response = await AsyncPreloader.fetchItem(item);
-    const data: LoadedValue = await response[
-      item.body || this.defaultBodyMethod
-    ]();
+    const data: LoadedValue =
+      await response[item.body || this.defaultBodyMethod]();
 
     if (item.body) return data;
 
@@ -320,13 +318,13 @@ class AsyncPreloader {
    * - item's "src" option extensions matching the loaders Map
    * - direct call of the method
    *
-   * @param {LoadItem} item Item to load (need a mimeType specified or default to "application/xml")
-   * @returns {Promise<LoadedXMLValue>} Result of Response parsed as a document.
+   * @param item Item to load (need a mimeType specified or default to "application/xml")
+   * @returns Result of Response parsed as a document.
    */
   public loadXml = async (item: LoadItem): Promise<LoadedXMLValue> => {
     if (!item.mimeType) {
       const extension: string = AsyncPreloader.getFileExtension(
-        item.src as string
+        item.src as string,
       );
       item = {
         ...item,
@@ -347,8 +345,8 @@ class AsyncPreloader {
   /**
    * Load a font via FontFace or check a font is loaded via FontFaceObserver instance
    *
-   * @param {LoadItem} item Item to load (id correspond to the font family name).
-   * @returns {Promise<FontFace | string>} Fulfilled value with FontFace instance or initial id if no src provided.
+   * @param item Item to load (id correspond to the font family name).
+   * @returns Fulfilled value with FontFace instance or initial id if no src provided.
    */
   public loadFont = async (item: LoadItem): Promise<FontFace | string> => {
     const fontName = (item.id ||
@@ -358,7 +356,7 @@ class AsyncPreloader {
     if (!item.src) {
       const font = new FontFaceObserver(
         fontName,
-        (options.variant as FontFaceObserver.FontVariant) || {}
+        (options.variant as FontFaceObserver.FontVariant) || {},
       );
       await font.load(options.testString, options.timeout);
 
@@ -382,8 +380,8 @@ class AsyncPreloader {
   /**
    * Fetch wrapper for LoadItem
    *
-   * @param {LoadItem} item Item to fetch
-   * @returns {Promise<Response>} Fetch response
+   * @param item Item to fetch
+   * @returns Fetch response
    */
   private static fetchItem(item: LoadItem): Promise<Response> {
     return fetch(item.src, item.options || {});
@@ -393,9 +391,9 @@ class AsyncPreloader {
    * Get an object property by its path in the form 'a[0].b.c' or ['a', '0', 'b', 'c'].
    * Similar to [lodash.get](https://lodash.com/docs/4.17.5#get).
    *
-   * @param {any} object Object with nested properties
-   * @param {(string | string[])} path Path to the desired property
-   * @returns {any} The returned object property
+   * @param object Object with nested properties
+   * @param path Path to the desired property
+   * @returns The returned object property
    */
   private static getProp(object: unknown, path: string | string[]) {
     const p = Array.isArray(path)
@@ -410,8 +408,8 @@ class AsyncPreloader {
   /**
    * Get file extension
    *
-   * @param {string} path
-   * @returns {string}
+   * @param path
+   * @returns
    */
   private static getFileExtension(path: string): string {
     return (path?.match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop();
@@ -420,8 +418,8 @@ class AsyncPreloader {
   /**
    * Get file base name
    *
-   * @param {string} path
-   * @returns {string}
+   * @param path
+   * @returns
    */
   private static getFileBaseName(path: string): string {
     return path.split(/[\\/]/).pop();
@@ -430,8 +428,8 @@ class AsyncPreloader {
   /**
    * Get file name
    *
-   * @param {string} path
-   * @returns {string}
+   * @param path
+   * @returns
    */
   private static getFileName(path: string): string {
     return (
@@ -443,12 +441,12 @@ class AsyncPreloader {
   /**
    * Retrieve loader key from extension (when the loader option isn't specified in the LoadItem)
    *
-   * @param {string} extension
-   * @returns {LoaderKey}
+   * @param extension
+   * @returns
    */
   private static getLoaderKey(extension: string): LoaderKey {
     const loader = Array.from(AsyncPreloader.loaders).find((loader) =>
-      loader[1].extensions.includes(extension)
+      loader[1].extensions.includes(extension),
     );
     return loader ? loader[0] : LoaderKey.Text;
   }
@@ -456,13 +454,13 @@ class AsyncPreloader {
   /**
    * Retrieve mime type from extension
    *
-   * @param {LoaderKey} loaderKey
-   * @param {string} extension
-   * @returns {string}
+   * @param loaderKey
+   * @param extension
+   * @returns
    */
   private static getMimeType(
     loaderKey: LoaderKey,
-    extension: string
+    extension: string,
   ): DOMParserSupportedType {
     const loader: LoaderValue = AsyncPreloader.loaders.get(loaderKey);
     return loader.mimeType[extension] || loader.defaultMimeType;

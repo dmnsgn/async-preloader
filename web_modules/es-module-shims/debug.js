@@ -1,6 +1,6 @@
-import { c as commonjsGlobal } from './_chunks/_commonjsHelpers-rKnUJq5k.js';
+import { c as commonjsGlobal } from '../_chunks/_commonjsHelpers-rKnUJq5k.js';
 
-var esModuleShims = {};
+var esModuleShims_debug = {};
 
 (function() {
     const hasDocument = typeof document !== 'undefined';
@@ -289,6 +289,7 @@ var esModuleShims = {};
             wasmModulesEnabled && sourcePhaseEnabled && dynamicImport(createBlob(`import source x from"${createBlob(new Uint8Array(wasmBytes), 'application/wasm')}"`)).then(()=>supportsSourcePhase = true, noop)
         ]);
         return new Promise((resolve)=>{
+            console.info(`es-module-shims: performing feature detections for ${`${supportsImportMaps ? '' : 'import maps, '}${cssModulesEnabled ? 'css modules, ' : ''}${jsonModulesEnabled ? 'json modules, ' : ''}${wasmModulesEnabled ? 'wasm modules, ' : ''}${wasmModulesEnabled && sourcePhaseEnabled ? 'source phase, ' : ''}`.slice(0, -2)}`);
             const iframe = document.createElement('iframe');
             iframe.style.display = 'none';
             iframe.setAttribute('nonce', nonce);
@@ -333,6 +334,9 @@ var esModuleShims = {};
             // retrigger onload for Safari only if necessary
             if (onloadCalledWhileNotReady) doOnload();
         });
+    });
+    featureDetectionPromise = featureDetectionPromise.then(()=>{
+        console.info(`es-module-shims: detected native support - ${supportsDynamicImport ? '' : 'no '}dynamic import, ${supportsImportMeta ? '' : 'no '}import meta, ${supportsImportMaps ? '' : 'no '}import maps`);
     });
     /* es-module-lexer 1.5.2 */ let e, a, r, i = 2 << 19;
     const s = 1 === new Uint8Array(new Uint16Array([
@@ -2452,6 +2456,7 @@ var esModuleShims = {};
     let baselinePassthrough;
     const initPromise = featureDetectionPromise.then(()=>{
         baselinePassthrough = esmsInitOptions.polyfillEnable !== true && supportsDynamicImport && supportsImportMeta && supportsImportMaps && (!jsonModulesEnabled || supportsJsonAssertions) && (!cssModulesEnabled || supportsCssAssertions) && (!wasmModulesEnabled || supportsWasmModules) && (!sourcePhaseEnabled || supportsSourcePhase) && !importMapSrcOrLazy;
+        console.info(`es-module-shims: init ${shimMode ? 'shim mode' : 'polyfill mode'}, ${baselinePassthrough ? 'baseline passthrough' : 'polyfill engaged'}`);
         if (sourcePhaseEnabled && typeof WebAssembly !== 'undefined' && !Object.getPrototypeOf(WebAssembly.Module).name) {
             const s = Symbol();
             const brand = (m)=>Object.defineProperty(m, s, {
@@ -2536,6 +2541,7 @@ var esModuleShims = {};
         if (importHook) await importHook(url, typeof fetchOpts !== 'string' ? fetchOpts : {}, '');
         // early analysis opt-out - no need to even fetch if we have feature support
         if (!shimMode && baselinePassthrough) {
+            console.info(`es-module-shims: load skipping polyfill due to baseline passthrough applying: ${url}`);
             // for polyfill case, only dynamic import needs a return value here, and dynamic import will never pass nativelyLoaded
             if (nativelyLoaded1) return null;
             await lastStaticLoadPromise;
@@ -2875,6 +2881,7 @@ var esModuleShims = {};
     }
     function processScriptsAndPreloads(mapsOnly) {
         if (mapsOnly === void 0) mapsOnly = false;
+        console.info(`es-module-shims: processing scripts`);
         if (!mapsOnly) for (const link of document.querySelectorAll(shimMode ? 'link[rel=modulepreload-shim]' : 'link[rel=modulepreload]'))processPreload(link);
         for (const script of document.querySelectorAll(shimMode ? 'script[type=importmap-shim]' : 'script[type=importmap]'))processImportMap(script);
         if (!mapsOnly) for (const script of document.querySelectorAll(shimMode ? 'script[type=module-shim]' : 'script[type=module]'))processScript(script);
@@ -2893,12 +2900,14 @@ var esModuleShims = {};
     let domContentLoadedCnt = 1;
     function domContentLoadedCheck() {
         if (--domContentLoadedCnt === 0 && !noLoadEventRetriggers && (shimMode || !baselinePassthrough)) {
+            console.info(`es-module-shims: DOMContentLoaded refire`);
             document.dispatchEvent(new Event('DOMContentLoaded'));
         }
     }
     let loadCnt = 1;
     function loadCheck() {
         if (--loadCnt === 0 && globalLoadEventRetrigger && !noLoadEventRetriggers && (shimMode || !baselinePassthrough)) {
+            console.info(`es-module-shims: load refire`);
             window.dispatchEvent(new Event('load'));
         }
     }
@@ -2916,6 +2925,7 @@ var esModuleShims = {};
     let readyStateCompleteCnt = 1;
     function readyStateCompleteCheck() {
         if (--readyStateCompleteCnt === 0 && !noLoadEventRetriggers && (shimMode || !baselinePassthrough)) {
+            console.info(`es-module-shims: readystatechange complete refire`);
             document.dispatchEvent(new Event('readystatechange'));
         }
     }
@@ -2951,6 +2961,7 @@ var esModuleShims = {};
         if (isLoadScript) loadCnt++;
         if (isBlockingReadyScript) readyStateCompleteCnt++;
         if (isDomContentLoadedScript) domContentLoadedCnt++;
+        console.info(`es-module-shims: processing ${script.src || '<inline>'}`);
         const loadPromise = topLevelLoad(script.src || baseUrl, getFetchOpts(script), !script.src && script.innerHTML, !shimMode, isBlockingReadyScript && lastStaticLoadPromise).catch(throwError);
         if (!noLoadEventRetriggers) loadPromise.then(()=>script.dispatchEvent(new Event('load')));
         if (isBlockingReadyScript) lastStaticLoadPromise = loadPromise.then(readyStateCompleteCheck);
@@ -2966,4 +2977,4 @@ var esModuleShims = {};
     }
 })();
 
-export { esModuleShims as default };
+export { esModuleShims_debug as default };

@@ -1,6 +1,8 @@
 {
   "imports": {
     "es-module-shims": "./es-module-shims.js",
+    "es-module-shims/debug": "./es-module-shims/debug.js",
+    "es-module-shims/wasm": "./es-module-shims/wasm.js",
     "fontfaceobserver-es": "./fontfaceobserver-es.js"
   }
 }

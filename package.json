@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "8.0.3",
+  "version": "8.0.4",
   "description": "Assets preloader using async/await and fetch for usage both in the browser and Node.js.",
   "keywords": [
     "preloader",
@@ -13,7 +13,10 @@
   ],
   "homepage": "https://github.com/dmnsgn/async-preloader",
   "bugs": "https://github.com/dmnsgn/async-preloader/issues",
-  "repository": "dmnsgn/async-preloader",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dmnsgn/async-preloader.git"
+  },
   "funding": [
     {
       "type": "individual",
@@ -36,8 +39,8 @@
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
-    "dev": "npx snowdev --no-serve",
     "coverage": "nyc report --reporter=text --reporter=html",
+    "dev": "npx snowdev --no-serve",
     "prejest": "npx snowdev install",
     "jest": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --watch --no-cache",
     "pretest": "npx snowdev install && npx snowdev build --no-docs --no-lint",

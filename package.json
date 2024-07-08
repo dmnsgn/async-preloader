@@ -60,14 +60,14 @@
   },
   "dependencies": {
     "fontfaceobserver-es": "^3.3.3",
-    "tslib": "^2.6.2"
+    "tslib": "^2.6.3"
   },
   "devDependencies": {
     "@types/css-font-loading-module": "^0.0.13",
     "@types/expect-puppeteer": "^5.0.6",
     "@types/jest": "^29.5.12",
     "@types/jest-environment-puppeteer": "^5.0.6",
-    "@types/node": "^20.12.12",
+    "@types/node": "^20.14.10",
     "@types/puppeteer": "^5.4.7",
     "@xmldom/xmldom": "^0.8.10",
     "es-module-shims": "^1.10.0",
@@ -75,17 +75,18 @@
     "jest-puppeteer": "^10.0.1",
     "jest-ts-webcompat-resolver": "^1.0.0",
     "mime-types": "^2.1.35",
-    "nyc": "^15.1.0",
+    "nyc": "^17.0.0",
     "portfinder": "^1.0.32",
-    "puppeteer": "^22.8.2",
+    "puppeteer": "^22.12.1",
     "puppeteer-to-istanbul": "^1.4.0",
-    "snowdev": "^2.0.0-alpha.28",
-    "ts-jest": "^29.1.2",
-    "typescript": "^5.4.5"
+    "snowdev": "^2.2.2",
+    "ts-jest": "^29.1.5",
+    "typescript": "^5.5.3"
   },
   "engines": {
-    "node": ">=20.0.0",
-    "npm": ">=9.6.4"
+    "node": ">=22.0.0",
+    "npm": ">=10.5.1",
+    "snowdev": ">=2.2.x"
   },
   "jest-puppeteer": {
     "launch": {

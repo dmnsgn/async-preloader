@@ -36,6 +36,7 @@
   "main": "lib/index.js",
   "types": "types/index.d.ts",
   "scripts": {
+    "dev": "npx snowdev --no-serve",
     "coverage": "nyc report --reporter=text --reporter=html",
     "prejest": "npx snowdev install",
     "jest": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --watch --no-cache",
@@ -84,7 +85,7 @@
     "portfinder": "^1.0.32",
     "puppeteer": "^22.12.1",
     "puppeteer-to-istanbul": "^1.4.0",
-    "snowdev": "^2.2.2",
+    "snowdev": "^2.2.3",
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.3"
   },

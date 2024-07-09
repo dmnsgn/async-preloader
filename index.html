@@ -1,10 +1,13 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta http-equiv="X-UA-Compatible" content="ie=edge" />
-    <title>async-preloader by Damien Seguin (https://github.com/dmnsgn/async-preloader)</title>
+    <title>
+      async-preloader by Damien Seguin
+      (https://github.com/dmnsgn/async-preloader)
+    </title>
     <style>
       :root {
         --color-dark: #404040;
@@ -29,7 +32,13 @@
     <main>
       <h1>async-preloader</h1>
     </main>
-    <script async src="web_modules/es-module-shims.js" type="module"></script>
-    <script src="web_modules/import-map.json" type="importmap-shim"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "es-module-shims": "https://esm.sh/es-module-shims@1.10.0",
+          "fontfaceobserver-es": "https://esm.sh/fontfaceobserver-es@3.3.3"
+        }
+      }
+    </script>
   </body>
 </html>

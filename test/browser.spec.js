@@ -69,7 +69,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with Blob loader and return instanceof Blob", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadBlob(item);
       return data.constructor.name;
     }, items.get("jpg"));
@@ -79,7 +79,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with Image loader and return HTMLImageElement", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return data.constructor.name;
     }, items.get("jpg"));
@@ -89,7 +89,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with Image loader and body Blob and return HTMLImageElement", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadImage({ ...item, body: "blob" });
       return data.constructor.name;
     }, items.get("jpg"));
@@ -99,7 +99,7 @@ describe("Browser", () => {
 
   it("should try to load a LoadItem (jpg) with Image loader and throw decode error", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       try {
         await Preloader.loadImage({
           ...item,
@@ -116,7 +116,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with Image loader and body arrayBuffer and return ArrayBuffer", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadImage({ ...item, body: "arrayBuffer" });
       return data.constructor.name;
     }, items.get("jpg"));
@@ -126,7 +126,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with body = arrayBuffer with Image loader and return an ArrayBuffer", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem({ ...item, body: "arrayBuffer" });
       return data.constructor.name;
     }, items.get("jpg"));
@@ -136,7 +136,7 @@ describe("Browser", () => {
 
   it.skip("should load a LoadItem with Video loader and return HTMLVideoElement", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return data.constructor.name;
     }, items.get("mp4"));
@@ -146,7 +146,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with Audio loader and return HTMLAudioElement", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return data.constructor.name;
     }, items.get("mp3"));
@@ -156,7 +156,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem with body = arrayBuffer with Audio Loader and return an ArrayBuffer", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem({ ...item, body: "arrayBuffer" });
       return data.constructor.name;
     }, items.get("mp3"));
@@ -166,7 +166,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem (xml) with Xml Loader and return Document", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return {
         constructor: data.constructor.name,
@@ -179,7 +179,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem (html) with Xml Loader and return Document", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return {
         constructor: data.constructor.name,
@@ -192,7 +192,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem (svg) with Xml Loader and return Document", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return {
         constructor: data.constructor.name,
@@ -205,7 +205,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem (svg file with a special extension) with Xml Loader and return Document", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return {
         constructor: data.constructor.name,
@@ -218,7 +218,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem (ttf) with Font Loader and return FontFace", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return {
         constructor: data.constructor.name,
@@ -233,7 +233,7 @@ describe("Browser", () => {
   it("should load a LoadItem (ttf) by src only with Font Loader and return FontFace", async () => {
     const result = await page.evaluate(
       async (item) => {
-        const { default: Preloader } = await importShim("./lib/index.js");
+        const { default: Preloader } = await import("./lib/index.js");
         const data = await Preloader.loadItem(item);
         return {
           constructor: data.constructor.name,
@@ -249,7 +249,7 @@ describe("Browser", () => {
 
   it("should load a LoadItem (ttf buffer) with Font Loader and return FontFace", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem({ ...item, body: "arrayBuffer" });
       return {
         constructor: data.constructor.name,
@@ -271,7 +271,7 @@ describe("Browser", () => {
     });
 
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadItem(item);
       return data;
     }, item);
@@ -281,7 +281,7 @@ describe("Browser", () => {
 
   it("should load a manifest, load its items and return an array of LoadedValue", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadManifest(item);
       return data;
     }, `${url}/${manifestSrc}`);
@@ -294,7 +294,7 @@ describe("Browser", () => {
 
   it("should load a manifest with a specified data path, load its items and return an array of LoadedValue", async () => {
     const result = await page.evaluate(async (item) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
       const data = await Preloader.loadManifest(item, "custom.path");
       return data;
     }, `${url}/${manifestSrc}`);
@@ -309,7 +309,7 @@ describe("Browser", () => {
     let itemsToLoad = Array.from(items.values());
 
     const result = await page.evaluate(async (items) => {
-      const { default: Preloader } = await importShim("./lib/index.js");
+      const { default: Preloader } = await import("./lib/index.js");
 
       const controller = new AbortController();
       const { signal } = controller;
@@ -340,8 +340,6 @@ describe("Browser", () => {
 
       return results[1].value;
     }, itemsToLoad);
-
-    console.log("result", result);
 
     expect(result).toEqual("CancelLoading");
   });

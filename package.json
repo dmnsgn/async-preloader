@@ -41,9 +41,7 @@
   "scripts": {
     "coverage": "nyc report --reporter=text --reporter=html",
     "dev": "npx snowdev --no-serve",
-    "prejest": "npx snowdev install",
     "jest": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --watch --no-cache",
-    "pretest": "npx snowdev install && npx snowdev build --no-docs --no-lint",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --runInBand"
   },
   "jest": {
@@ -88,7 +86,6 @@
     "portfinder": "^1.0.32",
     "puppeteer": "^22.12.1",
     "puppeteer-to-istanbul": "^1.4.0",
-    "snowdev": "^2.2.3",
     "ts-jest": "^29.1.5",
     "typescript": "^5.5.3"
   },
@@ -101,11 +98,5 @@
     "launch": {
       "headless": "new"
     }
-  },
-  "snowdev": {
-    "dependencies": [
-      "es-module-shims",
-      "fontfaceobserver-es"
-    ]
   }
 }

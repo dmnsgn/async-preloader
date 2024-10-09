@@ -13,12 +13,12 @@ jobs:
     timeout-minutes: 5
     strategy:
       matrix:
-        node_version: ["21", "22"]
+        node_version: ["22"]
     steps:
       - uses: actions/checkout@v4
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node_version }}
           cache: "npm"
-      - run: npm ci
+      - run: npm ci --verbose
       - run: npm test

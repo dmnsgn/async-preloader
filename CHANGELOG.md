@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+# [8.1.0](https://github.com/dmnsgn/async-preloader/compare/v8.0.4...v8.1.0) (2025-10-15)
+
+
+### Features
+
+* add loadBytes ([9ee6c0c](https://github.com/dmnsgn/async-preloader/commit/9ee6c0c1b477ce5e04d1946405951641c58d2f80))
+
+
+
 ## [8.0.4](https://github.com/dmnsgn/async-preloader/compare/v8.0.3...v8.0.4) (2024-07-08)
 
 

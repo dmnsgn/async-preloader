@@ -172,6 +172,17 @@ class AsyncPreloader {
   };
 
   /**
+   * Load an item and parse the Response as bytes
+   *
+   * @param item Item to load
+   * @returns Fulfilled value of parsed Response
+   */
+  public loadBytes = async (item: LoadItem): Promise<Uint8Array> => {
+    const response: Response = await AsyncPreloader.fetchItem(item);
+    return await response.bytes();
+  };
+
+  /**
    * Load an item and parse the Response as blob
    *
    * @param item Item to load

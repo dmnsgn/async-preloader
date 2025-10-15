@@ -1,12 +1,24 @@
 /**
  * Methods that can be called on a Request (object returned by fetch and that implements the [Body](https://developer.mozilla.org/en-US/docs/Web/API/Response/body) interface)
  */
-export type BodyMethod = "arrayBuffer" | "blob" | "formData" | "json" | "text";
+export type BodyMethod =
+  | "arrayBuffer"
+  | "blob"
+  | "bytes"
+  | "formData"
+  | "json"
+  | "text";
 
 /**
  * Types that can be returned by all the {@link BodyMethod}
  */
-export type BodyResolveValue = ArrayBuffer | Blob | FormData | JSON | string;
+export type BodyResolveValue =
+  | ArrayBuffer
+  | Blob
+  | Uint8Array
+  | FormData
+  | JSON
+  | string;
 
 /**
  * Types that can be returned by the Xml loader. See the {@link LoadItem.mimeType}.
@@ -80,6 +92,7 @@ export interface LoadItem {
 export enum LoaderKey {
   Json = "Json",
   ArrayBuffer = "ArrayBuffer",
+  Bytes = "Bytes",
   Blob = "Blob",
   FormData = "FormData",
   Text = "Text",

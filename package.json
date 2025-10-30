@@ -40,10 +40,10 @@
   "types": "types/index.d.ts",
   "scripts": {
     "coverage": "nyc report --reporter=text --reporter=html",
-    "dev": "npx snowdev --no-serve",
-    "prejest": "npx snowdev install",
+    "dev": "npm exec snowdev --no-serve",
+    "prejest": "npm exec snowdev install",
     "jest": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --watch --no-cache",
-    "pretest": "npx snowdev install && npx snowdev build --no-docs --no-lint",
+    "pretest": "npm exec snowdev install && npm exec snowdev build --no-docs --no-lint",
     "test": "NODE_OPTIONS=--experimental-vm-modules npx jest test/ --runInBand"
   },
   "jest": {

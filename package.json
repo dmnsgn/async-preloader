@@ -1,6 +1,6 @@
 {
   "name": "async-preloader",
-  "version": "8.1.0",
+  "version": "8.1.1",
   "description": "Assets preloader using async/await and fetch for usage both in the browser and Node.js.",
   "keywords": [
     "preloader",

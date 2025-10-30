@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+## [8.1.1](https://github.com/dmnsgn/async-preloader/compare/v8.1.0...v8.1.1) (2025-10-30)
+
+
+### Bug Fixes
+
+* handle paths with query param and fragment ([4442786](https://github.com/dmnsgn/async-preloader/commit/444278662488224f3d639a090eb3a8b59bbcf2c6)), closes [#100](https://github.com/dmnsgn/async-preloader/issues/100)
+
+
+
 # [8.1.0](https://github.com/dmnsgn/async-preloader/compare/v8.0.4...v8.1.0) (2025-10-15)
 
 

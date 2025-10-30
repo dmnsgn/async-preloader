@@ -213,9 +213,9 @@ describe("AsyncPreloader", () => {
         expect(data).toBe("json");
       });
 
-      it("should return null from file path with no extension", () => {
+      it("should return undefined from file path with no extension", () => {
         const data = AsyncPreloader.getFileExtension("assets/default");
-        expect(data).toBe(null);
+        expect(data).toBe(undefined);
       });
     });
 

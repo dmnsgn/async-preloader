@@ -104,11 +104,11 @@ class AsyncPreloader {
   public loadItem = async (item: LoadItem | string): Promise<LoadedValue> => {
     if (typeof item === "string") item = { src: item };
 
-    const extension: string = AsyncPreloader.getFileExtension(
-      (item.src as string) || "",
-    );
     const loaderKey: LoaderKey =
-      item.loader || AsyncPreloader.getLoaderKey(extension);
+      item.loader ||
+      AsyncPreloader.getLoaderKey(
+        AsyncPreloader.getFileExtension((item.src as string) || ""),
+      );
 
     const loadedItem: LoadedValue = await this[`load` + loaderKey](item);
 
@@ -417,23 +417,23 @@ class AsyncPreloader {
   }
 
   /**
+   * Get file base
+   *
+   * @param path
+   * @returns
+   */
+  private static getFileBase(path: string): string {
+    return path.split("?")[0].split("#")[0].split("/").pop() || "";
+  }
+
+  /**
    * Get file extension
    *
    * @param path
    * @returns
    */
   private static getFileExtension(path: string): string {
-    return (path?.match(/[^\\/]\.([^.\\/]+)$/) || [null]).pop();
-  }
-
-  /**
-   * Get file base name
-   *
-   * @param path
-   * @returns
-   */
-  private static getFileBaseName(path: string): string {
-    return path.split(/[\\/]/).pop();
+    return AsyncPreloader.getFileBase(path).split(".")[1];
   }
 
   /**
@@ -443,10 +443,7 @@ class AsyncPreloader {
    * @returns
    */
   private static getFileName(path: string): string {
-    return (
-      AsyncPreloader.getFileBaseName(path).split(".").slice(0, -1).join(".") ||
-      path
-    );
+    return AsyncPreloader.getFileBase(path).split(".")[0] || path;
   }
 
   /**

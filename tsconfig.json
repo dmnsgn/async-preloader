@@ -21,9 +21,10 @@
       "ES2023",
       "ESNext"
     ],
-    "module": "ES2022",
-    "moduleResolution": "node",
+    "module": "nodenext",
+    "moduleResolution": "nodenext",
     "outDir": "lib",
+    "rootDir": "./src",
     "sourceMap": true,
     "strictFunctionTypes": true,
     "target": "es2023"

@@ -110,7 +110,10 @@ class AsyncPreloader {
         AsyncPreloader.getFileExtension((item.src as string) || ""),
       );
 
-    const loadedItem: LoadedValue = await this[`load` + loaderKey](item);
+    const loaderMethod = this[`load${loaderKey}` as const] as (
+      item: LoadItem,
+    ) => Promise<LoadedValue>;
+    const loadedItem: LoadedValue = await loaderMethod(item);
 
     this.items.set((item.id || item.src) as string, loadedItem);
 
@@ -278,6 +281,7 @@ class AsyncPreloader {
       try {
         if (isSafari) throw "";
         video.srcObject = data as Blob;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         video.src = URL.createObjectURL(data as Blob);
       }
@@ -321,6 +325,7 @@ class AsyncPreloader {
       try {
         if (isSafari) throw "";
         audio.srcObject = data as Blob;
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         audio.src = URL.createObjectURL(data as Blob);
       }
@@ -351,6 +356,10 @@ class AsyncPreloader {
 
     if (!AsyncPreloader.domParser) {
       throw new Error("DomParser is not supported.");
+    }
+
+    if (!item.mimeType) {
+      throw new Error("AsyncPreloader.loadXml mimeType is unknown.");
     }
 
     const response: Response = await AsyncPreloader.fetchItem(item);
@@ -412,14 +421,19 @@ class AsyncPreloader {
    * @param path Path to the desired property
    * @returns The returned object property
    */
-  private static getProp(object: unknown, path: string | string[]) {
+  private static getProp(
+    object: // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    any,
+    path: string | string[],
+  ): // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  any {
     const p = Array.isArray(path)
       ? path
       : path.split(".").filter((index) => index.length);
 
     if (!p.length) return object;
 
-    return AsyncPreloader.getProp(object[p.shift()], p);
+    return AsyncPreloader.getProp(object[p.shift() ?? ""], p);
   }
 
   /**
@@ -475,9 +489,10 @@ class AsyncPreloader {
   private static getMimeType(
     loaderKey: LoaderKey,
     extension: string,
-  ): DOMParserSupportedType {
-    const loader: LoaderValue = AsyncPreloader.loaders.get(loaderKey);
-    return loader.mimeType[extension] || loader.defaultMimeType;
+  ): DOMParserSupportedType | undefined {
+    const loader: LoaderValue | undefined =
+      AsyncPreloader.loaders.get(loaderKey);
+    return loader?.mimeType?.[extension] || loader?.defaultMimeType;
   }
 }
 

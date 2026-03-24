@@ -76,25 +76,25 @@
     "@types/expect-puppeteer": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/jest-environment-puppeteer": "^5.0.6",
-    "@types/node": "^24.7.2",
+    "@types/node": "^25.5.0",
     "@xmldom/xmldom": "^0.8.11",
-    "es-module-shims": "^2.6.2",
-    "jest": "^30.2.0",
+    "es-module-shims": "^2.8.0",
+    "jest": "^30.3.0",
     "jest-puppeteer": "^11.0.0",
     "jest-ts-webcompat-resolver": "^1.0.1",
-    "mime-types": "^3.0.1",
-    "nyc": "^17.1.0",
+    "mime-types": "^3.0.2",
+    "nyc": "^18.0.0",
     "portfinder": "^1.0.38",
-    "puppeteer": "^24.25.0",
+    "puppeteer": "^24.40.0",
     "puppeteer-to-istanbul": "^1.4.0",
-    "snowdev": "^2.6.0",
-    "ts-jest": "^29.4.5",
+    "snowdev": "^2.7.0",
+    "ts-jest": "^29.4.6",
     "typescript": "^5.9.3"
   },
   "engines": {
     "node": ">=22.0.0",
     "npm": ">=10.5.1",
-    "snowdev": ">=2.2.x"
+    "snowdev": ">=2.7.x"
   },
   "jest-puppeteer": {
     "launch": {

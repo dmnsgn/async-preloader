@@ -485,3 +485,5 @@ export { AsyncPreloader };
 
 const AsyncPreloaderInstance = new AsyncPreloader();
 export default AsyncPreloaderInstance;
+
+export * from "./types.js";

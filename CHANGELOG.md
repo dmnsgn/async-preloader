@@ -2,6 +2,26 @@
 
 All notable changes to this project will be documented in this file. See [commit-and-tag-version](https://github.com/absolute-version/commit-and-tag-version) for commit guidelines.
 
+# [9.0.0](https://github.com/dmnsgn/async-preloader/compare/v8.1.1...v9.0.0) (2026-03-24)
+
+
+### Build System
+
+* add typescript 6.0 support ([6e4ffec](https://github.com/dmnsgn/async-preloader/commit/6e4ffecdf39bc0dd6187540c314bf3c75ad2dc0f))
+
+
+### Features
+
+* add URL.revokeObjectURL calls for loadImage, loadAudio and loadVideo ([61b3f8b](https://github.com/dmnsgn/async-preloader/commit/61b3f8b472aa59075831a8b86e825cc27e50d9bf))
+* export all types ([997cdfb](https://github.com/dmnsgn/async-preloader/commit/997cdfb814698238c66b29767ad5734e3c8d11df)), closes [#107](https://github.com/dmnsgn/async-preloader/issues/107)
+
+
+### BREAKING CHANGES
+
+* typescript strict fixes
+
+
+
 ## [8.1.1](https://github.com/dmnsgn/async-preloader/compare/v8.1.0...v8.1.1) (2025-10-30)
 
 

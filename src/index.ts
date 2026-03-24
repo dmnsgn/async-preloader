@@ -226,10 +226,12 @@ class AsyncPreloader {
       return await new Promise<HTMLImageElement>((resolve, reject) => {
         image.addEventListener("load", function load() {
           image.removeEventListener("load", load);
+          URL.revokeObjectURL(image.src);
           resolve(image);
         });
         image.addEventListener("error", function error(event) {
           image.removeEventListener("error", error);
+          URL.revokeObjectURL(image.src);
           reject(event);
         });
         image.src = URL.createObjectURL(data as Blob);
@@ -264,10 +266,12 @@ class AsyncPreloader {
     return await new Promise<HTMLVideoElement>((resolve, reject) => {
       video.addEventListener("canplaythrough", function canplaythrough() {
         video.removeEventListener("canplaythrough", canplaythrough);
+        URL.revokeObjectURL(video.src);
         resolve(video);
       });
       video.addEventListener("error", function error(event) {
         video.removeEventListener("error", error);
+        URL.revokeObjectURL(video.src);
         reject(event);
       });
 
@@ -305,10 +309,12 @@ class AsyncPreloader {
     return await new Promise<HTMLAudioElement>((resolve, reject) => {
       audio.addEventListener("canplaythrough", function canplaythrough() {
         audio.removeEventListener("canplaythrough", canplaythrough);
+        URL.revokeObjectURL(audio.src);
         resolve(audio);
       });
       audio.addEventListener("error", function error(event) {
         audio.removeEventListener("error", error);
+        URL.revokeObjectURL(audio.src);
         reject(event);
       });
 

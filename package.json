@@ -72,7 +72,6 @@
     "tslib": "^2.8.1"
   },
   "devDependencies": {
-    "@types/css-font-loading-module": "^0.0.14",
     "@types/expect-puppeteer": "^5.0.6",
     "@types/jest": "^30.0.0",
     "@types/jest-environment-puppeteer": "^5.0.6",
